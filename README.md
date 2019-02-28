@@ -1,4 +1,4 @@
-# ProjectWork2019Neiro
+﻿# ProjectWork2019Neiro
 Проектная работа 2019 - Нейроинтерфейс
 
 [Ссылка на проект](https://project.spbstu.ru/mod/opd/view.php?pid=4&rid=18)
@@ -31,8 +31,8 @@
   $ git commit
   $ git push origin feature
 ```
-## 3. Чтобы послать Pull request нужно 
-зайти на [страницу проекта](https://github.com/RazuvaevDD/ProjectWork2019Neiro) и нажать кнопку New pull request
+## 3. Отослать изменения в основной репозиторий
+Необходимо зайти на [страницу проекта](https://github.com/RazuvaevDD/ProjectWork2019Neiro) и нажать кнопку New pull request
 
 ## 4. Следите за главным репозиторием. Если он ушел вперед, то нужно обновить свой репозиторий. 
 Для этого выполняем последовательность команд:
@@ -40,7 +40,8 @@
   $ git checkout master
   $ git pull upstream master
   $ git checkout feature
-  $ git rebase master
+  $ git merge master
+  $ git push origin feature
 ```
 # Описание и указания к работе
 
