@@ -8,34 +8,40 @@
 
 ### Настройка:
   1. Вводим в git bash:
-    1. git config --global user.email "you@example.com"
-    2. git config --global user.name "Your name"
-    3. git config --global core.editor notepad
+  ```
+    $ git config --global user.email "you@example.com"
+    $ git config --global user.name "Your name"
+    $ git config --global core.editor notepad
+  ```
   2. Заходим на [страницу проекта](https://github.com/RazuvaevDD/ProjectWork2019Neiro) , жмем кнопку Fork 
   3. Вводим в git bash:
-    1. git clone https://github.com/!!!ТВОЙ ЛОГИН!!!/ProjectWork2019Neiro
-    2. cd ProjectWork2019Neiro
-    3. git remote add upstream https://github.com/RazuvaevDD/ProjectWork2019Neiro
-    4. git fetch upstream
-    5. git checkout -b feature
+  ```
+    $ git clone https://github.com/!!!ТВОЙ ЛОГИН!!!/ProjectWork2019Neiro
+    $ cd ProjectWork2019Neiro
+    $ git remote add upstream https://github.com/RazuvaevDD/ProjectWork2019Neiro
+    $ git fetch upstream
+    $ git checkout -b feature
+  ```
   4. Открываем проект и пытаемся его собрать. В случае ошибки необходимо в обозревателе решений выделить решение "NeiroApp" и с помощью правой кнопки мыши "Отчистить решение".
 
 ## 2. Отправка изменений с компьютера на свой репозиторий 
-  1. git status
-  2. git add VS
-  3. git commit
-  4. git push origin feature
-
+```
+  $ git status
+  $ git add VS
+  $ git commit
+  $ git push origin feature
+```
 ## 3. Чтобы послать Pull request нужно 
 зайти на [страницу проекта](https://github.com/RazuvaevDD/ProjectWork2019Neiro) и нажать кнопку New pull request
 
-## 4. Следите за главным репозиторием. Если он ушел вперед, то нужно обновить свой репозиторий. Для этого выполняем
-последовательность команд:
-  1. git checkout master
-  2. git pull upstream master
-  3. git checkout feature
-  4. git rebase master
-
+## 4. Следите за главным репозиторием. Если он ушел вперед, то нужно обновить свой репозиторий. 
+Для этого выполняем последовательность команд:
+```
+  $ git checkout master
+  $ git pull upstream master
+  $ git checkout feature
+  $ git rebase master
+```
 # Описание и указания к работе
 
 1. Соблюдаем правила оформления [отсюда](https://vk.com/doc68214078_474918649?hash=f56f1f25b0f0ec572c&dl=50ac88b3984861fbfb) 
