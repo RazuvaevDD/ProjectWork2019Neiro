@@ -1,10 +1,14 @@
-#include "MainWindow.h"
-#include <QtWidgets/QApplication>
+#include "Output.h"
+#include "GUI.h"
 
 int main(int argc, char *argv[])
 {
-	QApplication a(argc, argv);
-	MainWindow w;
-	w.show();
-	return a.exec();
+	GUI_module::GUI gui(argc, argv);
+
+	//testing Output::Mouse::moveTo(int, int)
+	//Output_module::Mouse* mouse = new Output_module::Mouse();
+	//mouse->moveTo(1, 1);
+	//delete mouse;
+
+	return gui.WaitingStopGUI();
 }

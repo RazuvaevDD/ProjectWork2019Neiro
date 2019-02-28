@@ -1,4 +1,5 @@
 .git/
+.vs/
 VS/NeiroApp/.vs/
 VS/NeiroApp/Win32/
 VS/NeiroApp/NeiroApp/GeneratedFiles/

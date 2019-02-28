@@ -1,14 +1,14 @@
-#include "Mouse.h"
+#include "Output.h"
+
+using namespace Output_module;
 
 Mouse::Mouse()
 {
-
 }
 
 
 Mouse::~Mouse()
 {
-
 }
 
 POINT Mouse::getCoords()
