@@ -1,4 +1,4 @@
-# ProjectWork2019Neiro
+﻿# ProjectWork2019Neiro
 Проектная работа 2019 - Нейроинтерфейс
 
 Ссылка на проект: https://project.spbstu.ru/mod/opd/view.php?pid=4&rid=18
@@ -7,18 +7,18 @@
 1. Начало работы
 
 Настройка:
-1) Вводим в git bash:
+1.1. Вводим в git bash:
   git config --global user.email "you@example.com"
   git config --global user.name "Your name"
   git config --global core.editor notepad
-2) Заходим на https://github.com/RazuvaevDD/ProjectWork2019Neiro , жмем кнопку Fork 
-3) Вводим в git bash:
+1.2. Заходим на https://github.com/RazuvaevDD/ProjectWork2019Neiro , жмем кнопку Fork 
+1.3. Вводим в git bash:
   git clone https://github.com/!!!ТВОЙ ЛОГИН!!!/ProjectWork2019Neiro
   cd ProjectWork2019Neiro
   git remote add upstream https://github.com/RazuvaevDD/ProjectWork2019Neiro
   git fetch upstream
   git checkout -b feature
-4) Открываем проект и пытаемся его собрать. В случае ошибки необходимо в обозревателе решений выделить решение "NeiroApp" и с помощью правой кнопки мыши "Отчистить решение".
+1.4. Открываем проект и пытаемся его собрать. В случае ошибки необходимо в обозревателе решений выделить решение "NeiroApp" и с помощью правой кнопки мыши "Отчистить решение".
 
 2. Отправка изменений с компьютера на свой репозиторий 
 git status
