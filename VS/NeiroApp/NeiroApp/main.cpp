@@ -1,5 +1,5 @@
-#include "Output.h"
-#include "GUI.h"
+#include "Output.hpp"
+#include "GUI.hpp"
 
 int main(int argc, char *argv[])
 {

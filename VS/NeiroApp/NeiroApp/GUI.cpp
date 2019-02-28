@@ -1,4 +1,4 @@
-#include "GUI.h"
+#include "GUI.hpp"
 #include "ui_MainWindow.h"
 
 using namespace GUI_module;
