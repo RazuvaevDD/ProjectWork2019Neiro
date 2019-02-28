@@ -1,7 +1,7 @@
 # ProjectWork2019Neiro
 Проектная работа 2019 - Нейроинтерфейс
 
-Ссылка на проект: https://project.spbstu.ru/mod/opd/view.php?pid=4&rid=18
+[Ссылка на проект](https://project.spbstu.ru/mod/opd/view.php?pid=4&rid=18)
 
 # Работа с GitHub
 ## 1. Начало работы
