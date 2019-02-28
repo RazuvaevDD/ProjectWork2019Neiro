@@ -16,7 +16,7 @@
   2. Заходим на [страницу проекта](https://github.com/RazuvaevDD/ProjectWork2019Neiro) , жмем кнопку Fork 
   3. Вводим в git bash:
   ```
-    $ git clone https://github.com/!!!ТВОЙ ЛОГИН!!!/ProjectWork2019Neiro
+    $ git clone https://github.com/!!!ТВОЙ_ЛОГИН!!!/ProjectWork2019Neiro
     $ cd ProjectWork2019Neiro
     $ git remote add upstream https://github.com/RazuvaevDD/ProjectWork2019Neiro
     $ git fetch upstream
