@@ -117,9 +117,6 @@
     <ClCompile Include="Output\Output.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="GUI\MainWindow.ui" />
-  </ItemGroup>
-  <ItemGroup>
     <QtRcc Include="GUI\MainWindow.qrc" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +125,11 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
     <ClInclude Include="Output\Output.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="GUI\MainWindow.ui">
+      <DeploymentContent>false</DeploymentContent>
+    </QtUic>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
