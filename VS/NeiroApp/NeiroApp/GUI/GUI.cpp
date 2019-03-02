@@ -1,5 +1,5 @@
-#include "GUI.hpp"
-#include "ui_MainWindow.h"
+#include "GUI/GUI.hpp"
+#include "ui_MainWindow.h"//MainWindow.ui -> ui_MainWindow.h
 
 using namespace GUI_module;
 
