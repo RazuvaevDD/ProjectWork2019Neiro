@@ -114,7 +114,8 @@
   <ItemGroup>
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Output\Output.cpp" />
+    <ClCompile Include="Output\Keyboard.cpp" />
+    <ClCompile Include="Output\Mouse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="GUI\MainWindow.ui" />
@@ -127,7 +128,8 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
-    <ClInclude Include="Output\Output.hpp" />
+    <ClInclude Include="Output\Keyboard.hpp" />
+    <ClInclude Include="Output\Mouse.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
