@@ -3,14 +3,10 @@
 using namespace Output_module;
 
 Keyboard::Keyboard()
-{
-
-}
+{}
 
 Keyboard::~Keyboard()
-{
-
-}
+{}
 
 void Keyboard::pressButton(std::string sKey)
 {
@@ -314,4 +310,5 @@ byte Keyboard::getKeyCode(std::string sKey)
 	{
 		return 220;
 	}
+	return 0;
 }
