@@ -1,4 +1,4 @@
-#include "Output/Output.hpp"
+#include "Output/Mouse.hpp"
 
 using namespace Output_module;
 
