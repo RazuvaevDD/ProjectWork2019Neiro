@@ -72,4 +72,9 @@
   <ItemGroup>
     <ResourceCompile Include="NeiroApp.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="GUI\MainWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
 </Project>
