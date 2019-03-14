@@ -10,8 +10,8 @@ namespace Output_module
 	public:
 		Keyboard();
 		~Keyboard();
-		void pressButton(std::string sKey); //input is upper english letter like "A" or button name like "CTRL"
-		void releaseButton(std::string sKey);
+		void pressButton(std::string sKey); //Input is upper english letter like "A" or button name like "CTRL"
+		void releaseButton(std::string sKey); //Same 
 	private:
 		byte getKeyCode(std::string sKey);
 	};
