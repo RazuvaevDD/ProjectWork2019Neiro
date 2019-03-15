@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <QCursor>
 
 namespace Output_module
 {
@@ -8,13 +9,16 @@ namespace Output_module
 	public:
 		Mouse();
 		~Mouse();
-		POINT getCoords(); //Return POINT (Defined in Windows.h) structure with current coords of cursor
-		//Upper left corner is a {0;0}. Lower right corner is {65535; 65535}
-		void moveTo(int x, int y); //Move cursor to x y coordinate
-		void moveBy(int x, int y); //Shift cursor by x y
+		QPoint getCoords(); //Return QPoint structure with current coords of cursor. This coords depends on resolution of screen
+		void moveTo(double x, double y); //Move cursor to x y coordinate
+		void moveTo(QPoint point); //Move cursor to QPoint coordinate
+		void moveTo(double x, double y, double time); //Move cursor to x y coordinate in time (ms)
+		void moveBy(double x, double y); //Shift cursor by x y
 		void pressLeftClick(); //Press left button of the mouse
 		void releaseLeftClick(); //Release left button of the mouse
 		void pressRightClick(); //Press right button of the mouse
 		void releaseRightClick(); //Release right button of the mouse
+	private:
+		QCursor cursor;
 	};
 }

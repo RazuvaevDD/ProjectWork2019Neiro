@@ -1,4 +1,7 @@
 #include "Output/Mouse.hpp"
+#include <cmath>
+#include <QEventLoop>
+#include <QTimer>
 
 using namespace Output_module;
 
@@ -11,21 +14,54 @@ Mouse::~Mouse()
 {
 }
 
-POINT Mouse::getCoords()
+QPoint Mouse::getCoords() 
 {
-	POINT p;
-	GetCursorPos(&p);
-	return p;
+	return QCursor::pos();
 }
 
-void Mouse::moveTo(int x, int y)
+void Mouse::moveTo(double x, double y)
 {
-	mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, x, y, 0, 0);
+	cursor.setPos(x, y);
 }
 
-void Mouse::moveBy(int x, int y)
+void Mouse::moveTo(QPoint point)
 {
-	mouse_event(MOUSEEVENTF_MOVE, x, y, 0, 0);
+	cursor.setPos(point);
+}
+
+void Mouse::moveTo(double x, double y, double time)
+{
+	QPoint currentCoords = getCoords();
+	double dx = abs(x - currentCoords.x());
+	double dy = abs(y - currentCoords.y());
+	double curX = currentCoords.x();
+	double curY = currentCoords.y();
+	int xMult = 1;
+	int yMult = 1;
+	if (curX > x)
+	{
+		xMult = -1;
+	}
+	if (curY > y)
+	{
+		yMult = -1;
+	}
+	QEventLoop loop;
+	double sleepTime = time / 100;
+	for (int i = 0; i < 100; i++)
+	{
+		curX += dx / 100 * xMult;
+		curY += dy / 100 * yMult;
+		cursor.setPos(curX, curY);
+		QTimer::singleShot(sleepTime, &loop, SLOT(quit()));
+		loop.exec();
+	}
+	moveTo(x, y);
+}
+
+void Mouse::moveBy(double x, double y)
+{
+	cursor.setPos(getCoords().x() + x, getCoords().y() + y);
 }
 
 void Mouse::pressLeftClick()
