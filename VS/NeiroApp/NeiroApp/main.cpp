@@ -34,7 +34,13 @@ int main(int argc, char *argv[])
 	}*/
 
 	//mouse.setCoords(100, 100, 1000);
-	mouse.shiftCoords(100, 0, 1000);
-	mouse.setCoords(0, 0, 2000);
+	/*mouse.shiftCoords(100, 0, 1000);
+	mouse.setCoords(0, 0, 2000);*/
+	//mouse.shiftCoords(100, 100, 1000);
+	//mouse.shiftCoords(-100, -1, 1000);
+	mouse.shiftCoords(100, 50, 1000);
+	mouse.shiftCoords(-100, -50, 1000);
+	mouse.shiftCoords(-100, -1, 1000);
+	//mouse.shiftCoords(-100, -1);
 	return gui.WaitingStopGUI();
 }
