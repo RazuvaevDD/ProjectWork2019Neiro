@@ -33,7 +33,8 @@ int main(int argc, char *argv[])
 		keyboard.releaseButton("K");
 	}*/
 
-	mouse.moveTo(100, 100, 1000);
-
+	//mouse.setCoords(100, 100, 1000);
+	mouse.shiftCoords(100, 0, 1000);
+	mouse.setCoords(0, 0, 2000);
 	return gui.WaitingStopGUI();
 }
