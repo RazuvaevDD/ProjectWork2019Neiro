@@ -11,6 +11,6 @@ int main(int argc, char *argv[])
 	
 	mouse.shiftCoords(100, 50, 1000);
 	mouse.setCoords(0, 0, 1000);
-	
+  
 	return gui.WaitingStopGUI();
 }

@@ -29,15 +29,26 @@ void Mouse::setCoords(QPoint point)
 	cursor.setPos(point);
 }
 
-void Mouse::setCoords(double x, double y, double time)
+void Mouse::setCoords(QPoint point, int time)
 {
+	setCoords(point.x(), point.y(), time);
+}
+
+void Mouse::setCoords(double x, double y, int time)
+{
+	if (time <= 0)
+	{
+		setCoords(x, y);
+		return;
+	}
+
 	QPoint currentCoords = getCoords();
 	double dx = abs(x - currentCoords.x());
 	double dy = abs(y - currentCoords.y());
 	double curX = currentCoords.x();
 	double curY = currentCoords.y();
-	int xMult = 1;
-	int yMult = 1;
+	short int xMult = 1;
+	short int yMult = 1;
 	if (curX > x)
 	{
 		xMult = -1;
@@ -64,16 +75,12 @@ void Mouse::shiftCoords(double x, double y)
 	cursor.setPos(getCoords().x() + x, getCoords().y() + y);
 }
 
-void Mouse::shiftCoords(double x, double y, double time)
+void Mouse::shiftCoords(double x, double y, int time)
 {
-	QEventLoop loop;
-	double sleepTime = time / 100;
-	for (int i = 0; i < 100; i++)
-	{
-		shiftCoords(x / 100, y / 100);
-		QTimer::singleShot(sleepTime, &loop, SLOT(quit()));
-		loop.exec();
-	}
+	QPoint currentCoords = getCoords();
+	double xNew = currentCoords.x() + x;
+	double yNew = currentCoords.y() + y;
+	setCoords(xNew, yNew, time);
 }
 
 void Mouse::pressLeftClick()
