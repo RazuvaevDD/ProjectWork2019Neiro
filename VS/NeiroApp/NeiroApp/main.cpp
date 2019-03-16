@@ -1,19 +1,14 @@
-#include "Output/Mouse.hpp"
-#include "Output/Keyboard.hpp"
+#include "Output/Output.hpp"
 #include "GUI/GUI.hpp"
-//#include "Input/Input.hpp"
 
 int main(int argc, char *argv[])
 {
 	GUI_module::GUI gui(argc, argv);
 
-	Output_module::Mouse mouse;
-	Output_module::Keyboard keyboard;
+	//testing Output::Mouse::moveTo(int, int)
+	//Output_module::Mouse* mouse = new Output_module::Mouse();
+	//mouse->moveTo(1, 1);
+	//delete mouse;
 
-	//Input_module::Input input;
-	
-	mouse.shiftCoords(100, 50, 1000);
-	mouse.setCoords(0, 0, 1000);
-  
 	return gui.WaitingStopGUI();
 }
