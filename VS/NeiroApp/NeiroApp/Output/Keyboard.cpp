@@ -10,18 +10,28 @@ Keyboard::~Keyboard()
 
 void Keyboard::pressButton(std::string sKey)
 {
-	keybd_event(getKeyCode(sKey), 0, 0, 0);
+	INPUT input;
+	WORD vKey = getKeyCode(sKey);
+	input.type = INPUT_KEYBOARD;
+	input.ki.wScan = MapVirtualKey(vKey, MAPVK_VK_TO_VSC);
+	input.ki.wVk = vKey;
+	SendInput(1, &input, sizeof(INPUT));
 }
 
 
 void Keyboard::releaseButton(std::string sKey)
 {
-	keybd_event(getKeyCode(sKey), 0, KEYEVENTF_KEYUP, 0);
+	INPUT input;
+	WORD vKey = getKeyCode(sKey);
+	input.type = INPUT_KEYBOARD;
+	input.ki.wScan = MapVirtualKey(vKey, MAPVK_VK_TO_VSC);
+	input.ki.wVk = vKey;
+	input.ki.dwFlags = KEYEVENTF_KEYUP;
+	SendInput(1, &input, sizeof(INPUT));
 }
 
 byte Keyboard::getKeyCode(std::string sKey)
 {
-	byte key;
 	if (sKey.size() == 1 && isalpha(sKey[0]))
 	{
 		return byte(sKey[0]);
