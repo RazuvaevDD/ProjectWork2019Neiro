@@ -119,7 +119,7 @@
     <ClCompile Include="Output\Mouse.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="EditWindow.qrc" />
+    <QtRcc Include="GUI\EditWindow.qrc" />
     <QtRcc Include="GUI\MainWindow.qrc" />
   </ItemGroup>
   <ItemGroup>
@@ -132,7 +132,7 @@
     <ClInclude Include="Output\Mouse.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="EditWindow.ui" />
+    <QtUic Include="GUI\EditWindow.ui" />
     <QtUic Include="GUI\MainWindow.ui">
       <DeploymentContent>false</DeploymentContent>
     </QtUic>
