@@ -36,13 +36,7 @@
     <ClCompile Include="GUI\GUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Output\Mouse.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Output\Keyboard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Input\Input.cpp">
+    <ClCompile Include="Output\Output.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -52,24 +46,29 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="GUI\MainWindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
+    <ClInclude Include="Output\Output.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="GUI\MainWindow.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+    <QtRcc Include="EditWindow.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Output\Mouse.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Output\Keyboard.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\Input.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <QtUic Include="GUI\MainWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="EditWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="GUI\MainWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>
