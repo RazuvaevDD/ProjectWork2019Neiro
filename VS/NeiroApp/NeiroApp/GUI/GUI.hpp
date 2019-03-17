@@ -1,18 +1,18 @@
 #pragma once
 #include <QtWidgets>
+#include <QDialog>
+
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
 
 namespace GUI_module {
-	class EditWindow : public QWidget
+	class EditWindow : public QDialog
 	{
 		Q_OBJECT
 
 	public:
-		EditWindow(QWidget *parent = Q_NULLPTR);
-	private slots:
-		void on_comboBox_activated(const QString &arg1);
-		void on_addButton2_clicked();
+		EditWindow(QDialog *parent = Q_NULLPTR);
+	//private slots:
 	private:
 		Ui::EditWindow ui;
 	};
@@ -23,11 +23,12 @@ namespace GUI_module {
 
 	public:
 		MainWindow(QWidget *parent = Q_NULLPTR);
-		void addToTable(QString &arg1,QString &arg2);
+		EditWindow* changeWindow;
 	private slots:
-		void on_addButton_clicked();
-		void on_changeButton_clicked();
-		void on_deleteButton_clicked();
+		void on_changeButton_clicked();   //
+		void on_changeButton_2_clicked(); //   ? what is it?..
+		void on_changeButton_3_clicked(); //
+		void on_changeButton_4_clicked(); //
 	private:
 		Ui::MainWindowClass ui;
 		EditWindow* editWindow;
@@ -39,8 +40,8 @@ namespace GUI_module {
 		GUI(int& argc, char** argv);
 		int WaitingStopGUI();
 		~GUI();
+		MainWindow* window;
 	private:
 		QApplication app;
-		MainWindow* window;
 	};
 }

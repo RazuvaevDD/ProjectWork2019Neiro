@@ -64,6 +64,40 @@ void EditWindow::on_comboBox_activated(const QString &arg1)
 	}
 }
 
+EditWindow::EditWindow(QDialog *parent)
+	: QDialog(parent)
+{
+	ui.setupUi(this);
+}
+
+void MainWindow::on_changeButton_clicked()
+{
+	changeWindow = new EditWindow();
+	changeWindow->setModal(true);
+	changeWindow->show();
+}
+
+void MainWindow::on_changeButton_2_clicked()
+{
+	changeWindow = new EditWindow();
+	changeWindow->setModal(true);
+	changeWindow->show();
+}
+
+void MainWindow::on_changeButton_3_clicked()
+{
+	changeWindow = new EditWindow();
+	changeWindow->setModal(true);
+	changeWindow->show();
+}
+
+void MainWindow::on_changeButton_4_clicked()
+{
+	changeWindow = new EditWindow();
+	changeWindow->setModal(true);
+	changeWindow->show();
+}
+
 GUI::GUI(int & argc, char ** argv) :
 	app(argc, argv)
 {
