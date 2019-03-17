@@ -60,7 +60,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="EditWindow.qrc">:/GUI/Images/mouse-png-2.png</pixmap>
+    <pixmap resource="EditWindow.qrc">:/Images/mouse-png-2.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -104,7 +104,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="EditWindow.qrc">:/GUI/Images/KEYBOARD.png</pixmap>
+    <pixmap resource="EditWindow.qrc">:/Images/KEYBOARD.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
