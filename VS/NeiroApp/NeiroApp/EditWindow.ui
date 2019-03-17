@@ -810,7 +810,7 @@
   <zorder>forward</zorder>
   <zorder>left</zorder>
   <zorder>right</zorder>
-  <zorder>back</zorder>
+  <zorder>back</zorder
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

@@ -1,6 +1,7 @@
 #pragma once
 #include <QtWidgets>
 #include <QDialog>
+
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
 
@@ -24,12 +25,13 @@ namespace GUI_module {
 		MainWindow(QWidget *parent = Q_NULLPTR);
 		EditWindow* changeWindow;
 	private slots:
-		void on_changeButton_clicked();
-		void on_changeButton_2_clicked();
-		void on_changeButton_3_clicked();
-		void on_changeButton_4_clicked();
+		void on_changeButton_clicked();   //
+		void on_changeButton_2_clicked(); //   ? what is it?..
+		void on_changeButton_3_clicked(); //
+		void on_changeButton_4_clicked(); //
 	private:
 		Ui::MainWindowClass ui;
+		EditWindow* editWindow;
 	};
 
 	class GUI
