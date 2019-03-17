@@ -36,9 +36,6 @@
     <ClCompile Include="GUI\GUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Output\Output.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Output\Keyboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -55,9 +52,6 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Output\Output.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Output\Keyboard.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
