@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Setting.hpp"
-#include "tinyxml2.h"
+#include "LibXML.h"
 #include <vector>
 #include <fstream>
 
@@ -39,5 +39,4 @@ namespace Settings_module
 		const char* name;
 		std::vector<Setting> settings;
 	};
-
 }
