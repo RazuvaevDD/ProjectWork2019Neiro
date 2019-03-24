@@ -14,11 +14,6 @@ To save changes in XML file run saveXMLFile()
 Each settings in XML file should have unique ID 
 */
 
-/*
-To do: 
-Remove all unhandled exceptions that can cause a program crash 
-For example if you'll try to read settings from empty XML file there will be unhandled exception 
-*/
 
 namespace Settings_module
 {
@@ -31,7 +26,7 @@ namespace Settings_module
 		bool loadXML();
 		bool saveXMLFile();
 
-		std::vector<Setting> getSettings();
+		void getSettings(std::vector<Setting>& v);
 		bool addSetting(Setting &s);
 		bool deleteSetting(unsigned long aId);
 
