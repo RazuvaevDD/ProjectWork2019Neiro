@@ -45,10 +45,10 @@
     <ClCompile Include="Input\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Settings\tinyxml2.cpp">
+    <ClCompile Include="Settings\XMLParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Settings\XMLParser.cpp">
+    <ClCompile Include="Settings\LibXML.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -70,10 +70,10 @@
     <ClInclude Include="Settings\Setting.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Settings\tinyxml2.h">
+    <ClInclude Include="Settings\XMLParser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Settings\XMLParser.hpp">
+    <ClInclude Include="Settings\LibXML.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

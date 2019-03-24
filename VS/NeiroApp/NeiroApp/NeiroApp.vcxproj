@@ -117,7 +117,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Output\Keyboard.cpp" />
     <ClCompile Include="Output\Mouse.cpp" />
-    <ClCompile Include="Settings\tinyxml2.cpp" />
+    <ClCompile Include="Settings\LibXML.cpp" />
     <ClCompile Include="Settings\XMLParser.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Settings\Setting.hpp" />
-    <ClInclude Include="Settings\tinyxml2.h" />
+    <ClInclude Include="Settings\LibXML.h" />
     <ClInclude Include="Settings\XMLParser.hpp" />
     <QtMoc Include="GUI\GUI.hpp">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
