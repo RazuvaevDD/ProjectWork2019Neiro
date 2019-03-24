@@ -25,9 +25,16 @@ bool XMLParser::loadXML()
 {
 	XMLDocument file;
 	file.LoadFile(name);
-
 	XMLElement* root = file.RootElement();
-	XMLElement* setting = root->FirstChildElement();
+	XMLElement* setting;
+	if (root != nullptr)
+	{
+		setting = root->FirstChildElement();
+	}
+	else
+	{
+		return false;
+	}
 
 	settings = {};
 
@@ -72,9 +79,17 @@ bool XMLParser::saveXMLFile()
 	return file.SaveFile(name) == 0;
 }
 
-std::vector<Setting> XMLParser::getSettings()
+void XMLParser::getSettings(std::vector<Setting>& v)
 {
-	return settings;
+	//return settings;
+	if (settings.size() != 0)
+	{
+		v = settings;
+	}
+	else
+	{
+		return;
+	}
 }
 
 bool XMLParser::addSetting(Setting &s)

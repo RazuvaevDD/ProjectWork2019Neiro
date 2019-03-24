@@ -16,17 +16,17 @@ int main(int argc, char *argv[])
 	Input_module::Input input;
 
 	Settings_module::XMLParser p("Settings.xml");
+
 	Settings_module::Setting s;
 	s.b = 0;
 	s.dbl = 228;
 	s.i = 1488;
-	s.id = 0;
+	s.id = 1;
 	s.str = "STRING";
-	//p.addSetting(s);
-	//p.saveXMLFile();
-	p.loadXML();
-	std::vector<Settings_module::Setting> settings = p.getSettings();
-	qInfo() << settings[0].dbl;
+
+	std::vector<Settings_module::Setting> settings;
+	p.getSettings(settings);
+	//qInfo() << settings[0].dbl;
 
 	return gui.WaitingStopGUI();
 }
