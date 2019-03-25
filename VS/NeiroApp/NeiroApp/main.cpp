@@ -8,37 +8,24 @@
 
 int main(int argc, char *argv[])
 {
-	GUI_module::GUI gui(argc, argv);
+	//GUI_module::GUI gui(argc, argv);
 
-	Output_module::Mouse mouse;
-	Output_module::Keyboard keyboard;
+	//Output_module::Mouse mouse;
+	//Output_module::Keyboard keyboard;
 
-	Input_module::Input input;
+	//Input_module::Input input;
 
 	Settings_module::Setting s;
 	s.b = 0;
-	s.dbl = 228;
+	s.dbl = 228.855;
 	s.i = 1488;
-	s.id = 1;
+	s.id = 2;
 	s.str = "STRING";
 
 	Settings_module::XMLParser p("Settings.xml");
-	
+
 	p.addSetting(s);
-	std::vector<Settings_module::Setting> settings = p.getSettings();
-	qInfo() << settings[0].dbl;
 
-	s.dbl = 1337;
-	s.id = 2;
-	p.addSetting(s);
-	settings = p.getSettings();
-
-	qInfo() << settings[1].dbl;
-
-	p.clearXMLFile();
-
-	//std::vector<Settings_module::Setting> settings = p.getSettings();
-	//qInfo() << settings[0].dbl;
-
-	return gui.WaitingStopGUI();
+	//return gui.WaitingStopGUI();
+	return 0;
 }

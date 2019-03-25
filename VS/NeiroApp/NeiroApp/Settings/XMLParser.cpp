@@ -96,12 +96,14 @@ bool XMLParser::deleteSetting(unsigned long aId)
 {
 	for (auto it = settings.begin(); it != settings.end(); ++it)
 	{
-		if ((*it).id == aId) 
+		if ((*it).id == aId)
 		{
-			settings.erase(it);
+			it = settings.erase(it);
+			saveXMLFile();
+			return true;
 		}
 	}
-	return true;
+	return false;
 }
 
 bool XMLParser::clearXMLFile()
