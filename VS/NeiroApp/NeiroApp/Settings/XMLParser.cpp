@@ -106,9 +106,7 @@ bool XMLParser::deleteSetting(unsigned long aId)
 
 bool XMLParser::clearXMLFile()
 {
-	/*remove(name);
-	createXMLFile(name);
-	return true;*/
 	XMLDocument file;
+	settings.clear();
 	return file.SaveFile(name) == 0;
 }
