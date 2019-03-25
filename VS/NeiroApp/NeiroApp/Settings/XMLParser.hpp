@@ -26,6 +26,7 @@ namespace Settings_module
 		std::vector<Setting> getSettings(); // Get vector of settings
 		bool addSetting(Setting &s); // Add new setting
 		bool deleteSetting(unsigned long aId); // Delete setting by ID
+		bool clearXMLFile();
 
 	private:
 		bool loadXML();

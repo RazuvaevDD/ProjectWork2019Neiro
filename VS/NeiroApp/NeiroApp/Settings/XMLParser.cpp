@@ -103,3 +103,12 @@ bool XMLParser::deleteSetting(unsigned long aId)
 	}
 	return true;
 }
+
+bool XMLParser::clearXMLFile()
+{
+	/*remove(name);
+	createXMLFile(name);
+	return true;*/
+	XMLDocument file;
+	return file.SaveFile(name) == 0;
+}

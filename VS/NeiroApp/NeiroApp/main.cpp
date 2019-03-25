@@ -35,6 +35,8 @@ int main(int argc, char *argv[])
 
 	qInfo() << settings[1].dbl;
 
+	p.clearXMLFile();
+
 	//std::vector<Settings_module::Setting> settings = p.getSettings();
 	//qInfo() << settings[0].dbl;
 
