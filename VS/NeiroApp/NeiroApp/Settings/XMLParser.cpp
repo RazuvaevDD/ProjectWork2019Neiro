@@ -13,6 +13,7 @@ settings{}
 	{
 		createXMLFile(aName);
 	}
+	loadXML();
 }
 
 bool XMLParser::createXMLFile(const char *aName)
@@ -74,28 +75,20 @@ bool XMLParser::saveXMLFile()
 		i->LinkEndChild(file.NewText(std::to_string(s.i).c_str()));
 		root->LinkEndChild(setting);
   }
-
 	file.LinkEndChild(root);
 	return file.SaveFile(name) == 0;
 }
 
-void XMLParser::getSettings(std::vector<Setting>& v)
+std::vector<Setting> XMLParser::getSettings()
 {
-	//return settings;
-	if (settings.size() != 0)
-	{
-		v = settings;
-	}
-	else
-	{
-		return;
-	}
+	return settings;
 }
 
 bool XMLParser::addSetting(Setting &s)
 {
 	s.id = settings.size() + 1;
 	settings.push_back(s);
+	saveXMLFile();
 	return true;
 }
 
@@ -109,4 +102,11 @@ bool XMLParser::deleteSetting(unsigned long aId)
 		}
 	}
 	return true;
+}
+
+bool XMLParser::clearXMLFile()
+{
+	XMLDocument file;
+	settings.clear();
+	return file.SaveFile(name) == 0;
 }
