@@ -15,8 +15,6 @@ int main(int argc, char *argv[])
 
 	Input_module::Input input;
 
-	Settings_module::XMLParser p("Settings.xml");
-
 	Settings_module::Setting s;
 	s.b = 0;
 	s.dbl = 228;
@@ -24,8 +22,20 @@ int main(int argc, char *argv[])
 	s.id = 1;
 	s.str = "STRING";
 
-	std::vector<Settings_module::Setting> settings;
-	p.getSettings(settings);
+	Settings_module::XMLParser p("Settings.xml");
+	
+	p.addSetting(s);
+	std::vector<Settings_module::Setting> settings = p.getSettings();
+	qInfo() << settings[0].dbl;
+
+	s.dbl = 1337;
+	s.id = 2;
+	p.addSetting(s);
+	settings = p.getSettings();
+
+	qInfo() << settings[1].dbl;
+
+	//std::vector<Settings_module::Setting> settings = p.getSettings();
 	//qInfo() << settings[0].dbl;
 
 	return gui.WaitingStopGUI();

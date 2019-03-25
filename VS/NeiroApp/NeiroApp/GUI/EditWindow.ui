@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>EditWindow</string>
+   <string>Окно конфигурации</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
