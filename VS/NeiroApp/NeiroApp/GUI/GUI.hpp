@@ -12,7 +12,8 @@ namespace GUI_module {
 
 	public:
 		EditWindow(QDialog *parent = Q_NULLPTR);
-	//private slots:
+	private slots:
+		void openWindow(int);
 	private:
 		Ui::EditWindow ui;
 	};
@@ -24,6 +25,8 @@ namespace GUI_module {
 	public:
 		MainWindow(QWidget *parent = Q_NULLPTR);
 		EditWindow* changeWindow;
+	signals:
+		void openEditWindow(int);
 	private slots:
 		void on_changeButton_clicked();   //
 		void on_changeButton_2_clicked(); //   ? what is it?..
@@ -31,7 +34,6 @@ namespace GUI_module {
 		void on_changeButton_4_clicked(); //
 	private:
 		Ui::MainWindowClass ui;
-		EditWindow* editWindow;
 	};
 
 	class GUI
@@ -41,6 +43,7 @@ namespace GUI_module {
 		int WaitingStopGUI();
 		~GUI();
 		MainWindow* window;
+		EditWindow* eWindow;
 	private:
 		QApplication app;
 	};
