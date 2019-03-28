@@ -13,7 +13,6 @@ settings{}
 	{
 		createXMLFile(aName);
 	}
-	loadXML();
 }
 
 bool XMLParser::createXMLFile(const char *aName)
@@ -98,10 +97,12 @@ bool XMLParser::deleteSetting(unsigned long aId)
 	{
 		if ((*it).id == aId) 
 		{
-			settings.erase(it);
+			it = settings.erase(it);
+			saveXMLFile();
+			return true;
 		}
 	}
-	return true;
+	return false;
 }
 
 bool XMLParser::clearXMLFile()
