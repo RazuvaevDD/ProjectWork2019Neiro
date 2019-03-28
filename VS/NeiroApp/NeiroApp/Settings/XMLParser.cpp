@@ -13,7 +13,6 @@ settings{}
 	{
 		createXMLFile(aName);
 	}
-	loadXML();
 }
 
 bool XMLParser::createXMLFile(const char *aName)

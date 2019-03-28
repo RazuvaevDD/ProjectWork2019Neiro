@@ -17,13 +17,12 @@ int main(int argc, char *argv[])
 
 	Settings_module::Setting s;
 	s.b = 0;
-	s.dbl = 228.855;
+	s.dbl = 228.6;
 	s.i = 1488;
-	s.id = 2;
 	s.str = "STRING";
 
 	Settings_module::XMLParser p("Settings.xml");
-
+	p.loadXML();
 	p.addSetting(s);
 
 	//return gui.WaitingStopGUI();
