@@ -8,12 +8,12 @@
 
 int main(int argc, char *argv[])
 {
-	GUI_module::GUI gui(argc, argv);
+	//GUI_module::GUI gui(argc, argv);
 
-	Output_module::Mouse mouse;
-	Output_module::Keyboard keyboard;
+	//Output_module::Mouse mouse;
+	//Output_module::Keyboard keyboard;
 
-	Input_module::Input input;
+	//Input_module::Input input;
 
 	Settings_module::Setting s;
 	s.b = 0;
@@ -23,8 +23,8 @@ int main(int argc, char *argv[])
 
 	Settings_module::XMLParser p("Settings.xml");
 	p.loadXML();
-
 	p.addSetting(s);
 
-	return gui.WaitingStopGUI();
+	//return gui.WaitingStopGUI();
+	return 0;
 }
