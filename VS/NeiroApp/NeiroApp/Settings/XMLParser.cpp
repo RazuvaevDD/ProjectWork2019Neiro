@@ -41,11 +41,12 @@ bool XMLParser::loadXML()
 	while (setting != nullptr)
 	{
 		Setting s;
+		s.id = std::stoi(setting->Attribute("id"));
 		s.str = setting->FirstChildElement("str")->GetText();
 		s.dbl = std::stod(setting->FirstChildElement("dbl")->GetText());
 		s.b = strcmp(setting->FirstChildElement("b")->GetText(), "1") == 0;
 		s.i = std::stoi(setting->FirstChildElement("i")->GetText());
-		addSetting(s);
+		settings.push_back(s);
 		setting = setting->NextSiblingElement();
 	}
 	return true;
@@ -101,6 +102,10 @@ bool XMLParser::deleteSetting(unsigned long aId)
 			saveXMLFile();
 			return true;
 		}
+	}
+	if (settings.size() == 0)
+	{
+		clearXMLFile();
 	}
 	return false;
 }

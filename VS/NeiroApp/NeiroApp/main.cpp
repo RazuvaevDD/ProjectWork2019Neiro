@@ -23,8 +23,6 @@ int main(int argc, char *argv[])
 
 	Settings_module::XMLParser p("Settings.xml");
 	p.loadXML();
-	p.addSetting(s);
-
-	//return gui.WaitingStopGUI();
+	p.deleteSetting(2);
 	return 0;
 }
