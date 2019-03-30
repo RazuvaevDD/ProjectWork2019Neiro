@@ -86,7 +86,33 @@ std::vector<Setting> XMLParser::getSettings()
 
 bool XMLParser::addSetting(Setting &s)
 {
-	s.id = settings.size() + 1;
+	if (settings.size() != 0)
+	{
+		int i = 1;
+		bool flag = true;
+		while (true)
+		{
+			for (unsigned int k = 0; k < settings.size(); k++)
+			{
+				if (i == settings[k].id)
+				{
+					flag = false;
+					continue;
+				}
+			}
+			if (flag)
+			{
+				s.id = i;
+				break;
+			}
+			i++;
+			flag = true;
+		}
+	}
+	else
+	{
+		s.id = settings.size() + 1;
+	}
 	settings.push_back(s);
 	saveXMLFile();
 	return true;
