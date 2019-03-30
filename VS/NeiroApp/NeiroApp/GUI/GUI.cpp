@@ -18,30 +18,28 @@ EditWindow::EditWindow(QDialog *parent)
 
 void MainWindow::on_changeButton_clicked()
 {
-	changeWindow = new EditWindow();
-	changeWindow->setModal(true);
-	changeWindow->show();
+	emit openEditWindow(1);
 }
 
 void MainWindow::on_changeButton_2_clicked()
 {
-	changeWindow = new EditWindow();
-	changeWindow->setModal(true);
-	changeWindow->show();
+	emit openEditWindow(2);
 }
 
 void MainWindow::on_changeButton_3_clicked()
 {
-	changeWindow = new EditWindow();
-	changeWindow->setModal(true);
-	changeWindow->show();
+	emit openEditWindow(3);
 }
 
 void MainWindow::on_changeButton_4_clicked()
 {
-	changeWindow = new EditWindow();
-	changeWindow->setModal(true);
-	changeWindow->show();
+	emit openEditWindow(4);
+}
+
+void EditWindow::openWindow(int ID) {
+	//подгрузить по id потом
+	setModal(true);
+	show();
 }
 
 GUI::GUI(int & argc, char ** argv) :
@@ -50,11 +48,17 @@ GUI::GUI(int & argc, char ** argv) :
 	//create window and show
 	window = new MainWindow();
 	window->show();
+	eWindow = new EditWindow();
+
+	QObject::connect(window, SIGNAL(openEditWindow(int)), eWindow, SLOT(openWindow(int)));
 }
+
 int GUI::WaitingStopGUI() {
 	return app.exec();
 }
+
 GUI::~GUI()
 {
 	delete window;
+	delete eWindow;
 }
