@@ -191,4 +191,10 @@
         <b>0</b>
         <i>1488</i>
     </setting>
+    <setting id="33">
+        <str>STRING</str>
+        <dbl>228.600000</dbl>
+        <b>0</b>
+        <i>1488</i>
+    </setting>
 </root>
