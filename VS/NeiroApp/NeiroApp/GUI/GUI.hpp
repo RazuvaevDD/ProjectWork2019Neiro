@@ -12,8 +12,12 @@ namespace GUI_module {
 
 	public:
 		EditWindow(QDialog *parent = Q_NULLPTR);
+		QList<QPushButton *> allPButtons;
 	private slots:
 		void openWindow(int);
+		void on_ok_clicked();
+		void pushButtonKeys();
+		void on_reset_clicked();
 	private:
 		Ui::EditWindow ui;
 	};
@@ -28,10 +32,10 @@ namespace GUI_module {
 	signals:
 		void openEditWindow(int);
 	private slots:
-		void on_changeButton_clicked();   //
-		void on_changeButton_2_clicked(); //   ? what is it?..
-		void on_changeButton_3_clicked(); //
-		void on_changeButton_4_clicked(); //
+		void on_changeButton_clicked();   
+		void on_changeButton_2_clicked();   
+		void on_changeButton_3_clicked(); 
+		void on_changeButton_4_clicked(); 
 	private:
 		Ui::MainWindowClass ui;
 	};
