@@ -136,6 +136,19 @@ bool XMLParser::deleteSetting(unsigned long aId)
 	return false;
 }
 
+bool XMLParser::changeSetting(Setting s)
+{
+	for (unsigned int i = 0; i < settings.size(); i++)
+	{
+		if (settings[i].id == s.id)
+		{
+			settings[i] = s;
+			return saveXMLFile();
+		}
+	}
+	return false;
+}
+
 bool XMLParser::clearXMLFile()
 {
 	XMLDocument file;

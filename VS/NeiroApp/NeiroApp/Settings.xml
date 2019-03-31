@@ -5,9 +5,15 @@
         <b>0</b>
         <i>1488</i>
     </setting>
-    <setting id="2">
+    <setting id="3">
         <str>STRING</str>
         <dbl>228.600000</dbl>
+        <b>0</b>
+        <i>1488</i>
+    </setting>
+    <setting id="2">
+        <str>STRING</str>
+        <dbl>228.133700</dbl>
         <b>0</b>
         <i>1488</i>
     </setting>
