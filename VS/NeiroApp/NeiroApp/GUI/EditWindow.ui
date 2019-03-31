@@ -174,7 +174,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="xEdit_2"/>
+     <widget class="QLineEdit" name="yEdit"/>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="xLabel_2">
@@ -184,7 +184,7 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLineEdit" name="xEdit_3"/>
+     <widget class="QLineEdit" name="xEdit_2"/>
     </item>
     <item row="3" column="0">
      <widget class="QLabel" name="yLabel_2">
@@ -194,7 +194,7 @@
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QLineEdit" name="xEdit_4"/>
+     <widget class="QLineEdit" name="yEdit_2"/>
     </item>
     <item row="4" column="0" colspan="2">
      <widget class="QPushButton" name="pushButton">
@@ -775,6 +775,19 @@
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="reset">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>450</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Сброс</string>
+   </property>
+  </widget>
   <zorder>layoutWidget</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>ok</zorder>
@@ -811,6 +824,7 @@
   <zorder>left</zorder>
   <zorder>right</zorder>
   <zorder>back</zorder>
+  <zorder>reset</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
@@ -830,22 +844,6 @@
     <hint type="destinationlabel">
      <x>379</x>
      <y>199</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ok</sender>
-   <signal>clicked()</signal>
-   <receiver>EditWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>569</x>
-     <y>470</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>480</x>
-     <y>364</y>
     </hint>
    </hints>
   </connection>
