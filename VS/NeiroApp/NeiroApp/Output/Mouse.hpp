@@ -21,12 +21,12 @@ namespace Output_module
 		void releaseLeftClick(); //Release left button of the mouse
 		void pressRightClick(); //Press right button of the mouse
 		void releaseRightClick(); //Release right button of the mouse
-		void changeCursor();
-		void restoreCursor();
+		void changeCursor(); //Change system cursor
+		void restoreCursor(); //Restore system cursor
 	private:
 		QCursor cursor;
 		HANDLE LoadNoShareCursor(UINT ocr_id);
-		HANDLE hWait;
+		HANDLE hHand;
 		HANDLE hArrow;
 	};
 }

@@ -100,6 +100,7 @@ int GUI::WaitingStopGUI() {
 
 GUI::~GUI()
 {
+	mouse.restoreCursor();
 	delete window;
 	delete eWindow;
 }
