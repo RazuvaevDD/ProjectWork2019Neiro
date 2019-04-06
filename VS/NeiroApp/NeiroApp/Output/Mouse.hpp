@@ -1,4 +1,5 @@
 #pragma once
+#define OEMRESOURCE
 #include <Windows.h>
 #include <QCursor>
 
@@ -20,7 +21,12 @@ namespace Output_module
 		void releaseLeftClick(); //Release left button of the mouse
 		void pressRightClick(); //Press right button of the mouse
 		void releaseRightClick(); //Release right button of the mouse
+		void changeCursor();
+		void restoreCursor();
 	private:
 		QCursor cursor;
+		HANDLE LoadNoShareCursor(UINT ocr_id);
+		HANDLE hWait;
+		HANDLE hArrow;
 	};
 }

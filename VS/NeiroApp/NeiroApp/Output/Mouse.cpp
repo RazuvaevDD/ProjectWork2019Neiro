@@ -5,7 +5,9 @@
 
 using namespace Output_module;
 
-Mouse::Mouse()
+Mouse::Mouse():
+	hWait(LoadNoShareCursor(OCR_HAND)),
+	hArrow(LoadNoShareCursor(OCR_NORMAL))
 {
 }
 
@@ -102,3 +104,26 @@ void Mouse::releaseRightClick()
 {
 	mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
 }
+
+void Mouse::changeCursor()
+{
+	BOOL ret = SetSystemCursor((HCURSOR)hWait, OCR_NORMAL);
+	assert(ret);
+}
+
+void Mouse::restoreCursor()
+{
+	// restore the arrow cursor
+	BOOL ret = SetSystemCursor((HCURSOR)hArrow, OCR_NORMAL);
+	assert(ret);
+}
+
+HANDLE Mouse::LoadNoShareCursor(UINT ocr_id)
+{
+	HANDLE tmp = LoadImage(0, MAKEINTRESOURCE(ocr_id), IMAGE_CURSOR,
+		0, 0, LR_SHARED);
+	if (!tmp)
+		return 0;
+
+	return CopyImage(tmp, IMAGE_CURSOR, 0, 0, 0);
+}//LoadNoShareCursor
