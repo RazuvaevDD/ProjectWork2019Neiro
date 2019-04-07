@@ -1,14 +1,21 @@
+#include <QDebug>
+
+#include "Network/NetworkX.hpp"
 #include "Output/Mouse.hpp"
 #include "Output/Keyboard.hpp"
 #include "GUI/GUI.hpp"
 #include "Input/Input.hpp"
 #include "Settings/XMLParser.hpp"
 #include "Settings/Setting.hpp"
-#include <QDebug>
 
 int main(int argc, char *argv[])
 {
 	GUI_module::GUI gui(argc, argv);
+
+	NetworkX NetworkClient("LOL This is ThreadX::run()");
+
+	NetworkClient.start();    // Запускаем поток
+
 	//Output_module::Mouse mouse;
 	//Output_module::Keyboard keyboard;
 	//Input_module::Input input;
