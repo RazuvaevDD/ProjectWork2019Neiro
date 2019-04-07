@@ -26,5 +26,11 @@ int main(int argc, char *argv[])
 	p.loadXML();
 	p.changeSetting(s);
 
+	mouse.changeCursor();
+
+	Sleep(1000 * 10);
+
+	mouse.restoreCursor();
+
 	return gui.WaitingStopGUI();
 }
