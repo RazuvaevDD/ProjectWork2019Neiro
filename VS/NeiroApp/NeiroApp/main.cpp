@@ -1,10 +1,9 @@
 #include <QDebug>
 
-#include "Network/NetworkX.hpp"
+#include "Input/Input.hpp"
 #include "Output/Mouse.hpp"
 #include "Output/Keyboard.hpp"
 #include "GUI/GUI.hpp"
-#include "Input/Input.hpp"
 #include "Settings/XMLParser.hpp"
 #include "Settings/Setting.hpp"
 
@@ -13,10 +12,9 @@ int main(int argc, char *argv[])
 	GUI_module::GUI gui(argc, argv);
 	//Output_module::Mouse mouse;
 	//Output_module::Keyboard keyboard;
-	//Input_module::Input input;
 	//Settings_module::Setting s;
-	NetworkX NetworkClient("Client connection");
-	NetworkClient.start();    // Çàïóñêàåì ïîòîê
+	Input_module::NetworkClient networkClient("Client connection");
+	networkClient.start();
 
 	//s.b = 0;
 	//s.dbl = 228.1337;
