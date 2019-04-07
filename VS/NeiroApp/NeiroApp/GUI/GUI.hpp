@@ -18,6 +18,7 @@ namespace GUI_module {
 		void on_ok_clicked();
 		void pushButtonKeys();
 		void on_reset_clicked();
+		void on_setCords_clicked();
 	private:
 		Ui::EditWindow ui;
 	};
