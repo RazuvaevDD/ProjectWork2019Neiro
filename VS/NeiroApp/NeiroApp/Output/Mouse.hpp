@@ -28,5 +28,6 @@ namespace Output_module
 		HANDLE LoadNoShareCursor(UINT ocr_id);
 		HANDLE hHand;
 		HANDLE hArrow;
+		bool isCursorChanged;
 	};
 }

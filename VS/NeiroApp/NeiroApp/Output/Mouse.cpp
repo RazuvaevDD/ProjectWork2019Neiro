@@ -6,7 +6,8 @@
 
 using namespace Output_module;
 
-Mouse::Mouse()
+Mouse::Mouse() :
+	isCursorChanged(false)
 {
 }
 
@@ -106,6 +107,11 @@ void Mouse::releaseRightClick()
 
 void Mouse::changeCursor()
 {
+	if (isCursorChanged)
+	{
+		return;
+	}
+	isCursorChanged = true;
 	hHand = LoadCursorFromFile(TEXT("GUI/Images/Cross.cur"));
 	hArrow = LoadNoShareCursor(OCR_NORMAL);
 	SetSystemCursor((HCURSOR)hHand, OCR_NORMAL);
@@ -113,6 +119,7 @@ void Mouse::changeCursor()
 
 void Mouse::restoreCursor()
 {
+	isCursorChanged = false;
 	SetSystemCursor((HCURSOR)hArrow, OCR_NORMAL);
 }
 
