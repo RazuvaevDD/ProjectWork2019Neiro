@@ -57,8 +57,8 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <WarningLevel>Level3</WarningLevel>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <WarningLevel>Level1</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -117,6 +117,7 @@
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="Input\Input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Network\NetworkX.cpp" />
     <ClCompile Include="Output\Keyboard.cpp" />
     <ClCompile Include="Output\Mouse.cpp" />
     <ClCompile Include="Settings\LibXML.cpp" />
@@ -127,6 +128,7 @@
     <QtRcc Include="GUI\MainWindow.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Network\NetworkX.hpp" />
     <ClInclude Include="Settings\Setting.hpp" />
     <ClInclude Include="Settings\LibXML.h" />
     <ClInclude Include="Settings\XMLParser.hpp" />
