@@ -1,7 +1,6 @@
 #include "GUI/GUI.hpp"
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
-#include "Output/Mouse.hpp"
 
 using namespace GUI_module;
 
@@ -74,7 +73,7 @@ void MainWindow::on_changeButton_4_clicked()
 }
 
 void EditWindow::openWindow(int ID) {
-	//подгрузить по id потом
+	//ГЇГ®Г¤ГЈГ°ГіГ§ГЁГІГј ГЇГ® id ГЇГ®ГІГ®Г¬
 	setModal(true);
 	show();
 }
