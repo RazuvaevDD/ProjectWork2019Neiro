@@ -17,7 +17,7 @@ EditWindow::EditWindow(QDialog *parent)
 	allPButtons = findChildren<QPushButton *>();
 	for (int i = 0; i < allPButtons.size(); i++)
 	{
-		if (allPButtons.at(i) != ui.cancel && allPButtons.at(i) != ui.pushButton && allPButtons.at(i) != ui.reset &&
+		if (allPButtons.at(i) != ui.cancel && allPButtons.at(i) != ui.setCords && allPButtons.at(i) != ui.reset &&
 			allPButtons.at(i) != ui.ok)
 		{
 			QObject::connect(allPButtons.at(i), SIGNAL(clicked()), this, SLOT(pushButtonKeys()));
@@ -26,7 +26,7 @@ EditWindow::EditWindow(QDialog *parent)
 }
 
 void EditWindow::pushButtonKeys()
-{	
+{
 	QString t;
 	QString s = sender()->objectName();
 	if (ui.keyLabel->text() == "None")
@@ -45,11 +45,21 @@ void EditWindow::pushButtonKeys()
 void EditWindow::on_reset_clicked()
 {
 	ui.keyLabel->setText("None");
+	ui.xEdit->setText("");
+	ui.yEdit->setText("");
+	ui.xEdit_2->setText("");
+	ui.yEdit_2->setText("");
 }
 
 void EditWindow::on_ok_clicked()
 {
 	
+}
+
+void EditWindow::on_setCords_clicked()
+{
+	ui.xEdit->setText("None");
+	ui.yEdit->setText("None");
 }
 
 void MainWindow::on_changeButton_clicked()
