@@ -11,16 +11,13 @@
 int main(int argc, char *argv[])
 {
 	GUI_module::GUI gui(argc, argv);
-
-	NetworkX NetworkClient("LOL This is ThreadX::run()");
-
-	NetworkClient.start();    // Запускаем поток
-
 	//Output_module::Mouse mouse;
 	//Output_module::Keyboard keyboard;
 	//Input_module::Input input;
 	//Settings_module::Setting s;
-	
+	NetworkX NetworkClient("Client connection");
+	NetworkClient.start();    // Г‡Г ГЇГіГ±ГЄГ ГҐГ¬ ГЇГ®ГІГ®ГЄ
+
 	//s.b = 0;
 	//s.dbl = 228.1337;
 	//s.i = 1488;
