@@ -38,8 +38,7 @@ void NetworkX::run()
 		ServerAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 		ServerAddr.sin_port = htons(12345);
 
-		//printf("Trying to connect...\n");
-		qDebug() << "Trying to connect...\n";
+		qDebug() << "Trying to connect...";
 		err = connectSock(ConnectSocket, (sockaddr *)&ServerAddr, sizeof(ServerAddr));
 
 		while (err == SOCKET_ERROR)
@@ -47,25 +46,31 @@ void NetworkX::run()
 			err = connectSock(ConnectSocket, (sockaddr *)&ServerAddr, sizeof(ServerAddr));
 		}
 
-		//printf("Connection open\n");
-		qDebug() << "Connection open\n";
+		qDebug() << "Connection open.";
 
 		while (run_flag)
 		{
-			err = recv(ConnectSocket, recvbuf, maxlen, 0);
-			recvbuf[err] = 0;
-			std::string stroka(recvbuf);
-			int data = std::stoi(stroka);
-			if (err > 0) {
-				//std::cout << "Data: " << data << std::endl;
-				qDebug() << "Data: " << data << "\n";
+			try {
+				err = recv(ConnectSocket, recvbuf, maxlen, 0);
+				recvbuf[err] = 0;
+				std::string stroka(recvbuf);
+				int data = std::stoi(stroka);
+				if (err > 0) {
+					qDebug() << "Data: " << data ;
+					emit InputData(data);
+				}
+				else
+				{
+					//printf("Connection closing...\n");
+					qDebug() << "Connection closing...";
+					break;
+				}
 			}
-			else
-			{
-				//printf("Connection closing...\n");
-				qDebug() << "Connection closing...\n";
+			catch (...) {
+				qDebug() << "Error! Reconnect...";
 				break;
 			}
+			
 		}
 
 		// отключение соединения

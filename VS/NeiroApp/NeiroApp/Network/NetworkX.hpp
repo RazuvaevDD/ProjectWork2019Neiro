@@ -13,11 +13,16 @@
 
 class NetworkX : public QThread
 {
+	Q_OBJECT
 public:
 	explicit NetworkX(QString threadName);
 	
 	void run();
 	~NetworkX();
+
+signals:
+	void InputData(int);
+
 private:
 	QString name;   // Имя потока
 };
