@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
 	GUI_module::GUI gui(argc, argv);
 
-	//Output_module::Mouse mouse;
+	Output_module::Mouse mouse;
 	//Output_module::Keyboard keyboard;
 
 	//Input_module::Input input;
@@ -25,5 +25,6 @@ int main(int argc, char *argv[])
 	Settings_module::XMLParser p("Settings.xml");
 	p.loadXML();
 	p.changeSetting(s);
+
 	return gui.WaitingStopGUI();
 }

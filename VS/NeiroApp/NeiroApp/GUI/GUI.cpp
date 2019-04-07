@@ -1,8 +1,11 @@
 #include "GUI/GUI.hpp"
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
+#include "Output/Mouse.hpp"
 
 using namespace GUI_module;
+
+Output_module::Mouse mouse;
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -54,11 +57,13 @@ void EditWindow::on_ok_clicked()
 
 void MainWindow::on_changeButton_clicked()
 {
+	mouse.changeCursor();
 	emit openEditWindow(1);
 }
 
 void MainWindow::on_changeButton_2_clicked()
 {
+	mouse.restoreCursor();
 	emit openEditWindow(2);
 }
 
@@ -95,6 +100,7 @@ int GUI::WaitingStopGUI() {
 
 GUI::~GUI()
 {
+	mouse.restoreCursor();
 	delete window;
 	delete eWindow;
 }
