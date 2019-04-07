@@ -2,10 +2,12 @@
 #include <cmath>
 #include <QEventLoop>
 #include <QTimer>
+#include <qdebug.h>
 
 using namespace Output_module;
 
-Mouse::Mouse()
+Mouse::Mouse() :
+	isCursorChanged(false)
 {
 }
 
@@ -101,4 +103,32 @@ void Mouse::pressRightClick()
 void Mouse::releaseRightClick()
 {
 	mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+}
+
+void Mouse::changeCursor()
+{
+	if (isCursorChanged)
+	{
+		return;
+	}
+	isCursorChanged = true;
+	hHand = LoadCursorFromFile(TEXT("GUI/Images/Cross.cur"));
+	hArrow = LoadNoShareCursor(OCR_NORMAL);
+	SetSystemCursor((HCURSOR)hHand, OCR_NORMAL);
+}
+
+void Mouse::restoreCursor()
+{
+	isCursorChanged = false;
+	SetSystemCursor((HCURSOR)hArrow, OCR_NORMAL);
+}
+
+HANDLE Mouse::LoadNoShareCursor(UINT ocr_id)
+{
+	HANDLE tmp = LoadImage(0, MAKEINTRESOURCE(ocr_id), IMAGE_CURSOR, 0, 0, LR_SHARED);
+	if (!tmp)
+	{
+		return 0;
+	}
+	return CopyImage(tmp, IMAGE_CURSOR, 0, 0, 0);
 }

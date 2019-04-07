@@ -83,7 +83,7 @@ void MainWindow::on_changeButton_4_clicked()
 }
 
 void EditWindow::openWindow(int ID) {
-	//подгрузить по id потом
+	//ГЇГ®Г¤ГЈГ°ГіГ§ГЁГІГј ГЇГ® id ГЇГ®ГІГ®Г¬
 	setModal(true);
 	show();
 }
