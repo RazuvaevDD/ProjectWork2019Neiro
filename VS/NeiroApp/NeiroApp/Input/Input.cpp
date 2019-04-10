@@ -20,20 +20,21 @@ NetworkClient::~NetworkClient()
 
 void NetworkClient::run()
 {
+	int err, maxlen = 512;  // error code
+	char* recvbuf = new char[maxlen];  // input bufer
+	
 	while (true)
 	{
 		WSADATA wsaData;
-		SOCKET ConnectSocket;  // впускающий сокет и сокет для клиентов
-		sockaddr_in ServerAddr;  // это будет адрес сервера
-		int err, maxlen = 512;  // код ошибки и размер буферов
-		char* recvbuf = new char[maxlen];  // буфер приема
+		SOCKET ConnectSocket;  // socket
+		sockaddr_in ServerAddr;  // server address
 
 		bool run_flag = TRUE;
 
-		// инициализация Winsock
+		// initialising Winsock
 		WSAStartup(MAKEWORD(2, 2), &wsaData);
 
-		// подключение к серверу
+		// connecting to server
 		ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 		ServerAddr.sin_family = AF_INET;
@@ -52,12 +53,14 @@ void NetworkClient::run()
 
 		while (run_flag)
 		{
-			try {
+			try
+			{
 				err = recv(ConnectSocket, recvbuf, maxlen, 0);
 				recvbuf[err] = 0;
-				std::string stroka(recvbuf);
-				int data = std::stoi(stroka);
-				if (err > 0) {
+				std::string buferString(recvbuf);
+				int data = std::stoi(buferString);
+				if (err > 0)
+				{
 					qDebug() << "Data: " << data ;
 					emit InputData(data);
 				}
@@ -68,15 +71,17 @@ void NetworkClient::run()
 					break;
 				}
 			}
-			catch (...) {
+			catch (...) 
+			{
 				qDebug() << "Error! Reconnect...";
 				break;
 			}
 			
 		}
 
-		// отключение соединения
+		// disconnecting
 		closesocket(ConnectSocket);
 		WSACleanup();
 	}
+	delete (recvbuf);
 }
