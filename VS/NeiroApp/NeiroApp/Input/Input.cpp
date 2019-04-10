@@ -42,11 +42,11 @@ void NetworkClient::run()
 		ServerAddr.sin_port = htons(12345);
 
 		qDebug() << "Trying to connect...";
-		err = connectSock(ConnectSocket, (sockaddr *)&ServerAddr, sizeof(ServerAddr));
+		err = connectSock(ConnectSocket, (sockaddr*) &ServerAddr, sizeof(ServerAddr));
 
 		while (err == SOCKET_ERROR)
 		{
-			err = connectSock(ConnectSocket, (sockaddr *)&ServerAddr, sizeof(ServerAddr));
+			err = connectSock(ConnectSocket, (sockaddr*) &ServerAddr, sizeof(ServerAddr));
 		}
 
 		qDebug() << "Connection open.";
@@ -66,7 +66,6 @@ void NetworkClient::run()
 				}
 				else
 				{
-					//printf("Connection closing...\n");
 					qDebug() << "Connection closing...";
 					break;
 				}
