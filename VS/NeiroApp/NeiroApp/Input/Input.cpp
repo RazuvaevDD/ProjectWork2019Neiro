@@ -11,7 +11,7 @@ int connectSock(SOCKET CS, const struct sockaddr* sockAdd, int sizeofServerAddr)
 }
 
 NetworkClient::NetworkClient(QString threadName) :
-    name(threadName){}
+	name(threadName){}
  
 NetworkClient::~NetworkClient()
 {
@@ -61,8 +61,7 @@ void NetworkClient::run()
 				int data = std::stoi(buferString);
 				if (err > 0)
 				{
-					qDebug() << "Data: " << data ;
-					emit InputData(data);
+					emit InputDataSig(data);
 				}
 				else
 				{
@@ -77,8 +76,7 @@ void NetworkClient::run()
 			}
 			
 		}
-
-		// disconnecting
+		// Disconnecting 
 		closesocket(ConnectSocket);
 		WSACleanup();
 	}

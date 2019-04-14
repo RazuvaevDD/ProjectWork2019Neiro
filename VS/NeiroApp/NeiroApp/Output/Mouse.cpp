@@ -9,42 +9,43 @@ using namespace Output_module;
 Mouse::Mouse() :
 	isCursorChanged(false)
 {
+	QObject::connect(this, SIGNAL(newCoordsSig(QPoint)), this, SLOT(setCurrentCoordsSlt(QPoint)));
 }
 
 
 Mouse::~Mouse()
 {
+	QObject::disconnect(this, SIGNAL(newCoordsSig(QPoint)), this, SLOT(setCurrentCoordsSlt(QPoint)));
 }
 
-QPoint Mouse::getCoords()
+void Mouse::getCoordsSlt()
 {
-	return QCursor::pos();
+	emit newCoordsSig(QCursor::pos());
 }
 
-void Mouse::setCoords(double x, double y)
+void Mouse::setCoordsSlt(double x, double y)
 {
 	cursor.setPos(x, y);
 }
 
-void Mouse::setCoords(QPoint point)
+void Mouse::setCoordsSlt(QPoint point)
 {
 	cursor.setPos(point);
 }
 
-void Mouse::setCoords(QPoint point, int time)
+void Mouse::setCoordsSlt(QPoint point, int time)
 {
-	setCoords(point.x(), point.y(), time);
+	setCoordsSlt(point.x(), point.y(), time);
 }
 
-void Mouse::setCoords(double x, double y, int time)
+void Mouse::setCoordsSlt(double x, double y, int time)
 {
 	if (time <= 0)
 	{
-		setCoords(x, y);
+		setCoordsSlt(x, y);
 		return;
 	}
-
-	QPoint currentCoords = getCoords();
+	getCoordsSlt();
 	double dx = abs(x - currentCoords.x());
 	double dy = abs(y - currentCoords.y());
 	double curX = currentCoords.x();
@@ -69,43 +70,48 @@ void Mouse::setCoords(double x, double y, int time)
 		QTimer::singleShot(sleepTime, &loop, SLOT(quit()));
 		loop.exec();
 	}
-	setCoords(x, y);
+	setCoordsSlt(x, y);
 }
 
-void Mouse::shiftCoords(double x, double y)
+void Mouse::shiftCoordsSlt(double x, double y)
 {
-	cursor.setPos(getCoords().x() + x, getCoords().y() + y);
+	getCoordsSlt();
+	cursor.setPos(currentCoords.x() + x, currentCoords.y() + y);
 }
 
-void Mouse::shiftCoords(double x, double y, int time)
+void Mouse::shiftCoordsSlt(double x, double y, int time)
 {
-	QPoint currentCoords = getCoords();
+	getCoordsSlt();
 	double xNew = currentCoords.x() + x;
 	double yNew = currentCoords.y() + y;
-	setCoords(xNew, yNew, time);
+	setCoordsSlt(xNew, yNew, time);
 }
 
-void Mouse::pressLeftClick()
+void Mouse::pressLeftClickSlt()
 {
 	mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+	emit leftClickedSig();
 }
 
-void Mouse::releaseLeftClick()
+void Mouse::releaseLeftClickSlt()
 {
 	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+	emit leftReleasedSig();
 }
 
-void Mouse::pressRightClick()
+void Mouse::pressRightClickSlt()
 {
 	mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+	emit rightClickedSig();
 }
 
-void Mouse::releaseRightClick()
+void Mouse::releaseRightClickSlt()
 {
 	mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+	emit rightReleasedSig();
 }
 
-void Mouse::changeCursor()
+void Mouse::changeCursorSlt()
 {
 	if (isCursorChanged)
 	{
@@ -117,10 +123,15 @@ void Mouse::changeCursor()
 	SetSystemCursor((HCURSOR)hHand, OCR_NORMAL);
 }
 
-void Mouse::restoreCursor()
+void Mouse::restoreCursorSlt()
 {
 	isCursorChanged = false;
 	SetSystemCursor((HCURSOR)hArrow, OCR_NORMAL);
+}
+
+void Mouse::setCurrentCoordsSlt(QPoint coords)
+{
+	this->currentCoords = coords;
 }
 
 HANDLE Mouse::LoadNoShareCursor(UINT ocr_id)

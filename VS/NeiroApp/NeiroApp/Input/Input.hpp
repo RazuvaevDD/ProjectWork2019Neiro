@@ -3,7 +3,6 @@
 
 #include <QThread>
 #include <QDebug>
-
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <iostream>
@@ -23,7 +22,7 @@ namespace Input_module
 		~NetworkClient();
 
 	signals:
-		void InputData(int);
+		void InputDataSig(int);
 
 	private:
 		QString name;   // name of thread
