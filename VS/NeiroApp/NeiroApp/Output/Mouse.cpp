@@ -9,13 +9,13 @@ using namespace Output_module;
 Mouse::Mouse() :
 	isCursorChanged(false)
 {
-	QObject::connect(this, SIGNAL(newCoords(QPoint)), this, SLOT(setCurrentCoords(QPoint)));
+	QObject::connect(this, SIGNAL(newCoordsSig(QPoint)), this, SLOT(setCurrentCoordsSlt(QPoint)));
 }
 
 
 Mouse::~Mouse()
 {
-	QObject::disconnect(this, SIGNAL(newCoords(QPoint)), this, SLOT(setCurrentCoords(QPoint)));
+	QObject::disconnect(this, SIGNAL(newCoordsSig(QPoint)), this, SLOT(setCurrentCoordsSlt(QPoint)));
 }
 
 void Mouse::getCoordsSlt()
