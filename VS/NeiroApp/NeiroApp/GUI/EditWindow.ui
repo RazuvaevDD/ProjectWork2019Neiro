@@ -1529,6 +1529,22 @@
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="checker">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>340</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>layoutWidget</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>ok</zorder>
@@ -1605,6 +1621,7 @@
   <zorder>NumLock</zorder>
   <zorder>CapsLock</zorder>
   <zorder>Win</zorder>
+  <zorder>checker</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
