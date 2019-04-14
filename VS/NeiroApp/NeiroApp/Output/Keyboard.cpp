@@ -8,7 +8,7 @@ Keyboard::Keyboard()
 Keyboard::~Keyboard()
 {}
 
-void Keyboard::pressButton(std::string sKey)
+void Keyboard::pressButtonSlt(std::string sKey)
 {
 	INPUT input;
 	WORD vKey = getKeyCode(sKey);
@@ -19,7 +19,7 @@ void Keyboard::pressButton(std::string sKey)
 }
 
 
-void Keyboard::releaseButton(std::string sKey)
+void Keyboard::releaseButtonSlt(std::string sKey)
 {
 	INPUT input;
 	WORD vKey = getKeyCode(sKey);

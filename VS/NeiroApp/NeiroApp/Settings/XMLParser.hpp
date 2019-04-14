@@ -29,16 +29,16 @@ namespace Settings_module
 
 	public slots:
 
-		void createXMLFile(const char *aName); // Creates new XML File
-		void getSettings(); // Get vector of settings
-		void addSetting(Setting &s); // Add new setting
-		void deleteSetting(unsigned long aId); // Delete setting by ID
-		void changeSetting(Setting s); // Change setting, ID should be initialized
-		void clearXMLFile(); // Reset XML file
-		void loadXML(); // Load XML file
+		void createXMLFileSlt(const char *aName); // Creates new XML File
+		void getSettingsSlt(); // Get vector of settings
+		void addSettingSlt(Setting &s); // Add new setting
+		void deleteSettingSlt(unsigned long aId); // Delete setting by ID
+		void changeSettingSlt(Setting s); // Change setting, ID should be initialized
+		void clearXMLFileSlt(); // Reset XML file
+		void loadXMLSlt(); // Load XML file
 
 	signals:
-		void newVector(std::vector<Setting> v);
+		void updatedSettingsSig(std::vector<Setting> v);
 
 	private:
 		bool saveXMLFile();

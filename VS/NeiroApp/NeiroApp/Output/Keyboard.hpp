@@ -14,8 +14,8 @@ namespace Output_module
 		~Keyboard();
 
 	public slots:
-		void pressButton(std::string sKey); //Input is upper english letter like "A" or button name like "CTRL"
-		void releaseButton(std::string sKey); //Same 
+		void pressButtonSlt(std::string sKey); //Input is upper english letter like "A" or button name like "CTRL"
+		void releaseButtonSlt(std::string sKey); //Same 
 
 	private:
 		byte getKeyCode(std::string sKey);

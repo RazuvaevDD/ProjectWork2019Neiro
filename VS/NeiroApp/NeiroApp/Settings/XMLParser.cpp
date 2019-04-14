@@ -11,14 +11,14 @@ settings{}
 	fs.open(aName);
 	if (fs.fail()) 
 	{
-		createXMLFile(aName);
+		createXMLFileSlt(aName);
 	}
 }
 
 XMLParser::~XMLParser()
 {}
 
-void XMLParser::createXMLFile(const char *aName)
+void XMLParser::createXMLFileSlt(const char *aName)
 {
 	XMLDocument file;
 	if (file.SaveFile(aName))
@@ -27,7 +27,7 @@ void XMLParser::createXMLFile(const char *aName)
 	}
 }
 
-void XMLParser::loadXML()
+void XMLParser::loadXMLSlt()
 {
 	XMLDocument file;
 	file.LoadFile(name);
@@ -55,7 +55,7 @@ void XMLParser::loadXML()
 		settings.push_back(s);
 		setting = setting->NextSiblingElement();
 	}
-	getSettings();
+	getSettingsSlt();
 }
 
 bool XMLParser::saveXMLFile()
@@ -85,12 +85,12 @@ bool XMLParser::saveXMLFile()
 	return file.SaveFile(name) == 0;
 }
 
-void XMLParser::getSettings()
+void XMLParser::getSettingsSlt()
 {
-	emit newVector(settings);
+	emit updatedSettingsSig(settings);
 }
 
-void XMLParser::addSetting(Setting &s)
+void XMLParser::addSettingSlt(Setting &s)
 {
 	if (settings.size() != 0)
 	{
@@ -121,10 +121,10 @@ void XMLParser::addSetting(Setting &s)
 	}
 	settings.push_back(s);
 	saveXMLFile();
-	getSettings();
+	getSettingsSlt();
 }
 
-void XMLParser::deleteSetting(unsigned long aId)
+void XMLParser::deleteSettingSlt(unsigned long aId)
 {
 	for (auto it = settings.begin(); it != settings.end(); ++it)
 	{
@@ -139,12 +139,12 @@ void XMLParser::deleteSetting(unsigned long aId)
 	}
 	if (settings.size() == 0)
 	{
-		clearXMLFile();
+		clearXMLFileSlt();
 	}
-	getSettings();
+	getSettingsSlt();
 }
 
-void XMLParser::changeSetting(Setting s)
+void XMLParser::changeSettingSlt(Setting s)
 {
 	for (unsigned int i = 0; i < settings.size(); i++)
 	{
@@ -155,14 +155,14 @@ void XMLParser::changeSetting(Setting s)
 			saveXMLFile();
 		}
 	}
-	getSettings();
+	getSettingsSlt();
 }
 
-void XMLParser::clearXMLFile()
+void XMLParser::clearXMLFileSlt()
 {
 	XMLDocument file;
 	settings.clear();
-	getSettings();
+	getSettingsSlt();
 	if (!file.SaveFile(name))
 	{
 		qCritical() << "Unable to clear XML file. Further work of the program may be incorrect. Abort recommended"; 
