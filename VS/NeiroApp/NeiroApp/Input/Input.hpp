@@ -26,6 +26,6 @@ namespace Input_module
 		void InputData(int);
 
 	private:
-		QString name;   // Имя потока
+		QString name;   // Thread's name
 	};
 }

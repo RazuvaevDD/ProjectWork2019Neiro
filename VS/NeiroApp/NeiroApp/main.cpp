@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 	Input_module::NetworkClient networkClient("Client connection");
 	networkClient.start();
 
+
 	//s.b = 0;
 	//s.dbl = 228.1337;
 	//s.i = 1488;
