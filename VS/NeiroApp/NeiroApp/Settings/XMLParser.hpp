@@ -4,7 +4,8 @@
 #include "LibXML.h"
 #include <vector>
 #include <fstream>
-
+#include <QObject>
+#include <QDebug>
 /*
 USAGE:
 Run constructor with name of file in argument
@@ -19,18 +20,25 @@ Each settings in XML file should have unique ID
 
 namespace Settings_module
 {
-
-	class XMLParser
+	class XMLParser : QObject
 	{
+		Q_OBJECT
 	public:
 		XMLParser(const char *aName);
-		bool createXMLFile(const char *aName); // Creates new XML File
-		std::vector<Setting> getSettings(); // Get vector of settings
-		bool addSetting(Setting &s); // Add new setting
-		bool deleteSetting(unsigned long aId); // Delete setting by ID
-		bool changeSetting(Setting s); // Change setting, ID should be initialized
-		bool clearXMLFile(); // Reset XML file
-		bool loadXML(); // Load XML file
+
+	public slots:
+
+		void createXMLFile(const char *aName); // Creates new XML File
+		void getSettings(); // Get vector of settings
+		void addSetting(Setting &s); // Add new setting
+		void deleteSetting(unsigned long aId); // Delete setting by ID
+		void changeSetting(Setting s); // Change setting, ID should be initialized
+		void clearXMLFile(); // Reset XML file
+		void loadXML(); // Load XML file
+
+	signals:
+		void newVector(std::vector<Setting> v);
+
 	private:
 		bool saveXMLFile();
 		const char* name;

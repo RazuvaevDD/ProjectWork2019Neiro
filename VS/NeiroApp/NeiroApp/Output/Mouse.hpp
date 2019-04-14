@@ -2,15 +2,19 @@
 #define OEMRESOURCE
 #include <Windows.h>
 #include <QCursor>
+#include <QObject>
 
 namespace Output_module
 {
-	class Mouse
+	class Mouse : QObject
 	{
+		Q_OBJECT;
 	public:
 		Mouse();
 		~Mouse();
-		QPoint getCoords(); //Return QPoint structure with current coords of cursor. This coords depends on resolution of screen
+
+	public slots:
+		void getCoords(); //Return QPoint structure with current coords of cursor. This coords depends on resolution of screen
 		void setCoords(double x, double y); //Move cursor to x y coordinate
 		void setCoords(QPoint point); //Move cursor to QPoint coordinate
 		void setCoords(QPoint point, int time); //Move cursor to QPoint coordinate in time (ms)
@@ -23,7 +27,15 @@ namespace Output_module
 		void releaseRightClick(); //Release right button of the mouse
 		void changeCursor(); //Change system cursor
 		void restoreCursor(); //Restore system cursor
+
+	private slots:
+		void setCurrentCoords(QPoint);
+
+	signals:
+		void newCoords(QPoint currentCoords);
+
 	private:
+		QPoint currentCoords;
 		QCursor cursor;
 		HANDLE LoadNoShareCursor(UINT ocr_id);
 		HANDLE hHand;

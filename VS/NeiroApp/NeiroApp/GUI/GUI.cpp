@@ -83,7 +83,7 @@ void MainWindow::on_changeButton_4_clicked()
 }
 
 void EditWindow::openWindow(int ID) {
-	//ïîäãðóçèòü ïî id ïîòîì
+	//ïîäãðóçèòü ïî id ïîòîì // what the??
 	setModal(true);
 	show();
 }

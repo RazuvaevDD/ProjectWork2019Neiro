@@ -59,18 +59,18 @@
     <QtMoc Include="Input\Input.hpp">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Output\Mouse.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Settings\XMLParser.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Output\Keyboard.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Output\Keyboard.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Output\Mouse.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Settings\Setting.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Settings\XMLParser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Settings\LibXML.h">

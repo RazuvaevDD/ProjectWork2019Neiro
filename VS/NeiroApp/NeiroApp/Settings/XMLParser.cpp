@@ -15,13 +15,16 @@ settings{}
 	}
 }
 
-bool XMLParser::createXMLFile(const char *aName)
+void XMLParser::createXMLFile(const char *aName)
 {
 	XMLDocument file;
-	return file.SaveFile(aName) == 0;
+	if (file.SaveFile(aName))
+	{
+		qCritical() << "Unable to create XML file. Further work of the program may be incorrect. Abort recommended";
+	}
 }
 
-bool XMLParser::loadXML()
+void XMLParser::loadXML()
 {
 	XMLDocument file;
 	file.LoadFile(name);
@@ -33,7 +36,7 @@ bool XMLParser::loadXML()
 	}
 	else
 	{
-		return false;
+		return;
 	}
 
 	settings = {};
@@ -49,7 +52,7 @@ bool XMLParser::loadXML()
 		settings.push_back(s);
 		setting = setting->NextSiblingElement();
 	}
-	return true;
+	getSettings();
 }
 
 bool XMLParser::saveXMLFile()
@@ -79,12 +82,12 @@ bool XMLParser::saveXMLFile()
 	return file.SaveFile(name) == 0;
 }
 
-std::vector<Setting> XMLParser::getSettings()
+void XMLParser::getSettings()
 {
-	return settings;
+	emit newVector(settings);
 }
 
-bool XMLParser::addSetting(Setting &s)
+void XMLParser::addSetting(Setting &s)
 {
 	if (settings.size() != 0)
 	{
@@ -115,10 +118,10 @@ bool XMLParser::addSetting(Setting &s)
 	}
 	settings.push_back(s);
 	saveXMLFile();
-	return true;
+	getSettings();
 }
 
-bool XMLParser::deleteSetting(unsigned long aId)
+void XMLParser::deleteSetting(unsigned long aId)
 {
 	for (auto it = settings.begin(); it != settings.end(); ++it)
 	{
@@ -126,32 +129,35 @@ bool XMLParser::deleteSetting(unsigned long aId)
 		{
 			it = settings.erase(it);
 			saveXMLFile();
-			return true;
 		}
 	}
 	if (settings.size() == 0)
 	{
 		clearXMLFile();
 	}
-	return false;
+	getSettings();
 }
 
-bool XMLParser::changeSetting(Setting s)
+void XMLParser::changeSetting(Setting s)
 {
 	for (unsigned int i = 0; i < settings.size(); i++)
 	{
 		if (settings[i].id == s.id)
 		{
 			settings[i] = s;
-			return saveXMLFile();
+			saveXMLFile();
 		}
 	}
-	return false;
+	getSettings();
 }
 
-bool XMLParser::clearXMLFile()
+void XMLParser::clearXMLFile()
 {
 	XMLDocument file;
 	settings.clear();
-	return file.SaveFile(name) == 0;
+	getSettings();
+	if (!file.SaveFile(name))
+	{
+		qCritical() << "Unable to clear XML file. Further work of the program may be incorrect. Abort recommended"; 
+	}
 }

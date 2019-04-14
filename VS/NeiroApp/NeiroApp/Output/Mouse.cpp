@@ -9,6 +9,7 @@ using namespace Output_module;
 Mouse::Mouse() :
 	isCursorChanged(false)
 {
+	QObject::connect(this, SIGNAL(newCoords(QPoint)), this, SLOT(setCurrentCoords(QPoint)));
 }
 
 
@@ -16,9 +17,9 @@ Mouse::~Mouse()
 {
 }
 
-QPoint Mouse::getCoords()
+void Mouse::getCoords()
 {
-	return QCursor::pos();
+	emit newCoords(QCursor::pos());
 }
 
 void Mouse::setCoords(double x, double y)
@@ -43,8 +44,7 @@ void Mouse::setCoords(double x, double y, int time)
 		setCoords(x, y);
 		return;
 	}
-
-	QPoint currentCoords = getCoords();
+	getCoords();
 	double dx = abs(x - currentCoords.x());
 	double dy = abs(y - currentCoords.y());
 	double curX = currentCoords.x();
@@ -74,12 +74,13 @@ void Mouse::setCoords(double x, double y, int time)
 
 void Mouse::shiftCoords(double x, double y)
 {
-	cursor.setPos(getCoords().x() + x, getCoords().y() + y);
+	getCoords();
+	cursor.setPos(currentCoords.x() + x, currentCoords.y() + y);
 }
 
 void Mouse::shiftCoords(double x, double y, int time)
 {
-	QPoint currentCoords = getCoords();
+	getCoords();
 	double xNew = currentCoords.x() + x;
 	double yNew = currentCoords.y() + y;
 	setCoords(xNew, yNew, time);
@@ -121,6 +122,11 @@ void Mouse::restoreCursor()
 {
 	isCursorChanged = false;
 	SetSystemCursor((HCURSOR)hArrow, OCR_NORMAL);
+}
+
+void Mouse::setCurrentCoords(QPoint coords)
+{
+	this->currentCoords = coords;
 }
 
 HANDLE Mouse::LoadNoShareCursor(UINT ocr_id)
