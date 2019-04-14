@@ -14,6 +14,7 @@ EditWindow::EditWindow(QDialog *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	ui.checker->setVisible(false);
 	allPButtons = findChildren<QPushButton *>();
 	for (int i = 0; i < allPButtons.size(); i++)
 	{
@@ -27,18 +28,36 @@ EditWindow::EditWindow(QDialog *parent)
 
 void EditWindow::pushButtonKeys()
 {
+	QString ss = ui.checker->text();
 	QString t;
 	QString s = sender()->objectName();
-	if (ui.keyLabel->text() == "None")
-	{
-		ui.keyLabel->setText(s);
+	t = ui.keyLabel->text();
+	if (s != ss && s != t) {
+		if (t == "None" || t == "")
+		{
+			ui.keyLabel->setText(s);
+		}
+		else
+		{
+			t += " + ";
+			t += s;
+			ui.keyLabel->setText(t);
+		}
+		ui.checker->setText(s);
 	}
-	else
-	{
-		t = ui.keyLabel->text();
-		t += " + ";
-		t += s;
-		ui.keyLabel->setText(t);
+	else {
+		if (t == s) {
+			t = "";
+			ui.keyLabel->setText(t);
+			ui.checker->setText("");
+		}
+		else {
+			int pos = t.lastIndexOf(QChar('+'));
+			t = t.left(pos - 1);
+			ui.keyLabel->setText(t);
+			pos = t.lastIndexOf(QChar('+'));
+			ui.checker->setText(t.right(t.size() - pos - 2));
+		}
 	}
 }
 
