@@ -15,6 +15,7 @@ Mouse::Mouse() :
 
 Mouse::~Mouse()
 {
+	QObject::disconnect(this, SIGNAL(newCoords(QPoint)), this, SLOT(setCurrentCoords(QPoint)));
 }
 
 void Mouse::getCoords()
@@ -89,21 +90,25 @@ void Mouse::shiftCoords(double x, double y, int time)
 void Mouse::pressLeftClick()
 {
 	mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+	emit leftClicked();
 }
 
 void Mouse::releaseLeftClick()
 {
 	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+	emit leftReleased();
 }
 
 void Mouse::pressRightClick()
 {
 	mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+	emit rightClicked();
 }
 
 void Mouse::releaseRightClick()
 {
 	mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+	emit rightReleased();
 }
 
 void Mouse::changeCursor()

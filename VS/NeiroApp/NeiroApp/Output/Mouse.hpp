@@ -33,6 +33,10 @@ namespace Output_module
 
 	signals:
 		void newCoords(QPoint currentCoords);
+		void leftClicked();
+		void leftReleased();
+		void rightClicked();
+		void rightReleased();
 
 	private:
 		QPoint currentCoords;

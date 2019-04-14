@@ -15,6 +15,9 @@ settings{}
 	}
 }
 
+XMLParser::~XMLParser()
+{}
+
 void XMLParser::createXMLFile(const char *aName)
 {
 	XMLDocument file;
@@ -128,7 +131,10 @@ void XMLParser::deleteSetting(unsigned long aId)
 		if ((*it).id == aId)
 		{
 			it = settings.erase(it);
-			saveXMLFile();
+			if (!saveXMLFile())
+			{
+				qCritical() << "Unable to save XML file. Further work of the program may be incorrect. Abort recommended";
+			}
 		}
 	}
 	if (settings.size() == 0)
@@ -145,6 +151,7 @@ void XMLParser::changeSetting(Setting s)
 		if (settings[i].id == s.id)
 		{
 			settings[i] = s;
+
 			saveXMLFile();
 		}
 	}

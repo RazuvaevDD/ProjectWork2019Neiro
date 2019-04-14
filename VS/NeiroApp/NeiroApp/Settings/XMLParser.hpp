@@ -25,6 +25,7 @@ namespace Settings_module
 		Q_OBJECT
 	public:
 		XMLParser(const char *aName);
+		~XMLParser();
 
 	public slots:
 
