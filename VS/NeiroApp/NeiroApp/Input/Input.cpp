@@ -20,22 +20,21 @@ NetworkClient::~NetworkClient()
 
 void NetworkClient::run()
 {
+	int err, maxlen = 512;  // error code
+	char* recvbuf = new char[maxlen];  // input bufer
+	
 	while (true)
 	{
 		WSADATA wsaData;
-		SOCKET ConnectSocket; // Input socket and socket for clients
-		sockaddr_in ServerAddr; // Address of server
-		int err = 0;  // Error code and buffer size
-		const int maxlen = 512;
-		//char* recvbuf = new char[maxlen]; // Input buffer
-		char recvbuf[maxlen];
+		SOCKET ConnectSocket;  // socket
+		sockaddr_in ServerAddr;  // server address
 
 		bool run_flag = TRUE;
 
-		// Winsock initialization
+		// initialising Winsock
 		WSAStartup(MAKEWORD(2, 2), &wsaData);
 
-		// Connecting to server
+		// connecting to server
 		ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 		ServerAddr.sin_family = AF_INET;
@@ -43,24 +42,24 @@ void NetworkClient::run()
 		ServerAddr.sin_port = htons(12345);
 
 		qDebug() << "Trying to connect...";
-		err = connectSock(ConnectSocket, (sockaddr *)&ServerAddr, sizeof(ServerAddr));
+		err = connectSock(ConnectSocket, (sockaddr*) &ServerAddr, sizeof(ServerAddr));
 
 		while (err == SOCKET_ERROR)
 		{
-			err = connectSock(ConnectSocket, (sockaddr *)&ServerAddr, sizeof(ServerAddr));
+			err = connectSock(ConnectSocket, (sockaddr*) &ServerAddr, sizeof(ServerAddr));
 		}
 
 		qDebug() << "Connection open.";
 
 		while (run_flag)
 		{
-			try 
+			try
 			{
 				err = recv(ConnectSocket, recvbuf, maxlen, 0);
 				recvbuf[err] = 0;
-				std::string stroka(recvbuf);
-				int data = std::stoi(stroka);
-				if (err > 0) 
+				std::string buferString(recvbuf);
+				int data = std::stoi(buferString);
+				if (err > 0)
 				{
 					qDebug() << "Data: " << data ;
 					emit InputData(data);
@@ -82,4 +81,5 @@ void NetworkClient::run()
 		closesocket(ConnectSocket);
 		WSACleanup();
 	}
+	delete (recvbuf);
 }
