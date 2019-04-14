@@ -10,12 +10,12 @@
 int main(int argc, char *argv[])
 {
 	GUI_module::GUI gui(argc, argv);
-	//Output_module::Mouse mouse;
+	Output_module::Mouse mouse;
 	//Output_module::Keyboard keyboard;
 	//Settings_module::Setting s;
-	Input_module::NetworkClient networkClient("Client connection");
-	networkClient.start();
-
+	/*Input_module::NetworkClient networkClient("Client connection");
+	networkClient.start();*/
+	Settings_module::XMLParser p("set.xml");
 	//s.b = 0;
 	//s.dbl = 228.1337;
 	//s.i = 1488;

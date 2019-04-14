@@ -11,17 +11,23 @@ settings{}
 	fs.open(aName);
 	if (fs.fail()) 
 	{
-		createXMLFile(aName);
+		createXMLFileSlt(aName);
 	}
 }
 
-bool XMLParser::createXMLFile(const char *aName)
+XMLParser::~XMLParser()
+{}
+
+void XMLParser::createXMLFileSlt(const char *aName)
 {
 	XMLDocument file;
-	return file.SaveFile(aName) == 0;
+	if (file.SaveFile(aName))
+	{
+		qCritical() << "Unable to create XML file. Further work of the program may be incorrect. Abort recommended";
+	}
 }
 
-bool XMLParser::loadXML()
+void XMLParser::loadXMLSlt()
 {
 	XMLDocument file;
 	file.LoadFile(name);
@@ -33,7 +39,7 @@ bool XMLParser::loadXML()
 	}
 	else
 	{
-		return false;
+		return;
 	}
 
 	settings = {};
@@ -49,7 +55,7 @@ bool XMLParser::loadXML()
 		settings.push_back(s);
 		setting = setting->NextSiblingElement();
 	}
-	return true;
+	getSettingsSlt();
 }
 
 bool XMLParser::saveXMLFile()
@@ -79,12 +85,12 @@ bool XMLParser::saveXMLFile()
 	return file.SaveFile(name) == 0;
 }
 
-std::vector<Setting> XMLParser::getSettings()
+void XMLParser::getSettingsSlt()
 {
-	return settings;
+	emit updatedSettingsSig(settings);
 }
 
-bool XMLParser::addSetting(Setting &s)
+void XMLParser::addSettingSlt(Setting &s)
 {
 	if (settings.size() != 0)
 	{
@@ -115,43 +121,50 @@ bool XMLParser::addSetting(Setting &s)
 	}
 	settings.push_back(s);
 	saveXMLFile();
-	return true;
+	getSettingsSlt();
 }
 
-bool XMLParser::deleteSetting(unsigned long aId)
+void XMLParser::deleteSettingSlt(unsigned long aId)
 {
 	for (auto it = settings.begin(); it != settings.end(); ++it)
 	{
 		if ((*it).id == aId)
 		{
 			it = settings.erase(it);
-			saveXMLFile();
-			return true;
+			if (!saveXMLFile())
+			{
+				qCritical() << "Unable to save XML file. Further work of the program may be incorrect. Abort recommended";
+			}
 		}
 	}
 	if (settings.size() == 0)
 	{
-		clearXMLFile();
+		clearXMLFileSlt();
 	}
-	return false;
+	getSettingsSlt();
 }
 
-bool XMLParser::changeSetting(Setting s)
+void XMLParser::changeSettingSlt(Setting s)
 {
 	for (unsigned int i = 0; i < settings.size(); i++)
 	{
 		if (settings[i].id == s.id)
 		{
 			settings[i] = s;
-			return saveXMLFile();
+
+			saveXMLFile();
 		}
 	}
-	return false;
+	getSettingsSlt();
 }
 
-bool XMLParser::clearXMLFile()
+void XMLParser::clearXMLFileSlt()
 {
 	XMLDocument file;
 	settings.clear();
-	return file.SaveFile(name) == 0;
+	getSettingsSlt();
+	if (!file.SaveFile(name))
+	{
+		qCritical() << "Unable to clear XML file. Further work of the program may be incorrect. Abort recommended"; 
+	}
 }

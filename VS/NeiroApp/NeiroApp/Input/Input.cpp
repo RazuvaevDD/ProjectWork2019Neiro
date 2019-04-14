@@ -11,7 +11,7 @@ int connectSock(SOCKET CS, const struct sockaddr* sockAdd, int sizeofServerAddr)
 }
 
 NetworkClient::NetworkClient(QString threadName) :
-    name(threadName){}
+	name(threadName){}
  
 NetworkClient::~NetworkClient()
 {
@@ -77,8 +77,7 @@ void NetworkClient::run()
 			}
 			
 		}
-
-		// disconnecting
+		// Disconnecting 
 		closesocket(ConnectSocket);
 		WSACleanup();
 	}
