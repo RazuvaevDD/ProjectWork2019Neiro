@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[])
 {
-	GUI_module::GUI*				gui				= new GUI_module::GUI(argc, argv);
+	GUI_module::GUI*			gui				= new GUI_module::GUI(argc, argv);
 	Output_module::Mouse*			mouse			= new Output_module::Mouse();
 	Output_module::Keyboard*		keyboard		= new Output_module::Keyboard();
 	Input_module::NetworkClient*	networkClient	= new Input_module::NetworkClient("Client connection");
