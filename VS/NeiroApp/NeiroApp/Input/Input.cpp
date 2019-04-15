@@ -61,8 +61,7 @@ void NetworkClient::run()
 				int data = std::stoi(buferString);
 				if (err > 0)
 				{
-					qDebug() << "Data: " << data ;
-					emit InputData(data);
+					emit InputDataSig(data);
 				}
 				else
 				{

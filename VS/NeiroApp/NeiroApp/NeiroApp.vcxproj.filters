@@ -51,6 +51,12 @@
     <ClCompile Include="Input\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Connector\Connector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Logic\Logic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="GUI\GUI.hpp">
@@ -66,6 +72,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Output\Keyboard.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Connector\Connector.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Logic\Logic.hpp">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

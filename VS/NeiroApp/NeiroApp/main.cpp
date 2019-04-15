@@ -6,16 +6,23 @@
 #include "GUI/GUI.hpp"
 #include "Settings/XMLParser.hpp"
 #include "Settings/Setting.hpp"
+#include "Connector/Connector.hpp"
+#include "Logic/Logic.hpp"
 
 int main(int argc, char *argv[])
 {
-	GUI_module::GUI gui(argc, argv);
-	Output_module::Mouse mouse;
-	//Output_module::Keyboard keyboard;
+	GUI_module::GUI*				gui				= new GUI_module::GUI(argc, argv);
+	Output_module::Mouse*			mouse			= new Output_module::Mouse();
+	Output_module::Keyboard*		keyboard		= new Output_module::Keyboard();
+	Input_module::NetworkClient*	networkClient	= new Input_module::NetworkClient("Client connection");
+	Settings_module::XMLParser*		xmlParser		= new Settings_module::XMLParser("Settings.xml");
+	Logic_module::Logic*			logic			= new Logic_module::Logic();
+	Connect_module::Connector*		connector		= new Connect_module::Connector(gui, mouse, keyboard, networkClient, xmlParser, logic);
+
+	networkClient->start();
+
+
 	//Settings_module::Setting s;
-	/*Input_module::NetworkClient networkClient("Client connection");
-	networkClient.start();*/
-	Settings_module::XMLParser p("set.xml");
 	//s.b = 0;
 	//s.dbl = 228.1337;
 	//s.i = 1488;
@@ -29,5 +36,12 @@ int main(int argc, char *argv[])
 	//Sleep(1000 * 10);
 	//mouse.restoreCursor();
 
-	return gui.WaitingStopGUI();
+	int returnInt = gui->WaitingStopGUI();
+	delete (connector);
+	delete (gui);
+	delete (mouse);
+	delete (keyboard);
+	delete (networkClient);
+	delete (xmlParser);
+	return returnInt;
 }
