@@ -71,6 +71,7 @@ void EditWindow::on_reset_clicked()
 	ui.yEdit->setText("");
 	ui.xEdit_2->setText("");
 	ui.yEdit_2->setText("");
+	ui.mouseDelayEdit->setText("");
 }
 
 void EditWindow::on_ok_clicked()
@@ -120,9 +121,13 @@ void EditWindow::openWindow(int ID, Settings_module::Setting setting) {
 	}
 
 	qDebug() << "Setting ID: " << setting.id; 
-	//loading from setting to window!
-	//...
-	//... 
+	ui.movementEdit->setText(QString::fromStdString(setting.movement));
+	ui.keyLabel->setText(QString::fromStdString(setting.keys));
+	ui.xEdit->setText(QString::number(setting.x));
+	ui.xEdit_2->setText(QString::number(setting.dx));
+	ui.yEdit->setText(QString::number(setting.y));
+	ui.yEdit_2->setText(QString::number(setting.dy));
+	ui.mouseDelayEdit->setText(QString::number(setting.mouseDelay));
 
 	setModal(true);
 	show();
