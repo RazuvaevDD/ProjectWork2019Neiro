@@ -9,11 +9,9 @@ namespace Settings_module
 	{
 		Setting() = default;
 		unsigned long id;
-		std::string str;
-		double dbl;
-		bool b;
-		int i;
-
+		std::string movement;
+		std::string keys;
+		double x, y, dx, dy, mouseDelay;
 		bool isNULL = false;
 	};
 }

@@ -31,7 +31,8 @@ void EditWindow::pushButtonKeys()
 	QString t;
 	QString s = sender()->objectName();
 	t = ui.keyLabel->text();
-	if (s != ss && s != t) {
+	if (s != ss && s != t) 
+	{
 		if (t == "None" || t == "")
 		{
 			ui.keyLabel->setText(s);
@@ -112,7 +113,8 @@ void MainWindow::on_changeButton_4_clicked()
 
 void EditWindow::openWindow(int ID, Settings_module::Setting setting) {
 	this->ID = ID;
-	if (setting.isNULL) {
+	if (setting.isNULL) 
+	{
 		emit getUpdatedSettingsSig();
 		return;
 	}
@@ -150,7 +152,8 @@ GUI::GUI(int & argc, char ** argv) :
 	connect(this, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), eWindow, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
 }
 
-void GUI::getUpdatedSettingsSlt() {
+void GUI::getUpdatedSettingsSlt() 
+{
 	emit getUpdatedSettingsSig();
 }
 

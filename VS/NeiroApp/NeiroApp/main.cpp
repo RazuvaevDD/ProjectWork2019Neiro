@@ -21,6 +21,16 @@ int main(int argc, char *argv[])
 
 	networkClient->start();
 	xmlParser->loadXMLSlt();
+	Settings_module::Setting s;
+	s.movement = "MOVE YOUR ASS";
+	s.dx = 1;
+	s.dy = 2;
+	s.isNULL = 0;
+	s.keys = "4e";
+	s.mouseDelay = 33;
+	s.x = 1.1488;
+	s.y = 228;
+	xmlParser->addSettingSlt(s);
 
 	//Settings_module::Setting s;
 	//s.b = 0;

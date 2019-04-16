@@ -48,10 +48,18 @@ void XMLParser::loadXMLSlt()
 	{
 		Setting s;
 		s.id = std::stoi(setting->Attribute("id"));
-		s.str = setting->FirstChildElement("str")->GetText();
-		s.dbl = std::stod(setting->FirstChildElement("dbl")->GetText());
-		s.b = strcmp(setting->FirstChildElement("b")->GetText(), "1") == 0;
-		s.i = std::stoi(setting->FirstChildElement("i")->GetText());
+		s.movement = setting->FirstChildElement("movement")->GetText();
+		s.x = std::stod(setting->FirstChildElement("x")->GetText());
+		s.y = std::stod(setting->FirstChildElement("y")->GetText());
+		s.keys = setting->FirstChildElement("keys")->GetText();
+		s.dx = std::stod(setting->FirstChildElement("dx")->GetText());
+		s.dy = std::stod(setting->FirstChildElement("dy")->GetText());
+		s.mouseDelay = std::stod(setting->FirstChildElement("mouseDelay")->GetText());
+		/*s.x = std::stod(setting->FirstChildElement("x")->GetText());
+		s.y = std::stod(setting->FirstChildElement("y")->GetText());
+		s.dx = std::stod(setting->FirstChildElement("dx")->GetText());
+		s.dy = std::stod(setting->FirstChildElement("dy")->GetText());
+		s.mouseDelay = std::stod(setting->FirstChildElement("delay")->GetText());*/
 		settings.push_back(s);
 		setting = setting->NextSiblingElement();
 	}
@@ -67,18 +75,49 @@ bool XMLParser::saveXMLFile()
 	{
 		XMLElement *setting = file.NewElement("setting");
 		setting->SetAttribute("id", static_cast<int>(s.id));
-		XMLElement *str = file.NewElement("str");
-		setting->LinkEndChild(str);
-		str->LinkEndChild(file.NewText(s.str.c_str()));
-		XMLElement *dbl = file.NewElement("dbl");
-		setting->LinkEndChild(dbl);
-		dbl->LinkEndChild(file.NewText(std::to_string(s.dbl).c_str()));
-		XMLElement *b = file.NewElement("b");
-		setting->LinkEndChild(b);
-		b->LinkEndChild(file.NewText(std::to_string(s.b).c_str()));
-		XMLElement *i = file.NewElement("i");
-		setting->LinkEndChild(i);
-		i->LinkEndChild(file.NewText(std::to_string(s.i).c_str()));
+		XMLElement *movement = file.NewElement("movement");
+		setting->LinkEndChild(movement);
+		movement->LinkEndChild(file.NewText(s.movement.c_str()));
+
+		XMLElement *x = file.NewElement("x");
+		setting->LinkEndChild(x);
+		x->LinkEndChild(file.NewText(std::to_string(s.x).c_str()));
+
+		XMLElement *y = file.NewElement("y");
+		setting->LinkEndChild(y);
+		y->LinkEndChild(file.NewText(std::to_string(s.y).c_str()));
+
+		XMLElement *keys = file.NewElement("keys");
+		setting->LinkEndChild(keys);
+		keys->LinkEndChild(file.NewText(s.keys.c_str()));
+
+		XMLElement *dx = file.NewElement("dx");
+		setting->LinkEndChild(dx);
+		dx->LinkEndChild(file.NewText(std::to_string(s.dx).c_str()));
+
+		XMLElement *dy = file.NewElement("dy");
+		setting->LinkEndChild(dy);
+		dy->LinkEndChild(file.NewText(std::to_string(s.dy).c_str()));
+
+		XMLElement *mouseDelay = file.NewElement("mouseDelay");
+		setting->LinkEndChild(mouseDelay);
+		mouseDelay->LinkEndChild(file.NewText(std::to_string(s.mouseDelay).c_str()));
+
+		/*XMLElement *x = file.NewElement("x");
+		setting->LinkEndChild(x);
+		x->LinkEndChild(file.NewText(std::to_string(s.x).c_str()));
+		XMLElement *y = file.NewElement("y");
+		setting->LinkEndChild(y);
+		y->LinkEndChild(file.NewText(std::to_string(s.y).c_str()));
+		XMLElement *dx = file.NewElement("dx");
+		setting->LinkEndChild(dx);
+		x->LinkEndChild(file.NewText(std::to_string(s.dx).c_str()));
+		XMLElement *dy = file.NewElement("dy");
+		setting->LinkEndChild(dy);
+		dy->LinkEndChild(file.NewText(std::to_string(s.dy).c_str()));
+		XMLElement *delay = file.NewElement("delay");
+		setting->LinkEndChild(delay);
+		x->LinkEndChild(file.NewText(std::to_string(s.mouseDelay).c_str()));*/
 		root->LinkEndChild(setting);
   }
 	file.LinkEndChild(root);
