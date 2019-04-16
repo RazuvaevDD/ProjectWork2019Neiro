@@ -21,20 +21,16 @@ int main(int argc, char *argv[])
 
 	networkClient->start();
 	xmlParser->loadXMLSlt();
-
-	//Settings_module::Setting s;
-	//s.b = 0;
-	//s.dbl = 228.1337;
-	//s.i = 1488;
-	//s.str = "STRING";
-	//s.id = 2;
-	//Settings_module::XMLParser p("Settings.xml");
-	//xmlParser->loadXMLSlt();
-	//xmlParser->addSettingSlt(s);
-
-	//mouse.changeCursor();
-	//Sleep(1000 * 10);
-	//mouse.restoreCursor();
+	Settings_module::Setting s;
+	s.movement = "MOVE YOUR ASS";
+	s.dx = 1;
+	s.dy = 2;
+	s.isNULL = 0;
+	s.keys = "4e";
+	s.mouseDelay = 33;
+	s.x = 1.1488;
+	s.y = 228;
+	xmlParser->addSettingSlt(s);
 
 	int returnInt = gui->WaitingStopGUI();
 	delete (connector);
