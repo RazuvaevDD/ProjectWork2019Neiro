@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>EditWindow</class>
  <widget class="QWidget" name="EditWindow">
@@ -28,19 +28,6 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QPushButton" name="cancel">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>450</y>
-     <width>93</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Отмена</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="mouseLabel">
    <property name="geometry">
     <rect>
@@ -64,19 +51,6 @@
    </property>
    <property name="scaledContents">
     <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="ok">
-   <property name="geometry">
-    <rect>
-     <x>540</x>
-     <y>450</y>
-     <width>93</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ОК</string>
    </property>
   </widget>
   <widget class="QLabel" name="keyboardLabel">
@@ -151,11 +125,14 @@
     <rect>
      <x>180</x>
      <y>330</y>
-     <width>208</width>
+     <width>412</width>
      <height>154</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="xEdit_2"/>
+    </item>
     <item row="0" column="0">
      <widget class="QLabel" name="xLabel">
       <property name="text">
@@ -163,8 +140,14 @@
       </property>
      </widget>
     </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="yEdit"/>
+    </item>
     <item row="0" column="1">
      <widget class="QLineEdit" name="xEdit"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="yEdit_2"/>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="yLabel">
@@ -173,8 +156,19 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="yEdit"/>
+    <item row="3" column="0">
+     <widget class="QLabel" name="yLabel_2">
+      <property name="text">
+       <string>Y(конечное зн.):</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="2">
+     <widget class="QPushButton" name="setCords">
+      <property name="text">
+       <string>Задать координаты</string>
+      </property>
+     </widget>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="xLabel_2">
@@ -183,25 +177,15 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="xEdit_2"/>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="yLabel_2">
+    <item row="0" column="2">
+     <widget class="QLabel" name="mouseDelay">
       <property name="text">
-       <string>Y(конечное зн.):</string>
+       <string>Время перемещения мыши</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
-     <widget class="QLineEdit" name="yEdit_2"/>
-    </item>
-    <item row="4" column="0" colspan="2">
-     <widget class="QPushButton" name="setCords">
-      <property name="text">
-       <string>Задать координаты</string>
-      </property>
-     </widget>
+    <item row="1" column="2">
+     <widget class="QLineEdit" name="mouseDelayEdit"/>
     </item>
    </layout>
   </widget>
@@ -773,19 +757,6 @@
    </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="reset">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>450</y>
-     <width>101</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Сброс</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Alt">
@@ -1544,6 +1515,39 @@
    <property name="text">
     <string/>
    </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>360</y>
+     <width>111</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="reset">
+      <property name="text">
+       <string>Сброс</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="ok">
+      <property name="text">
+       <string>ОК</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="cancel">
+      <property name="text">
+       <string>Отмена</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <zorder>layoutWidget1</zorder>
   <zorder>layoutWidget</zorder>
