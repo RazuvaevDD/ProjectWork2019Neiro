@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-/*It's only a prototype*/
-
 namespace Settings_module
 {
 	struct Setting

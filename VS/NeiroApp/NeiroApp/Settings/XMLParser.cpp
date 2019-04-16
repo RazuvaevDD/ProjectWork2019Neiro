@@ -55,11 +55,6 @@ void XMLParser::loadXMLSlt()
 		s.dx = std::stod(setting->FirstChildElement("dx")->GetText());
 		s.dy = std::stod(setting->FirstChildElement("dy")->GetText());
 		s.mouseDelay = std::stod(setting->FirstChildElement("mouseDelay")->GetText());
-		/*s.x = std::stod(setting->FirstChildElement("x")->GetText());
-		s.y = std::stod(setting->FirstChildElement("y")->GetText());
-		s.dx = std::stod(setting->FirstChildElement("dx")->GetText());
-		s.dy = std::stod(setting->FirstChildElement("dy")->GetText());
-		s.mouseDelay = std::stod(setting->FirstChildElement("delay")->GetText());*/
 		settings.push_back(s);
 		setting = setting->NextSiblingElement();
 	}
@@ -102,22 +97,6 @@ bool XMLParser::saveXMLFile()
 		XMLElement *mouseDelay = file.NewElement("mouseDelay");
 		setting->LinkEndChild(mouseDelay);
 		mouseDelay->LinkEndChild(file.NewText(std::to_string(s.mouseDelay).c_str()));
-
-		/*XMLElement *x = file.NewElement("x");
-		setting->LinkEndChild(x);
-		x->LinkEndChild(file.NewText(std::to_string(s.x).c_str()));
-		XMLElement *y = file.NewElement("y");
-		setting->LinkEndChild(y);
-		y->LinkEndChild(file.NewText(std::to_string(s.y).c_str()));
-		XMLElement *dx = file.NewElement("dx");
-		setting->LinkEndChild(dx);
-		x->LinkEndChild(file.NewText(std::to_string(s.dx).c_str()));
-		XMLElement *dy = file.NewElement("dy");
-		setting->LinkEndChild(dy);
-		dy->LinkEndChild(file.NewText(std::to_string(s.dy).c_str()));
-		XMLElement *delay = file.NewElement("delay");
-		setting->LinkEndChild(delay);
-		x->LinkEndChild(file.NewText(std::to_string(s.mouseDelay).c_str()));*/
 		root->LinkEndChild(setting);
   }
 	file.LinkEndChild(root);

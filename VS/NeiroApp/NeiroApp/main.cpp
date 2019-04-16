@@ -32,20 +32,6 @@ int main(int argc, char *argv[])
 	s.y = 228;
 	xmlParser->addSettingSlt(s);
 
-	//Settings_module::Setting s;
-	//s.b = 0;
-	//s.dbl = 228.1337;
-	//s.i = 1488;
-	//s.str = "STRING";
-	//s.id = 2;
-	//Settings_module::XMLParser p("Settings.xml");
-	//xmlParser->loadXMLSlt();
-	//xmlParser->addSettingSlt(s);
-
-	//mouse.changeCursor();
-	//Sleep(1000 * 10);
-	//mouse.restoreCursor();
-
 	int returnInt = gui->WaitingStopGUI();
 	delete (connector);
 	delete (gui);
