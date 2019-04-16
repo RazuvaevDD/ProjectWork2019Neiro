@@ -13,5 +13,7 @@ namespace Settings_module
 		double dbl;
 		bool b;
 		int i;
+
+		bool isNULL = false;
 	};
 }

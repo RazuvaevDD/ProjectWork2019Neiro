@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[])
 {
-	GUI_module::GUI*			gui				= new GUI_module::GUI(argc, argv);
+	GUI_module::GUI*				gui				= new GUI_module::GUI(argc, argv);
 	Output_module::Mouse*			mouse			= new Output_module::Mouse();
 	Output_module::Keyboard*		keyboard		= new Output_module::Keyboard();
 	Input_module::NetworkClient*	networkClient	= new Input_module::NetworkClient("Client connection");
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	Connect_module::Connector*		connector		= new Connect_module::Connector(gui, mouse, keyboard, networkClient, xmlParser, logic);
 
 	networkClient->start();
-
+	xmlParser->loadXMLSlt();
 
 	//Settings_module::Setting s;
 	//s.b = 0;
@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
 	//s.str = "STRING";
 	//s.id = 2;
 	//Settings_module::XMLParser p("Settings.xml");
-	//p.loadXML();
-	//p.changeSetting(s);
+	//xmlParser->loadXMLSlt();
+	//xmlParser->addSettingSlt(s);
 
 	//mouse.changeCursor();
 	//Sleep(1000 * 10);

@@ -20,7 +20,7 @@ Each settings in XML file should have unique ID
 
 namespace Settings_module
 {
-	class XMLParser : QObject
+	class XMLParser : public QObject
 	{
 		Q_OBJECT
 	public:
@@ -38,7 +38,7 @@ namespace Settings_module
 		void loadXMLSlt(); // Load XML file
 
 	signals:
-		void updatedSettingsSig(std::vector<Setting> v);
+		void updatedSettingsSig(std::vector<Settings_module::Setting> v);
 
 	private:
 		bool saveXMLFile();
