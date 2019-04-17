@@ -6,7 +6,7 @@
 
 namespace Output_module
 {
-	class Mouse : QObject
+	class Mouse : public QObject
 	{
 		Q_OBJECT;
 	public:

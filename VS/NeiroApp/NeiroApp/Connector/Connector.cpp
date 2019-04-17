@@ -24,6 +24,8 @@ void Connector::connectAll()
 	connect(xmlParser, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), logic, SLOT(updateSettings(std::vector<Settings_module::Setting>)));
 	connect(logic, SIGNAL(pressKeySig(std::string)), keyboard, SLOT(pressButtonSlt(std::string)));
 	connect(logic, SIGNAL(releaseKeySig(std::string)), keyboard, SLOT(releaseButtonSlt(std::string)));
+	connect(logic, SIGNAL(setCoordsSig(double, double)), mouse, SLOT(setCoordsSlt(double, double)));
+	connect(logic, SIGNAL(setCoordsSig(double, double, int)), mouse, SLOT(setCoordsSlt(double, double, int)));
 }
 
 Connector::~Connector()
@@ -35,4 +37,6 @@ Connector::~Connector()
 	disconnect(xmlParser, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), logic, SLOT(updateSettings(std::vector<Settings_module::Setting>)));
 	disconnect(logic, SIGNAL(pressKeySig(std::string)), keyboard, SLOT(pressButtonSlt(std::string)));
 	disconnect(logic, SIGNAL(releaseKeySig(std::string)), keyboard, SLOT(releaseButtonSlt(std::string)));
+	disconnect(logic, SIGNAL(setCoordsSig(double, double)), mouse, SLOT(setCoordsSlt(double, double)));
+	disconnect(logic, SIGNAL(setCoordsSig(double, double, int)), mouse, SLOT(setCoordsSlt(double, double, int)));
 }

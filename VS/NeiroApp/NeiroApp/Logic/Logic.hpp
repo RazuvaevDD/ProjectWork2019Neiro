@@ -19,6 +19,8 @@ namespace Logic_module
 	signals:
 		void pressKeySig(std::string key);
 		void releaseKeySig(std::string Key);
+		void setCoordsSig(double, double);
+		void setCoordsSig(double, double, int);
 		
 	private:
 		std::vector<Settings_module::Setting> settings;

@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <string>
 #include <sstream>
+#include <Windows.h>
 
 using namespace Logic_module;
 
@@ -57,6 +58,12 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 			emit pressKeySig(keys[i]);
 			emit releaseKeySig(keys[i]);
 		}
+	}
+
+	if (!(setting.x == 0 && setting.y == 0 && setting.dx == 0 && setting.dy == 0)) 
+	{
+		emit setCoordsSig(setting.x, setting.y);
+		emit setCoordsSig(setting.dx, setting.dy, (int) (setting.mouseDelay*1000)); // it's long time running!!! create thread!
 	}
 }
 
