@@ -67,20 +67,35 @@ void EditWindow::pushButtonKeys()
 void EditWindow::on_reset_clicked()
 {
 	ui.keyLabel->setText("None");
-	ui.xEdit->setText("");
-	ui.yEdit->setText("");
-	ui.xEdit_2->setText("");
-	ui.yEdit_2->setText("");
+	ui.xEdit->setText("0");
+	ui.yEdit->setText("0");
+	ui.xEdit_2->setText("0");
+	ui.yEdit_2->setText("0");
+	ui.mouseDelayEdit->setText("0");
 }
 
 void EditWindow::on_ok_clicked()
 {
+	Settings_module::Setting setting;
+	setting.id = ID;
+	setting.movement = ui.movementEdit->text().toStdString();
+	setting.keys = ui.keyLabel->text().toStdString();
+	setting.x = ui.xEdit->text().toDouble();
+	setting.dx = ui.xEdit_2->text().toDouble();
+	setting.y = ui.yEdit->text().toDouble();
+	setting.dy = ui.yEdit_2->text().toDouble();
+	setting.mouseDelay = ui.mouseDelayEdit->text().toDouble();
+
+	emit editSettingSig(setting);
+	close();
 }
 
 void EditWindow::on_setCords_clicked()
 {
-	ui.xEdit->setText("None");
-	ui.yEdit->setText("None");
+	ui.xEdit->setText("0");
+	ui.yEdit->setText("0");
+	ui.xEdit_2->setText("0");
+	ui.yEdit_2->setText("0");
 }
 
 void MainWindow::on_changeButton_clicked()
@@ -119,10 +134,13 @@ void EditWindow::openWindow(int ID, Settings_module::Setting setting) {
 		return;
 	}
 
-	qDebug() << "Setting ID: " << setting.id; 
-	//loading from setting to window!
-	//...
-	//... 
+	ui.movementEdit->setText(QString::fromStdString(setting.movement));
+	ui.keyLabel->setText(QString::fromStdString(setting.keys));
+	ui.xEdit->setText(QString::number(setting.x));
+	ui.xEdit_2->setText(QString::number(setting.dx));
+	ui.yEdit->setText(QString::number(setting.y));
+	ui.yEdit_2->setText(QString::number(setting.dy));
+	ui.mouseDelayEdit->setText(QString::number(setting.mouseDelay));
 
 	setModal(true);
 	show();
@@ -150,6 +168,7 @@ GUI::GUI(int & argc, char ** argv) :
 	connect(window, SIGNAL(openEditWindow(int, Settings_module::Setting)), eWindow, SLOT(openWindow(int, Settings_module::Setting)));
 	connect(eWindow, SIGNAL(getUpdatedSettingsSig()), this, SLOT(getUpdatedSettingsSlt()));
 	connect(this, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), eWindow, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
+	connect(eWindow, SIGNAL(editSettingSig(Settings_module::Setting)), this, SLOT(editSettingSlt(Settings_module::Setting)));
 }
 
 void GUI::getUpdatedSettingsSlt() 
@@ -160,6 +179,10 @@ void GUI::getUpdatedSettingsSlt()
 void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 {
 	emit updatedSettingsSig(settings);
+}
+
+void GUI::editSettingSlt(Settings_module::Setting setting) {
+	emit editSettingSig(setting);
 }
 
 int GUI::WaitingStopGUI() {
