@@ -31,9 +31,9 @@ namespace Settings_module
 
 		void createXMLFileSlt(const char *aName); // Creates new XML File
 		void getSettingsSlt(); // Get vector of settings
-		void addSettingSlt(Setting &s); // Add new setting
+		void addSettingSlt(Settings_module::Setting &s); // Add new setting
 		void deleteSettingSlt(unsigned long aId); // Delete setting by ID
-		void changeSettingSlt(Setting s); // Change setting, ID should be initialized
+		void changeSettingSlt(Settings_module::Setting s); // Change setting, ID should be initialized
 		void clearXMLFileSlt(); // Reset XML file
 		void loadXMLSlt(); // Load XML file
 

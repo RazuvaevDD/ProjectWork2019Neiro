@@ -18,6 +18,7 @@ namespace GUI_module {
 		QList<QPushButton *> allPButtons;
 	signals:
 		void getUpdatedSettingsSig();
+		void editSettingSig(Settings_module::Setting);
 	private slots:
 		void openWindow(int, Settings_module::Setting);
 		void on_ok_clicked();
@@ -60,10 +61,12 @@ namespace GUI_module {
 	signals:
 		void getUpdatedSettingsSig();
 		void updatedSettingsSig(std::vector<Settings_module::Setting>);
+		void editSettingSig(Settings_module::Setting);
 	private:
 		QApplication app;
 	private slots:
 		void getUpdatedSettingsSlt();
 		void updatedSettingsSlt(std::vector<Settings_module::Setting>);
+		void editSettingSlt(Settings_module::Setting);
 	};
 }
