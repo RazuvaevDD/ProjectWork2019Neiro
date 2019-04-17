@@ -683,7 +683,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="forward">
+  <widget class="QPushButton" name="UP">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -702,7 +702,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="left">
+  <widget class="QPushButton" name="LEFT">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -721,7 +721,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="right">
+  <widget class="QPushButton" name="RIGHT">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -740,7 +740,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="back">
+  <widget class="QPushButton" name="DOWN">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -759,7 +759,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="Alt">
+  <widget class="QPushButton" name="ALT">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -778,7 +778,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="Ctrl">
+  <widget class="QPushButton" name="L_CTRL">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -816,7 +816,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="RightCtrl">
+  <widget class="QPushButton" name="R_CTRL">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -835,7 +835,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="Shift">
+  <widget class="QPushButton" name="L_SHIFT">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -854,7 +854,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="RightShift">
+  <widget class="QPushButton" name="R_SHIFT">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -873,7 +873,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="Enter">
+  <widget class="QPushButton" name="ENTER">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -1120,7 +1120,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="Esc">
+  <widget class="QPushButton" name="ESC">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -1348,7 +1348,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="tilda">
+  <widget class="QPushButton" name="TILDA">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -1367,7 +1367,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="ScrollLock">
+  <widget class="QPushButton" name="SCROLL_LOCK">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -1386,7 +1386,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="Del">
+  <widget class="QPushButton" name="DELETE">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -1405,7 +1405,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="PgUp">
+  <widget class="QPushButton" name="PGUP">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -1462,7 +1462,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="CapsLock">
+  <widget class="QPushButton" name="CAPS_LOCK">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -1516,7 +1516,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -1549,11 +1549,371 @@
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="SPACE">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>280</y>
+     <width>251</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="TAB">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>160</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BACKSPACE">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>120</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PAUSE">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>80</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="NUM1">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>240</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="NUM0">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>280</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="NUM2">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>240</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="NUM3">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>240</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="NUM4">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>200</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="NUM5">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>200</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="NUM6">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>200</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="NUM7">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>160</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="NUM8">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>160</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="NUM9">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>160</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DECIMAL">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>280</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DIVIDE">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>120</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="MULTIPLY">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>120</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="SUBTRACT">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>120</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ADD">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>150</y>
+     <width>31</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>layoutWidget</zorder>
   <zorder>layoutWidget1</zorder>
   <zorder>layoutWidget</zorder>
-  <zorder>ok</zorder>
   <zorder>mouseLabel</zorder>
-  <zorder>cancel</zorder>
   <zorder>keyboardLabel</zorder>
   <zorder>Q</zorder>
   <zorder>W</zorder>
@@ -1581,18 +1941,17 @@
   <zorder>B</zorder>
   <zorder>N</zorder>
   <zorder>M</zorder>
-  <zorder>forward</zorder>
-  <zorder>left</zorder>
-  <zorder>right</zorder>
-  <zorder>back</zorder>
-  <zorder>reset</zorder>
-  <zorder>Alt</zorder>
-  <zorder>Ctrl</zorder>
+  <zorder>UP</zorder>
+  <zorder>LEFT</zorder>
+  <zorder>RIGHT</zorder>
+  <zorder>DOWN</zorder>
+  <zorder>ALT</zorder>
+  <zorder>L_CTRL</zorder>
   <zorder>RightAlt</zorder>
-  <zorder>RightCtrl</zorder>
-  <zorder>Shift</zorder>
-  <zorder>RightShift</zorder>
-  <zorder>Enter</zorder>
+  <zorder>R_CTRL</zorder>
+  <zorder>L_SHIFT</zorder>
+  <zorder>R_SHIFT</zorder>
+  <zorder>ENTER</zorder>
   <zorder>RightEnter</zorder>
   <zorder>num1</zorder>
   <zorder>num2</zorder>
@@ -1605,7 +1964,7 @@
   <zorder>num9</zorder>
   <zorder>num0</zorder>
   <zorder>F1</zorder>
-  <zorder>Esc</zorder>
+  <zorder>ESC</zorder>
   <zorder>F2</zorder>
   <zorder>F3</zorder>
   <zorder>F4</zorder>
@@ -1617,15 +1976,34 @@
   <zorder>F10</zorder>
   <zorder>F11</zorder>
   <zorder>F12</zorder>
-  <zorder>tilda</zorder>
-  <zorder>ScrollLock</zorder>
-  <zorder>Del</zorder>
-  <zorder>PgUp</zorder>
+  <zorder>TILDA</zorder>
+  <zorder>SCROLL_LOCK</zorder>
+  <zorder>DELETE</zorder>
+  <zorder>PGUP</zorder>
   <zorder>PgDn</zorder>
   <zorder>NumLock</zorder>
-  <zorder>CapsLock</zorder>
+  <zorder>CAPS_LOCK</zorder>
   <zorder>Win</zorder>
   <zorder>checker</zorder>
+  <zorder>SPACE</zorder>
+  <zorder>TAB</zorder>
+  <zorder>BACKSPACE</zorder>
+  <zorder>PAUSE</zorder>
+  <zorder>NUM1</zorder>
+  <zorder>NUM0</zorder>
+  <zorder>NUM2</zorder>
+  <zorder>NUM3</zorder>
+  <zorder>NUM4</zorder>
+  <zorder>NUM5</zorder>
+  <zorder>NUM6</zorder>
+  <zorder>NUM7</zorder>
+  <zorder>NUM8</zorder>
+  <zorder>NUM9</zorder>
+  <zorder>DECIMAL</zorder>
+  <zorder>DIVIDE</zorder>
+  <zorder>MULTIPLY</zorder>
+  <zorder>SUBTRACT</zorder>
+  <zorder>ADD</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
