@@ -1,29 +1,38 @@
 <root>
     <setting id="1">
-        <movement>MOVE YOUR ASS</movement>
-        <x>1.148800</x>
-        <y>228.000000</y>
-        <keys>4e</keys>
-        <dx>1.000000</dx>
-        <dy>2.000000</dy>
-        <mouseDelay>33.000000</mouseDelay>
+        <movement>Setting1</movement>
+        <x>1.148811</x>
+        <y>228.100000</y>
+        <keys>1e</keys>
+        <dx>1.100000</dx>
+        <dy>2.100000</dy>
+        <mouseDelay>33.100000</mouseDelay>
     </setting>
     <setting id="2">
-        <movement>MOVE YOUR ASS</movement>
-        <x>1.148800</x>
-        <y>228.000000</y>
-        <keys>4e</keys>
-        <dx>1.000000</dx>
-        <dy>2.000000</dy>
-        <mouseDelay>33.000000</mouseDelay>
+        <movement>Setting2</movement>
+        <x>1.148822</x>
+        <y>228.200000</y>
+        <keys>2e</keys>
+        <dx>1.200000</dx>
+        <dy>2.200000</dy>
+        <mouseDelay>33.200000</mouseDelay>
     </setting>
     <setting id="3">
-        <movement>MOVE YOUR ASS</movement>
-        <x>1.148800</x>
-        <y>228.000000</y>
+        <movement>Setting3</movement>
+        <x>1.148833</x>
+        <y>228.300000</y>
+        <keys>3e</keys>
+        <dx>1.300000</dx>
+        <dy>2.300000</dy>
+        <mouseDelay>33.300000</mouseDelay>
+    </setting>
+	<setting id="4">
+        <movement>Setting4</movement>
+        <x>1.148844</x>
+        <y>228.400000</y>
         <keys>4e</keys>
-        <dx>1.000000</dx>
-        <dy>2.000000</dy>
-        <mouseDelay>33.000000</mouseDelay>
+        <dx>1.400000</dx>
+        <dy>2.400000</dy>
+        <mouseDelay>33.400000</mouseDelay>
     </setting>
 </root>
