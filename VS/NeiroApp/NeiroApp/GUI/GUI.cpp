@@ -85,6 +85,28 @@ void EditWindow::on_ok_clicked()
 	setting.y = ui.yEdit->text().toDouble();
 	setting.dy = ui.yEdit_2->text().toDouble();
 	setting.mouseDelay = ui.mouseDelayEdit->text().toDouble();
+	if (setting.movement.size())
+	{
+		if (setting.x || setting.y || setting.dx || setting.dy)
+		{
+			setting.type = 2; // Keyboard and mouse
+		}
+		else
+		{
+			setting.type = 0; // Keyboard
+		}
+	}
+	else
+	{
+		if (!setting.x && !setting.y && !setting.dx && !setting.dy)
+		{
+			setting.type = 3; // Nothing
+		}
+		else
+		{
+			setting.type = 1; // Mouse
+		}
+	}
 
 	emit editSettingSig(setting);
 	close();
@@ -126,12 +148,13 @@ void MainWindow::on_changeButton_4_clicked()
 	emit openEditWindow(4, nullSetting);
 }
 
-void EditWindow::openWindow(int ID, Settings_module::Setting setting) {
+void EditWindow::openWindow(int ID, Settings_module::Setting setting) 
+{
 	this->ID = ID;
 	if (setting.isNULL) 
 	{
 		emit getUpdatedSettingsSig();
-		return;
+		return; // At next stages we should change it. If setting does not exist it should be created
 	}
 
 	ui.movementEdit->setText(QString::fromStdString(setting.movement));
@@ -181,11 +204,13 @@ void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 	emit updatedSettingsSig(settings);
 }
 
-void GUI::editSettingSlt(Settings_module::Setting setting) {
+void GUI::editSettingSlt(Settings_module::Setting setting) 
+{
 	emit editSettingSig(setting);
 }
 
-int GUI::WaitingStopGUI() {
+int GUI::WaitingStopGUI() 
+{
 	return app.exec();
 }
 

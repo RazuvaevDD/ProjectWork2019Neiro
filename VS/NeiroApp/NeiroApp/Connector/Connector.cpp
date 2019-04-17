@@ -17,10 +17,13 @@ Connector::Connector(GUI_module::GUI* gui, Output_module::Mouse* mouse, Output_m
 
 void Connector::connectAll() 
 {
-	connect(networkClient, SIGNAL(InputDataSig(int)), logic, SLOT(newInputDataSlt(int)));
+	connect(networkClient, SIGNAL(InputDataSig(unsigned int)), logic, SLOT(newInputDataSlt(unsigned int)));
 	connect(gui, SIGNAL(getUpdatedSettingsSig()), xmlParser, SLOT(getSettingsSlt()));
 	connect(xmlParser, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), gui, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
 	connect(gui, SIGNAL(editSettingSig(Settings_module::Setting)), xmlParser, SLOT(changeSettingSlt(Settings_module::Setting)));
+	connect(xmlParser, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), logic, SLOT(updateSettings(std::vector<Settings_module::Setting>)));
+	connect(logic, SIGNAL(pressKeySig(std::string)), keyboard, SLOT(pressButtonSlt(std::string)));
+	connect(logic, SIGNAL(releaseKeySig(std::string)), keyboard, SLOT(releaseButtonSlt(std::string)));
 }
 
 Connector::~Connector()
