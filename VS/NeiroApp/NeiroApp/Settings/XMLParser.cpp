@@ -70,6 +70,7 @@ bool XMLParser::saveXMLFile()
 	{
 		XMLElement *setting = file.NewElement("setting");
 		setting->SetAttribute("id", static_cast<int>(s.id));
+
 		XMLElement *movement = file.NewElement("movement");
 		setting->LinkEndChild(movement);
 		movement->LinkEndChild(file.NewText(s.movement.c_str()));

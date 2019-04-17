@@ -62,6 +62,10 @@ void EditWindow::pushButtonKeys()
 			ui.checker->setText(t.right(t.size() - pos - 2));
 		}
 	}
+	if (ui.keyLabel->text() == "") 
+	{
+		ui.keyLabel->setText("None");
+	}
 }
 
 void EditWindow::on_reset_clicked()
@@ -126,12 +130,13 @@ void MainWindow::on_changeButton_4_clicked()
 	emit openEditWindow(4, nullSetting);
 }
 
-void EditWindow::openWindow(int ID, Settings_module::Setting setting) {
+void EditWindow::openWindow(int ID, Settings_module::Setting setting) 
+{
 	this->ID = ID;
 	if (setting.isNULL) 
 	{
 		emit getUpdatedSettingsSig();
-		return;
+		return; // At next stages we should change it. If setting does not exist it should be created
 	}
 
 	ui.movementEdit->setText(QString::fromStdString(setting.movement));
@@ -181,11 +186,13 @@ void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 	emit updatedSettingsSig(settings);
 }
 
-void GUI::editSettingSlt(Settings_module::Setting setting) {
+void GUI::editSettingSlt(Settings_module::Setting setting) 
+{
 	emit editSettingSig(setting);
 }
 
-int GUI::WaitingStopGUI() {
+int GUI::WaitingStopGUI() 
+{
 	return app.exec();
 }
 

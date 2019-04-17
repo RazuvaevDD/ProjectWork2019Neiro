@@ -22,7 +22,7 @@ namespace Input_module
 		~NetworkClient();
 
 	signals:
-		void InputDataSig(int);
+		void InputDataSig(unsigned int);
 
 	private:
 		QString name;   // name of thread
