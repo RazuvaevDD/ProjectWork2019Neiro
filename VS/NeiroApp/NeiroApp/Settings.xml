@@ -1,36 +1,40 @@
 <root>
     <setting id="1">
-        <movement>Движение руки</movement>
+        <type>1</type>
+        <movement>Сжать руку 1</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>I + U + Y</keys>
+        <keys>A</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
     </setting>
     <setting id="2">
-        <movement>Setting2</movement>
+        <type>0</type>
+        <movement>Разжать руку 1</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>J + num6</keys>
+        <keys>B</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
     </setting>
     <setting id="3">
-        <movement>Setting3</movement>
+        <type>0</type>
+        <movement>Сжать руку 2</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>O + F</keys>
+        <keys>C</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
     </setting>
     <setting id="4">
-        <movement>Setting4</movement>
+        <type>0</type>
+        <movement>Разжать руку 2</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>T + L</keys>
+        <keys>D</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>

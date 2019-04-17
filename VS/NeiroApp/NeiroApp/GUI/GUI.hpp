@@ -8,7 +8,8 @@
 #include "ui_EditWindow.h"
 #include "Settings/Setting.hpp"
 
-namespace GUI_module {
+namespace GUI_module 
+{
 	class EditWindow : public QDialog
 	{
 		Q_OBJECT

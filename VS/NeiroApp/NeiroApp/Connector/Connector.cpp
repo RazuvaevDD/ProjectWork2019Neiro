@@ -21,6 +21,7 @@ void Connector::connectAll()
 	connect(gui, SIGNAL(getUpdatedSettingsSig()), xmlParser, SLOT(getSettingsSlt()));
 	connect(xmlParser, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), gui, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
 	connect(gui, SIGNAL(editSettingSig(Settings_module::Setting)), xmlParser, SLOT(changeSettingSlt(Settings_module::Setting)));
+	connect(xmlParser, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), logic, SLOT(updateSettings(std::vector<Settings_module::Setting>)));
 }
 
 Connector::~Connector()
