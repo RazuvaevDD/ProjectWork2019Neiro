@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>EditWindow</class>
  <widget class="QWidget" name="EditWindow">
@@ -120,7 +120,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="layoutWidget2">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -1386,25 +1386,6 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="DELETE">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>620</x>
-     <y>80</y>
-     <width>31</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background: transparent;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="PGUP">
    <property name="enabled">
     <bool>true</bool>
@@ -1912,7 +1893,7 @@
   </widget>
   <zorder>layoutWidget</zorder>
   <zorder>layoutWidget1</zorder>
-  <zorder>layoutWidget</zorder>
+  <zorder>layoutWidget2</zorder>
   <zorder>mouseLabel</zorder>
   <zorder>keyboardLabel</zorder>
   <zorder>Q</zorder>
@@ -1978,7 +1959,6 @@
   <zorder>F12</zorder>
   <zorder>TILDA</zorder>
   <zorder>SCROLL_LOCK</zorder>
-  <zorder>DELETE</zorder>
   <zorder>PGUP</zorder>
   <zorder>PgDn</zorder>
   <zorder>NumLock</zorder>
