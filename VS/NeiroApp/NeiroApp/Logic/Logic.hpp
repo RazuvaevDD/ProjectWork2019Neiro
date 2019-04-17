@@ -13,8 +13,12 @@ namespace Logic_module
 		~Logic();
 
 	public slots:
-		void newInputDataSlt(int);
+		void newInputDataSlt(unsigned int);
 		void updateSettings(std::vector<Settings_module::Setting>);
+
+	signals:
+		void pressKeySig(std::string key);
+		void releaseKeySig(std::string Key);
 		
 	private:
 		std::vector<Settings_module::Setting> settings;

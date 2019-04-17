@@ -6,7 +6,7 @@
 
 namespace Output_module
 {
-	class Keyboard : QObject
+	class Keyboard : public QObject
 	{
 		Q_OBJECT
 	public:

@@ -1,10 +1,10 @@
 <root>
     <setting id="1">
-        <type>1</type>
+        <type>0</type>
         <movement>Сжать руку 1</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>A</keys>
+        <keys>A + J + H</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
@@ -14,7 +14,7 @@
         <movement>Разжать руку 1</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>B</keys>
+        <keys>B + U + J + G + M</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
@@ -24,7 +24,7 @@
         <movement>Сжать руку 2</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>C</keys>
+        <keys>C + T + Y</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
@@ -34,7 +34,7 @@
         <movement>Разжать руку 2</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>D</keys>
+        <keys>X + E + R</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
