@@ -48,7 +48,6 @@ void XMLParser::loadXMLSlt()
 	{
 		Setting s;
 		s.id = std::stoi(setting->Attribute("id"));
-		s.type = std::stoi(setting->FirstChildElement("type")->GetText());
 		s.movement = setting->FirstChildElement("movement")->GetText();
 		s.x = std::stod(setting->FirstChildElement("x")->GetText());
 		s.y = std::stod(setting->FirstChildElement("y")->GetText());
@@ -71,10 +70,6 @@ bool XMLParser::saveXMLFile()
 	{
 		XMLElement *setting = file.NewElement("setting");
 		setting->SetAttribute("id", static_cast<int>(s.id));
-
-		XMLElement *type = file.NewElement("type");
-		setting->LinkEndChild(type);
-		type->LinkEndChild(file.NewText(std::to_string(s.type).c_str()));
 
 		XMLElement *movement = file.NewElement("movement");
 		setting->LinkEndChild(movement);

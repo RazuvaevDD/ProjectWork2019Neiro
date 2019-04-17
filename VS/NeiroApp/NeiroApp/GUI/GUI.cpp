@@ -62,6 +62,10 @@ void EditWindow::pushButtonKeys()
 			ui.checker->setText(t.right(t.size() - pos - 2));
 		}
 	}
+	if (ui.keyLabel->text() == "") 
+	{
+		ui.keyLabel->setText("None");
+	}
 }
 
 void EditWindow::on_reset_clicked()
@@ -85,28 +89,6 @@ void EditWindow::on_ok_clicked()
 	setting.y = ui.yEdit->text().toDouble();
 	setting.dy = ui.yEdit_2->text().toDouble();
 	setting.mouseDelay = ui.mouseDelayEdit->text().toDouble();
-	if (setting.movement.size())
-	{
-		if (setting.x || setting.y || setting.dx || setting.dy)
-		{
-			setting.type = 2; // Keyboard and mouse
-		}
-		else
-		{
-			setting.type = 0; // Keyboard
-		}
-	}
-	else
-	{
-		if (!setting.x && !setting.y && !setting.dx && !setting.dy)
-		{
-			setting.type = 3; // Nothing
-		}
-		else
-		{
-			setting.type = 1; // Mouse
-		}
-	}
 
 	emit editSettingSig(setting);
 	close();

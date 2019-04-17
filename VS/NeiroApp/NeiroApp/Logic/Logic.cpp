@@ -15,18 +15,25 @@ Logic::~Logic()
 
 void Logic::newInputDataSlt(unsigned int IDSignal) 
 {
-	qDebug() << "Input data: "<< IDSignal;
-	if (IDSignal > 3)
+	if (IDSignal > 4)
 	{
-		IDSignal = 3; // Only for testing. Just because we have only 4 signals 
+		return; //Just because we have only 4 signals 
 	}
-	if (IDSignal > settings.size() - 1) // ID Signal should be equal to setting position in vector
+
+	qDebug() << "Input data: " << IDSignal;
+	
+	Settings_module::Setting setting;
+	for (unsigned int i = 0; i < settings.size(); i++)
 	{
-		return;
+		if (IDSignal == settings[i].id)
+		{
+			setting = settings[i];
+		}
 	}
-	if (settings[IDSignal].type == 0)
+
+	if (setting.keys != "None")
 	{
-		std::string str = settings[IDSignal].keys;
+		std::string str = setting.keys;
 		int rep = 0;
 		for (unsigned int i = 0; i < str.size(); i++)
 		{
@@ -48,9 +55,6 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 		for (unsigned int i = 0; i < keys.size(); i++) // Now pressing keys 
 		{
 			emit pressKeySig(keys[i]);
-		}
-		for (unsigned int i = 0; i < keys.size(); i++) // Releasing keys
-		{
 			emit releaseKeySig(keys[i]);
 		}
 	}

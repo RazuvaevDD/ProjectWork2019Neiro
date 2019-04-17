@@ -10,7 +10,6 @@ namespace Settings_module
 		std::string movement;
 		std::string keys;
 		double x, y, dx, dy, mouseDelay;
-		unsigned short int type; // 0 only keyboard, 1 only mouse, 2 mouse and keyboard, 3 nothing
 		bool isNULL = false;
 	};
 }

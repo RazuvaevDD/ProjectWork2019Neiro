@@ -28,8 +28,11 @@ void Connector::connectAll()
 
 Connector::~Connector()
 {
-	disconnect(networkClient, SIGNAL(InputDataSig(int)), logic, SLOT(newInputDataSlt(int)));
+	disconnect(networkClient, SIGNAL(InputDataSig(unsigned int)), logic, SLOT(newInputDataSlt(unsigned int)));
 	disconnect(gui, SIGNAL(getUpdatedSettingsSig()), xmlParser, SLOT(getSettingsSlt()));
 	disconnect(xmlParser, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), gui, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
 	disconnect(gui, SIGNAL(editSettingSig(Settings_module::Setting)), xmlParser, SLOT(changeSettingSlt(Settings_module::Setting)));
+	disconnect(xmlParser, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), logic, SLOT(updateSettings(std::vector<Settings_module::Setting>)));
+	disconnect(logic, SIGNAL(pressKeySig(std::string)), keyboard, SLOT(pressButtonSlt(std::string)));
+	disconnect(logic, SIGNAL(releaseKeySig(std::string)), keyboard, SLOT(releaseButtonSlt(std::string)));
 }
