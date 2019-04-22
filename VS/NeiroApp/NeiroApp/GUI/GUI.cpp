@@ -130,6 +130,26 @@ void MainWindow::on_changeButton_4_clicked()
 	emit openEditWindow(4, nullSetting);
 }
 
+void MainWindow::getSettingSlt(Settings_module::Setting s)
+{
+	switch (s.id)
+	{
+	case 1:
+		ui.keysLine->setText(QString::fromStdString(s.keys));
+		break;
+	case 2:
+		ui.keysLine_2->setText(QString::fromStdString(s.keys));
+		break;
+	case 3:
+		ui.keysLine_3->setText(QString::fromStdString(s.keys));
+		break;
+	case 4:
+		ui.keysLine_4->setText(QString::fromStdString(s.keys));
+		break;
+	}
+	//ui.keysLine->setText(QString::fromStdString(s.keys));
+}
+
 void EditWindow::openWindow(int ID, Settings_module::Setting setting) 
 {
 	this->ID = ID;
@@ -174,6 +194,7 @@ GUI::GUI(int & argc, char ** argv) :
 	connect(eWindow, SIGNAL(getUpdatedSettingsSig()), this, SLOT(getUpdatedSettingsSlt()));
 	connect(this, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), eWindow, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
 	connect(eWindow, SIGNAL(editSettingSig(Settings_module::Setting)), this, SLOT(editSettingSlt(Settings_module::Setting)));
+	connect(eWindow, SIGNAL(editSettingSig(Settings_module::Setting)), window, SLOT(getSettingSlt(Settings_module::Setting)));
 }
 
 void GUI::getUpdatedSettingsSlt() 
