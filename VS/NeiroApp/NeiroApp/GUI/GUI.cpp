@@ -132,7 +132,7 @@ void MainWindow::on_changeButton_4_clicked()
 
 void MainWindow::getSettingSlt(Settings_module::Setting s)
 {
-	switch (s.id)
+	/*switch (s.id)
 	{
 	case 1:
 		ui.keysLine->setText(QString::fromStdString(s.keys));
@@ -146,9 +146,9 @@ void MainWindow::getSettingSlt(Settings_module::Setting s)
 	case 4:
 		ui.keysLine_4->setText(QString::fromStdString(s.keys));
 		break;
-	}
-	//ui.keysLine->setText(QString::fromStdString(s.keys));
+	}*/
 }
+
 
 void EditWindow::openWindow(int ID, Settings_module::Setting setting) 
 {
@@ -205,6 +205,37 @@ void GUI::getUpdatedSettingsSlt()
 void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 {
 	emit updatedSettingsSig(settings);
+	Settings_module::Setting setting1;
+	Settings_module::Setting setting2;
+	Settings_module::Setting setting3;
+	Settings_module::Setting setting4;
+	for (unsigned int i = 0; i < settings.size(); i++)
+	{
+		if (settings[i].id == 1)
+		{
+			setting1 = settings[i];
+		}
+		if (settings[i].id == 2)
+		{
+			setting2 = settings[i];
+		}
+		if (settings[i].id == 3)
+		{
+			setting3 = settings[i];
+		}
+		if (settings[i].id == 4)
+		{
+			setting4 = settings[i];
+		}
+	}
+	window->ui.keysLine->setText(QString::fromStdString(setting1.keys));
+	window->ui.keysLine_2->setText(QString::fromStdString(setting2.keys));
+	window->ui.keysLine_3->setText(QString::fromStdString(setting3.keys));
+	window->ui.keysLine_4->setText(QString::fromStdString(setting4.keys));
+	window->ui.movementLine->setText(QString::fromStdString(setting1.movement));
+	window->ui.movementLine_2->setText(QString::fromStdString(setting2.movement));
+	window->ui.movementLine_3->setText(QString::fromStdString(setting3.movement));
+	window->ui.movementLine_4->setText(QString::fromStdString(setting4.movement));
 }
 
 void GUI::editSettingSlt(Settings_module::Setting setting) 

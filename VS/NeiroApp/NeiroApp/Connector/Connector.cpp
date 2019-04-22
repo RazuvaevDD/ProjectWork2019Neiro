@@ -1,5 +1,6 @@
 #include "Connector.hpp"
 #include "Settings/Setting.hpp"
+#include "GUI/GUI.hpp"
 
 using namespace Connect_module;
 

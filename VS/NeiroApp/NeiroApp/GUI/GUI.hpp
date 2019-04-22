@@ -39,6 +39,7 @@ namespace GUI_module
 	public:
 		MainWindow(QWidget *parent = Q_NULLPTR);
 		EditWindow* changeWindow;
+		Ui::MainWindowClass ui;
 	signals:
 		void openEditWindow(int, Settings_module::Setting);
 	private slots:
@@ -47,8 +48,8 @@ namespace GUI_module
 		void on_changeButton_3_clicked(); 
 		void on_changeButton_4_clicked(); 
 		void getSettingSlt(Settings_module::Setting);
-	private:
-		Ui::MainWindowClass ui;
+	/*private:
+		Ui::MainWindowClass ui;*/
 	};
 
 	class GUI : public QObject
