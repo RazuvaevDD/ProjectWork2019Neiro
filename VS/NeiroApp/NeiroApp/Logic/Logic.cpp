@@ -56,6 +56,9 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 		for (unsigned int i = 0; i < keys.size(); i++) // Now pressing keys 
 		{
 			emit pressKeySig(keys[i]);
+		}
+		for (unsigned int i = 0; i < keys.size(); i++) // Now pressing keys 
+		{
 			emit releaseKeySig(keys[i]);
 		}
 	}

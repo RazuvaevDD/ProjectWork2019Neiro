@@ -3,10 +3,10 @@
         <movement>Сжать руку 1</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>M + O + U + S + E</keys>
-        <dx>500.000000</dx>
-        <dy>500.000000</dy>
-        <mouseDelay>8.000000</mouseDelay>
+        <keys>M + O + U</keys>
+        <dx>0.000000</dx>
+        <dy>0.000000</dy>
+        <mouseDelay>0.000000</mouseDelay>
     </setting>
     <setting id="2">
         <movement>Разжать руку 1</movement>
