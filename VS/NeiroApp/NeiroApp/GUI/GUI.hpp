@@ -47,9 +47,6 @@ namespace GUI_module
 		void on_changeButton_2_clicked();   
 		void on_changeButton_3_clicked(); 
 		void on_changeButton_4_clicked(); 
-		void getSettingSlt(Settings_module::Setting);
-	/*private:
-		Ui::MainWindowClass ui;*/
 	};
 
 	class GUI : public QObject

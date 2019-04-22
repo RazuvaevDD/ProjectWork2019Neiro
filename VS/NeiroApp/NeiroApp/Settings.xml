@@ -3,7 +3,7 @@
         <movement>Сжать руку 1</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>W</keys>
+        <keys>W + Y</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
