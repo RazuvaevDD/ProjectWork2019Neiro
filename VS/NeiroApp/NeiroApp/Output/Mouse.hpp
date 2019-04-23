@@ -39,6 +39,7 @@ namespace Output_module
 		void rightReleasedSig();
 
 	private:
+		bool alreadyRunning;
 		QPoint currentCoords;
 		QCursor cursor;
 		HANDLE LoadNoShareCursor(UINT ocr_id);

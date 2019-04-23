@@ -7,7 +7,8 @@
 using namespace Output_module;
 
 Mouse::Mouse() :
-	isCursorChanged(false)
+	isCursorChanged(false),
+	alreadyRunning(false)
 {
 	QObject::connect(this, SIGNAL(newCoordsSig(QPoint)), this, SLOT(setCurrentCoordsSlt(QPoint)));
 }
@@ -35,11 +36,23 @@ void Mouse::setCoordsSlt(QPoint point)
 
 void Mouse::setCoordsSlt(QPoint point, int time)
 {
+	if (alreadyRunning)
+	{
+		return;
+	}
 	setCoordsSlt(point.x(), point.y(), time);
 }
 
 void Mouse::setCoordsSlt(double x, double y, int time)
 {
+	if (alreadyRunning)
+	{
+		return;
+	}
+	else
+	{
+		alreadyRunning = true;
+	}
 	if (time <= 0)
 	{
 		setCoordsSlt(x, y);
@@ -71,6 +84,7 @@ void Mouse::setCoordsSlt(double x, double y, int time)
 		loop.exec();
 	}
 	setCoordsSlt(x, y);
+	alreadyRunning = false;
 }
 
 void Mouse::shiftCoordsSlt(double x, double y)
@@ -81,6 +95,10 @@ void Mouse::shiftCoordsSlt(double x, double y)
 
 void Mouse::shiftCoordsSlt(double x, double y, int time)
 {
+	if (alreadyRunning)
+	{
+		return;
+	}
 	getCoordsSlt();
 	double xNew = currentCoords.x() + x;
 	double yNew = currentCoords.y() + y;
