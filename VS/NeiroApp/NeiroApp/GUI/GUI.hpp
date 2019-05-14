@@ -47,6 +47,8 @@ namespace GUI_module
 		void on_changeButton_2_clicked();   
 		void on_changeButton_3_clicked(); 
 		void on_changeButton_4_clicked(); 
+		void on_startButton_clicked();
+		void on_stopButton_clicked();
 	};
 
 	class GUI : public QObject

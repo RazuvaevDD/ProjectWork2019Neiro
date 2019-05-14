@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>760</width>
-    <height>300</height>
+    <height>250</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>760</width>
-    <height>300</height>
+    <height>250</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>760</width>
-    <height>300</height>
+    <height>250</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -41,7 +41,7 @@
       <x>11</x>
       <y>11</y>
       <width>741</width>
-      <height>171</height>
+      <height>193</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -52,10 +52,31 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="keysLine">
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="keysLine_3">
        <property name="readOnly">
         <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="keysLine_4">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="keysLine_2">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPushButton" name="changeButton_2">
+       <property name="text">
+        <string>Изменить</string>
        </property>
       </widget>
      </item>
@@ -64,6 +85,13 @@
        <property name="text">
         <string>Разжать руку 1</string>
        </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="keysLine">
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -86,6 +114,13 @@
        </property>
       </widget>
      </item>
+     <item row="4" column="2">
+      <widget class="QPushButton" name="changeButton_4">
+       <property name="text">
+        <string>Изменить</string>
+       </property>
+      </widget>
+     </item>
      <item row="1" column="0">
       <widget class="QLineEdit" name="movementLine">
        <property name="text">
@@ -93,13 +128,6 @@
        </property>
        <property name="readOnly">
         <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QPushButton" name="changeButton">
-       <property name="text">
-        <string>Изменить</string>
        </property>
       </widget>
      </item>
@@ -113,34 +141,6 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="keysLine_2">
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QLineEdit" name="keysLine_3">
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="keysLine_4">
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QPushButton" name="changeButton_2">
-       <property name="text">
-        <string>Изменить</string>
-       </property>
-      </widget>
-     </item>
      <item row="3" column="2">
       <widget class="QPushButton" name="changeButton_3">
        <property name="text">
@@ -148,10 +148,46 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="2">
-      <widget class="QPushButton" name="changeButton_4">
+     <item row="1" column="2">
+      <widget class="QPushButton" name="changeButton">
        <property name="text">
         <string>Изменить</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QPushButton" name="startButton">
+       <property name="text">
+        <string>Старт</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QPushButton" name="stopButton">
+       <property name="text">
+        <string>Стоп</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
+        <size>
+         <width>93</width>
+         <height>28</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>93</width>
+         <height>28</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Не запущена</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
