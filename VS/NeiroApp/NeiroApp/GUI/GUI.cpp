@@ -130,7 +130,15 @@ void MainWindow::on_changeButton_4_clicked()
 	emit openEditWindow(4, nullSetting);
 }
 
+void MainWindow::on_startButton_clicked()
+{
+	ui.label->setText("Working");
+}
 
+void MainWindow::on_stopButton_clicked()
+{
+	ui.label->setText("Stopped");
+}
 
 void EditWindow::openWindow(int ID, Settings_module::Setting setting) 
 {
