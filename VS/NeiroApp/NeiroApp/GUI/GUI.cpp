@@ -145,13 +145,13 @@ void MainWindow::on_changeButton_4_clicked()
 
 void MainWindow::on_startButton_clicked()
 {
-	ui.label->setText("Working");
+	ui.label->setText(QString::fromLocal8Bit("Работает"));
 	emit start_stopProgram(true);
 }
 
 void MainWindow::on_stopButton_clicked()
 {
-	ui.label->setText("Stopped");
+	ui.label->setText(QString::fromLocal8Bit("Остановлен"));
 	emit start_stopProgram(false);
 }
 
