@@ -8,6 +8,7 @@
 #include "Settings/Setting.hpp"
 #include "Connector/Connector.hpp"
 #include "Logic/Logic.hpp"
+#include "Audio/Audio.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -18,9 +19,14 @@ int main(int argc, char *argv[])
 	Settings_module::XMLParser*		xmlParser		= new Settings_module::XMLParser("Settings.xml");
 	Logic_module::Logic*			logic			= new Logic_module::Logic();
 	Connect_module::Connector*		connector		= new Connect_module::Connector(gui, mouse, keyboard, networkClient, xmlParser, logic);
+	Audio_module::Audio* audio = new Audio_module::Audio("WOO.mp3");
+
+	audio->playSlt();
+
 
 	networkClient->start();
 	xmlParser->loadXMLSlt();
+
 
 	/*Settings_module::Setting s;
 	s.movement = "setting";
