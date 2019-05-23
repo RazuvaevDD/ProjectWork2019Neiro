@@ -88,6 +88,9 @@
     <ClInclude Include="Settings\LibXML.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="GUI\MainWindow.qrc">
@@ -104,10 +107,22 @@
     <QtUic Include="GUI\EditWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="GUI\TCP_IPWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="GUI\AboutWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="GUI\MainWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NeiroApp.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="GUI\Images\2019-05-23_14-37-20.png" />
   </ItemGroup>
 </Project>

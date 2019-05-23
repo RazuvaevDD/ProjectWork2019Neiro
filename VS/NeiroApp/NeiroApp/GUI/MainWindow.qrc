@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/MainWindow">
         <file>Images/Circle.svg</file>
+        <file>Images/2019-05-23_14-37-20.png</file>
     </qresource>
 </RCC>

@@ -6,6 +6,8 @@
 
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
+#include "ui_TCP_IPWindow.h"
+#include "ui_AboutWindow.h"
 #include "Settings/Setting.hpp"
 
 namespace GUI_module 
@@ -31,6 +33,28 @@ namespace GUI_module
 		Ui::EditWindow ui;
 		int ID = 0;
 	};
+
+	class TCP_IPWindow : public QDialog
+	{
+		Q_OBJECT
+
+	public:
+		TCP_IPWindow(QDialog *parent = Q_NULLPTR);
+
+	private:
+		Ui::TCP_IPWindow ui;
+	};
+
+	class AboutWindow : public QDialog
+	{
+		Q_OBJECT
+
+	public:
+		AboutWindow(QDialog *parent = Q_NULLPTR);
+
+	private:
+		Ui::AboutWindow ui;
+	};
 	
 	class MainWindow : public QMainWindow
 	{
@@ -42,6 +66,7 @@ namespace GUI_module
 		Ui::MainWindowClass ui;
 	signals:
 		void openEditWindow(int, Settings_module::Setting);
+		void start_stopProgram(bool started);
 	private slots:
 		void on_changeButton_clicked();   
 		void on_changeButton_2_clicked();   
@@ -49,6 +74,7 @@ namespace GUI_module
 		void on_changeButton_4_clicked(); 
 		void on_startButton_clicked();
 		void on_stopButton_clicked();
+		//void on_changeIP_Port_triggered(QAction* action);
 	};
 
 	class GUI : public QObject
@@ -60,6 +86,8 @@ namespace GUI_module
 		~GUI();
 		MainWindow* window;
 		EditWindow* eWindow;
+		TCP_IPWindow* tcp_ipWindow;
+		AboutWindow* aWindow;
 	signals:
 		void getUpdatedSettingsSig();
 		void updatedSettingsSig(std::vector<Settings_module::Setting>);
@@ -70,5 +98,7 @@ namespace GUI_module
 		void getUpdatedSettingsSlt();
 		void updatedSettingsSlt(std::vector<Settings_module::Setting>);
 		void editSettingSlt(Settings_module::Setting);
+		void on_changeIP_Port_triggered(QAction* action);
+		void on_aboutProgram_triggered(QAction* action);
 	};
 }
