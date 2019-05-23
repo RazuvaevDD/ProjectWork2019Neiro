@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GUI/GUI.hpp"
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
@@ -23,6 +24,17 @@ EditWindow::EditWindow(QDialog *parent)
 			QObject::connect(allPButtons.at(i), SIGNAL(clicked()), this, SLOT(pushButtonKeys()));
 		}
 	}
+}
+
+TCP_IPWindow::TCP_IPWindow(QDialog *parent)
+	: QDialog(parent)
+{
+	ui.setupUi(this);
+}
+
+AboutWindow::AboutWindow(QDialog* parent)
+{
+	ui.setupUi(this);
 }
 
 void EditWindow::pushButtonKeys()
@@ -133,11 +145,23 @@ void MainWindow::on_changeButton_4_clicked()
 void MainWindow::on_startButton_clicked()
 {
 	ui.label->setText("Working");
+	emit start_stopProgram(true);
 }
 
 void MainWindow::on_stopButton_clicked()
 {
 	ui.label->setText("Stopped");
+	emit start_stopProgram(false);
+}
+
+void GUI::on_changeIP_Port_triggered(QAction* action)
+{
+	tcp_ipWindow->show();
+}
+
+void GUI::on_aboutProgram_triggered(QAction* action)
+{
+	aWindow->show();
 }
 
 void EditWindow::openWindow(int ID, Settings_module::Setting setting) 
@@ -179,8 +203,13 @@ GUI::GUI(int & argc, char ** argv) :
 	window = new MainWindow();
 	window->show();
 	eWindow = new EditWindow();
+	tcp_ipWindow = new TCP_IPWindow();
+	aWindow = new AboutWindow();
 
 	connect(window, SIGNAL(openEditWindow(int, Settings_module::Setting)), eWindow, SLOT(openWindow(int, Settings_module::Setting)));
+	//connect(window->ui.server,SIGNAL(triggered(QAction*)),window,SLOT(on_changeIP_Port_triggered(QAction*)));
+	connect(window->ui.server, SIGNAL(triggered(QAction*)), this, SLOT(on_changeIP_Port_triggered(QAction*)));
+	connect(window->ui.about, SIGNAL(triggered(QAction*)), this, SLOT(on_aboutProgram_triggered(QAction*)));
 	connect(eWindow, SIGNAL(getUpdatedSettingsSig()), this, SLOT(getUpdatedSettingsSlt()));
 	connect(this, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), eWindow, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
 	connect(eWindow, SIGNAL(editSettingSig(Settings_module::Setting)), this, SLOT(editSettingSlt(Settings_module::Setting)));
@@ -241,4 +270,5 @@ GUI::~GUI()
 {
 	delete window;
 	delete eWindow;
+	delete tcp_ipWindow;
 }

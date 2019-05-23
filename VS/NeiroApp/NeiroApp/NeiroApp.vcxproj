@@ -166,10 +166,18 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="GUI\AboutWindow.ui" />
     <QtUic Include="GUI\EditWindow.ui" />
     <QtUic Include="GUI\MainWindow.ui">
       <DeploymentContent>false</DeploymentContent>
     </QtUic>
+    <QtUic Include="GUI\TCP_IPWindow.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NeiroApp.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="GUI\Images\2019-05-23_14-37-20.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
