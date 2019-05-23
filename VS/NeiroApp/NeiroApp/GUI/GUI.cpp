@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "GUI/GUI.hpp"
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
@@ -164,6 +165,18 @@ void GUI::on_aboutProgram_triggered(QAction* action)
 	aWindow->show();
 }
 
+void TCP_IPWindow::on_okButton_clicked()
+{
+	char* ip = ui.ipLine->text().toUtf8().data();
+	int port = ui.portLine->text().toInt();
+	emit updateIP_PortSig(ip, port);
+}
+
+void GUI::updateIP_PortSlt(char* ip,int port)
+{
+	qDebug() << QString::number(port);
+}
+
 void EditWindow::openWindow(int ID, Settings_module::Setting setting) 
 {
 	this->ID = ID;
@@ -208,6 +221,7 @@ GUI::GUI(int & argc, char ** argv) :
 
 	connect(window, SIGNAL(openEditWindow(int, Settings_module::Setting)), eWindow, SLOT(openWindow(int, Settings_module::Setting)));
 	//connect(window->ui.server,SIGNAL(triggered(QAction*)),window,SLOT(on_changeIP_Port_triggered(QAction*)));
+	connect(tcp_ipWindow,SIGNAL(updateIP_PortSig(char*,int)),this,SLOT(updateIP_PortSlt(char*,int)));
 	connect(window->ui.server, SIGNAL(triggered(QAction*)), this, SLOT(on_changeIP_Port_triggered(QAction*)));
 	connect(window->ui.about, SIGNAL(triggered(QAction*)), this, SLOT(on_aboutProgram_triggered(QAction*)));
 	connect(eWindow, SIGNAL(getUpdatedSettingsSig()), this, SLOT(getUpdatedSettingsSlt()));

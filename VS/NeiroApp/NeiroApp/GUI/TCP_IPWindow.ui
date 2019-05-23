@@ -45,28 +45,31 @@
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="ipLabel">
       <property name="text">
        <string>IP</string>
       </property>
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="portLabel">
       <property name="text">
        <string>Port</string>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="ipLine">
       <property name="text">
        <string>127.0.0.1</string>
       </property>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="portLine">
+      <property name="statusTip">
+       <string/>
+      </property>
       <property name="text">
        <string>2121</string>
       </property>
@@ -74,7 +77,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="okButton">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -87,7 +90,7 @@
     <string>ОК</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
      <x>390</x>
@@ -104,7 +107,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton_2</sender>
+   <sender>cancelButton</sender>
    <signal>clicked()</signal>
    <receiver>TCP_IPWindow</receiver>
    <slot>close()</slot>
@@ -116,6 +119,22 @@
     <hint type="destinationlabel">
      <x>201</x>
      <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>TCP_IPWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>102</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>

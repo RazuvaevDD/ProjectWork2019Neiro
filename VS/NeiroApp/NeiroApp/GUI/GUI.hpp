@@ -40,7 +40,10 @@ namespace GUI_module
 
 	public:
 		TCP_IPWindow(QDialog *parent = Q_NULLPTR);
-
+	signals:
+		void updateIP_PortSig(char* ip, int port);
+	private slots:
+		void on_okButton_clicked();
 	private:
 		Ui::TCP_IPWindow ui;
 	};
@@ -100,5 +103,6 @@ namespace GUI_module
 		void editSettingSlt(Settings_module::Setting);
 		void on_changeIP_Port_triggered(QAction* action);
 		void on_aboutProgram_triggered(QAction* action);
+		void updateIP_PortSlt(char*,int);
 	};
 }
