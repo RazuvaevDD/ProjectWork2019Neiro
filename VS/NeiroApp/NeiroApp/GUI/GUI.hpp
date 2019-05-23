@@ -77,7 +77,6 @@ namespace GUI_module
 		void on_changeButton_4_clicked(); 
 		void on_startButton_clicked();
 		void on_stopButton_clicked();
-		//void on_changeIP_Port_triggered(QAction* action);
 	};
 
 	class GUI : public QObject
@@ -95,6 +94,9 @@ namespace GUI_module
 		void getUpdatedSettingsSig();
 		void updatedSettingsSig(std::vector<Settings_module::Setting>);
 		void editSettingSig(Settings_module::Setting);
+		void updateIP_PortSig(char*, int);
+		void start_stopProgramSig(bool);
+
 	private:
 		QApplication app;
 	private slots:
@@ -104,5 +106,6 @@ namespace GUI_module
 		void on_changeIP_Port_triggered(QAction* action);
 		void on_aboutProgram_triggered(QAction* action);
 		void updateIP_PortSlt(char*,int);
+		void start_stopProgramSlt(bool);
 	};
 }
