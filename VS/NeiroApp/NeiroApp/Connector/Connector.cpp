@@ -27,6 +27,8 @@ void Connector::connectAll()
 	connect(logic, SIGNAL(releaseKeySig(std::string)), keyboard, SLOT(releaseButtonSlt(std::string)));
 	connect(logic, SIGNAL(setCoordsSig(double, double)), mouse, SLOT(setCoordsSlt(double, double)));
 	connect(logic, SIGNAL(setCoordsSig(double, double, int)), mouse, SLOT(setCoordsSlt(double, double, int)));
+	connect(gui, SIGNAL(updateIP_PortSig(char*, int)), networkClient, SLOT(updateIP_PortSlt(char*, int)));
+	connect(gui, SIGNAL(start_stopProgramSig(bool)), networkClient, SLOT(start_stopProgramSlt(bool)));
 }
 
 Connector::~Connector()
@@ -40,4 +42,6 @@ Connector::~Connector()
 	disconnect(logic, SIGNAL(releaseKeySig(std::string)), keyboard, SLOT(releaseButtonSlt(std::string)));
 	disconnect(logic, SIGNAL(setCoordsSig(double, double)), mouse, SLOT(setCoordsSlt(double, double)));
 	disconnect(logic, SIGNAL(setCoordsSig(double, double, int)), mouse, SLOT(setCoordsSlt(double, double, int)));
+	disconnect(gui, SIGNAL(updateIP_PortSig(char*, int)), networkClient, SLOT(updateIP_PortSlt(char*, int)));
+	disconnect(gui, SIGNAL(start_stopProgramSig(bool)), networkClient, SLOT(start_stopProgramSlt(bool)));
 }

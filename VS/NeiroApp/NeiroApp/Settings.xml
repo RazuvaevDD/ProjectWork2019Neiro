@@ -3,7 +3,7 @@
         <movement>Сжать руку 1</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>Q + W + R + T + Y</keys>
+        <keys>SPACE</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
@@ -12,7 +12,7 @@
         <movement>Разжать руку 1</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>A</keys>
+        <keys>SPACE</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
@@ -21,7 +21,7 @@
         <movement>Сжать руку 2</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>D</keys>
+        <keys>SPACE</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
@@ -30,7 +30,7 @@
         <movement>Разжать руку 2</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>S</keys>
+        <keys>SPACE</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>

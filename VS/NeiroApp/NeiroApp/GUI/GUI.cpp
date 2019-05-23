@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "GUI/GUI.hpp"
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
@@ -164,6 +165,23 @@ void GUI::on_aboutProgram_triggered(QAction* action)
 	aWindow->show();
 }
 
+void GUI::start_stopProgramSlt(bool started)
+{
+	emit start_stopProgramSig(started);
+}
+
+void TCP_IPWindow::on_okButton_clicked()
+{
+	char* ip = ui.ipLine->text().toUtf8().data();
+	int port = ui.portLine->text().toInt();
+	emit updateIP_PortSig(ip, port);
+}
+
+void GUI::updateIP_PortSlt(char* ip,int port)
+{
+	emit updateIP_PortSig(ip, port);
+}
+
 void EditWindow::openWindow(int ID, Settings_module::Setting setting) 
 {
 	this->ID = ID;
@@ -207,12 +225,14 @@ GUI::GUI(int & argc, char ** argv) :
 	aWindow = new AboutWindow();
 
 	connect(window, SIGNAL(openEditWindow(int, Settings_module::Setting)), eWindow, SLOT(openWindow(int, Settings_module::Setting)));
-	//connect(window->ui.server,SIGNAL(triggered(QAction*)),window,SLOT(on_changeIP_Port_triggered(QAction*)));
+	connect(tcp_ipWindow,SIGNAL(updateIP_PortSig(char*,int)),this,SLOT(updateIP_PortSlt(char*,int)));
 	connect(window->ui.server, SIGNAL(triggered(QAction*)), this, SLOT(on_changeIP_Port_triggered(QAction*)));
 	connect(window->ui.about, SIGNAL(triggered(QAction*)), this, SLOT(on_aboutProgram_triggered(QAction*)));
 	connect(eWindow, SIGNAL(getUpdatedSettingsSig()), this, SLOT(getUpdatedSettingsSlt()));
 	connect(this, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), eWindow, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
 	connect(eWindow, SIGNAL(editSettingSig(Settings_module::Setting)), this, SLOT(editSettingSlt(Settings_module::Setting)));
+	connect(window, SIGNAL(start_stopProgram(bool started)), this, SLOT(start_stopProgramSlt(bool started)));
+
 }
 
 void GUI::getUpdatedSettingsSlt() 
