@@ -44,7 +44,7 @@ void EditWindow::pushButtonKeys()
 	QString t;
 	QString s = sender()->objectName();
 	t = ui.keyLabel->text();
-	if (s != ss && s != t) 
+	if (s != ss && s != t)
 	{
 		if (t == "None" || t == "")
 		{
@@ -58,15 +58,15 @@ void EditWindow::pushButtonKeys()
 		}
 		ui.checker->setText(s);
 	}
-	else 
+	else
 	{
-		if (t == s) 
+		if (t == s)
 		{
 			t = "";
 			ui.keyLabel->setText(t);
 			ui.checker->setText("");
 		}
-		else 
+		else
 		{
 			int pos = t.lastIndexOf(QChar('+'));
 			t = t.left(pos - 1);
@@ -75,7 +75,7 @@ void EditWindow::pushButtonKeys()
 			ui.checker->setText(t.right(t.size() - pos - 2));
 		}
 	}
-	if (ui.keyLabel->text() == "") 
+	if (ui.keyLabel->text() == "")
 	{
 		ui.keyLabel->setText("None");
 	}
@@ -177,15 +177,15 @@ void TCP_IPWindow::on_okButton_clicked()
 	emit updateIP_PortSig(ip, port);
 }
 
-void GUI::updateIP_PortSlt(char* ip,int port)
+void GUI::updateIP_PortSlt(char* ip, int port)
 {
 	emit updateIP_PortSig(ip, port);
 }
 
-void EditWindow::openWindow(int ID, Settings_module::Setting setting) 
+void EditWindow::openWindow(int ID, Settings_module::Setting setting)
 {
 	this->ID = ID;
-	if (setting.isNULL) 
+	if (setting.isNULL)
 	{
 		emit getUpdatedSettingsSig();
 		return; // At next stages we should change it. If setting does not exist it should be created
@@ -225,17 +225,17 @@ GUI::GUI(int & argc, char ** argv) :
 	aWindow = new AboutWindow();
 
 	connect(window, SIGNAL(openEditWindow(int, Settings_module::Setting)), eWindow, SLOT(openWindow(int, Settings_module::Setting)));
-	connect(tcp_ipWindow,SIGNAL(updateIP_PortSig(char*,int)),this,SLOT(updateIP_PortSlt(char*,int)));
+	connect(tcp_ipWindow, SIGNAL(updateIP_PortSig(char*, int)), this, SLOT(updateIP_PortSlt(char*, int)));
 	connect(window->ui.server, SIGNAL(triggered(QAction*)), this, SLOT(on_changeIP_Port_triggered(QAction*)));
 	connect(window->ui.about, SIGNAL(triggered(QAction*)), this, SLOT(on_aboutProgram_triggered(QAction*)));
 	connect(eWindow, SIGNAL(getUpdatedSettingsSig()), this, SLOT(getUpdatedSettingsSlt()));
 	connect(this, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), eWindow, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
 	connect(eWindow, SIGNAL(editSettingSig(Settings_module::Setting)), this, SLOT(editSettingSlt(Settings_module::Setting)));
-	connect(window, SIGNAL(start_stopProgram(bool)), this, SLOT(start_stopProgramSlt(bool)));
+	connect(window, SIGNAL(start_stopProgram(bool started)), this, SLOT(start_stopProgramSlt(bool started)));
 
 }
 
-void GUI::getUpdatedSettingsSlt() 
+void GUI::getUpdatedSettingsSlt()
 {
 	emit getUpdatedSettingsSig();
 }
@@ -276,12 +276,12 @@ void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 	window->ui.movementLine_4->setText(QString::fromStdString(setting4.movement));
 }
 
-void GUI::editSettingSlt(Settings_module::Setting setting) 
+void GUI::editSettingSlt(Settings_module::Setting setting)
 {
 	emit editSettingSig(setting);
 }
 
-int GUI::WaitingStopGUI() 
+int GUI::WaitingStopGUI()
 {
 	return app.exec();
 }

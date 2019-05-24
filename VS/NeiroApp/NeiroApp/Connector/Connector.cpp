@@ -16,7 +16,7 @@ Connector::Connector(GUI_module::GUI* gui, Output_module::Mouse* mouse, Output_m
 	connectAll();
 }
 
-void Connector::connectAll() 
+void Connector::connectAll()
 {
 	connect(networkClient, SIGNAL(InputDataSig(unsigned int)), logic, SLOT(newInputDataSlt(unsigned int)));
 	connect(gui, SIGNAL(getUpdatedSettingsSig()), xmlParser, SLOT(getSettingsSlt()));
