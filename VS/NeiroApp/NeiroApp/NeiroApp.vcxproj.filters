@@ -94,7 +94,7 @@
     <ClInclude Include="Settings\LibXML.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="API\GameAPIdll.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
