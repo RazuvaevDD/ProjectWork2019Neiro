@@ -2,83 +2,63 @@
 #pragma comment (lib,"Ws2_32.lib")
 
 #include "Input.hpp"
-
+#include "API/GameAPIdll.h"
+#include <iostream>
 using namespace Input_module;
 
-int connectSock(SOCKET CS, const struct sockaddr* sockAdd, int sizeofServerAddr)
-{
-	return (connect(CS, sockAdd, sizeofServerAddr));
-}
+std::map<unsigned int, Statistics> stats;
 
 NetworkClient::NetworkClient(QString threadName) :
-	name(threadName){}
- 
+	name(threadName) {}
+
 NetworkClient::~NetworkClient()
 {
+	Disconnect();
 	terminate();
 }
 
-void NetworkClient::run()
+void NetworkClient::stopClient()
 {
-	int err, maxlen = 512;  // error code
-	char* recvbuf = new char[maxlen];  // input bufer
-	
-	while (true)
+	for (auto &stat : stats)
 	{
-		WSADATA wsaData;
-		SOCKET ConnectSocket;  // socket
-		sockaddr_in ServerAddr;  // server address
-
-		bool run_flag = TRUE;
-
-		// initialising Winsock
-		WSAStartup(MAKEWORD(2, 2), &wsaData);
-
-		// connecting to server
-		ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-
-		ServerAddr.sin_family = AF_INET;
-		ServerAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
-		ServerAddr.sin_port = htons(12345);
-
-		qDebug() << "Trying to connect...";
-		err = connectSock(ConnectSocket, (sockaddr*) &ServerAddr, sizeof(ServerAddr));
-
-		while (err == SOCKET_ERROR)
-		{
-			err = connectSock(ConnectSocket, (sockaddr*) &ServerAddr, sizeof(ServerAddr));
-		}
-
-		qDebug() << "Connection open.";
-
-		while (run_flag)
-		{
-			try
-			{
-				err = recv(ConnectSocket, recvbuf, maxlen, 0);
-				recvbuf[err] = 0;
-				std::string buferString(recvbuf);
-				int data = std::stoi(buferString);
-				if (err > 0)
-				{
-					emit InputDataSig(data);
-				}
-				else
-				{
-					qDebug() << "Connection closing...";
-					break;
-				}
-			}
-			catch (...) 
-			{
-				qDebug() << "Error! Reconnect...";
-				break;
-			}
-			
-		}
-		// Disconnecting 
-		closesocket(ConnectSocket);
-		WSACleanup();
+		Stat(stat.first, stat.second.n_got, stat.second.n_tries, stat.second.n_right);
 	}
-	delete (recvbuf);
+	Stop();
+}
+
+void NetworkClient::request(int action_id)
+{
+	stats[action_id].n_tries++;
+	unsigned int answer = Request(action_id);
+	//if (answer == action_id)
+	//{
+	stats[action_id].n_right++;
+	stats[action_id].n_got++;
+	emit InputDataSig(answer);
+	qDebug() << answer << "  \n";
+	//}
+}
+
+void NetworkClient::updateIP_PortSlt(char* ipAddress, int port)
+{
+	stopClient();
+	startClient(ipAddress, port);
+	qDebug() << ">>Connected reconnected " << ipAddress << " " << port;
+};
+
+void NetworkClient::start_stopProgramSlt(bool isStart)
+{
+	qDebug() << ">>Start/Stop" << isStart;
+};
+
+void NetworkClient::startClient(char* ipAddress, int port)
+{
+	std::vector<unsigned int> action_id{ 42,5,5,42,5,42 };
+
+	Connect(ipAddress, port);
+	qDebug() << "Connected";
+	if (!(Start()))
+	{
+		qDebug() << "Error! Restarting...";
+	}
 }

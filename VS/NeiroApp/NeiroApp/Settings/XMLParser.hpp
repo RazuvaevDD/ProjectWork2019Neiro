@@ -14,7 +14,7 @@ Run loadXML function
 To add new setting in XML run addSetting(Setting &s)
 To get vector of settings run getSettings()
 To change setting run changeSetting(Setting s)
-Each settings in XML file should have unique ID 
+Each settings in XML file should have unique ID
 */
 
 
