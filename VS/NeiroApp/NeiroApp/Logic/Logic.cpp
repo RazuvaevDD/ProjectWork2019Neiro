@@ -14,7 +14,7 @@ Logic::~Logic()
 {
 }
 
-void Logic::newInputDataSlt(unsigned int IDSignal) 
+void Logic::newInputDataSlt(unsigned int IDSignal)
 {
 	if (IDSignal > 4)
 	{
@@ -22,7 +22,7 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 	}
 
 	qDebug() << "Input data: " << IDSignal;
-	
+
 	Settings_module::Setting setting;
 	for (unsigned int i = 0; i < settings.size(); i++)
 	{
@@ -64,10 +64,10 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 		}
 	}
 
-	if (!(setting.x == 0 && setting.y == 0 && setting.dx == 0 && setting.dy == 0)) 
+	if (!(setting.x == 0 && setting.y == 0 && setting.dx == 0 && setting.dy == 0))
 	{
 		emit setCoordsSig(setting.x, setting.y);
-		emit setCoordsSig(setting.dx, setting.dy, (int) (setting.mouseDelay*1000)); // it's long time running!!! create thread!
+		emit setCoordsSig(setting.dx, setting.dy, (int)(setting.mouseDelay * 1000)); // it's long time running!!! create thread!
 	}
 }
 
