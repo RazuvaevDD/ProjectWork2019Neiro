@@ -145,13 +145,13 @@ void MainWindow::on_changeButton_4_clicked()
 
 void MainWindow::on_startButton_clicked()
 {
-	ui.label->setText(QString::fromLocal8Bit("Ðàáîòàåò"));
+	ui.label->setText(QString::fromLocal8Bit("ÃÃ Ã¡Ã®Ã²Ã Ã¥Ã²"));
 	emit start_stopProgram(true);
 }
 
 void MainWindow::on_stopButton_clicked()
 {
-	ui.label->setText(QString::fromLocal8Bit("Îñòàíîâëåí"));
+	ui.label->setText(QString::fromLocal8Bit("ÃŽÃ±Ã²Ã Ã­Ã®Ã¢Ã«Ã¥Ã­"));
 	emit start_stopProgram(false);
 }
 
@@ -231,7 +231,7 @@ GUI::GUI(int & argc, char ** argv) :
 	connect(eWindow, SIGNAL(getUpdatedSettingsSig()), this, SLOT(getUpdatedSettingsSlt()));
 	connect(this, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), eWindow, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
 	connect(eWindow, SIGNAL(editSettingSig(Settings_module::Setting)), this, SLOT(editSettingSlt(Settings_module::Setting)));
-	connect(window, SIGNAL(start_stopProgram(bool started)), this, SLOT(start_stopProgramSlt(bool started)));
+	connect(window, SIGNAL(start_stopProgram(bool)), this, SLOT(start_stopProgramSlt(bool)));
 
 }
 
