@@ -25,7 +25,7 @@ namespace Input_module
 	public:
 		explicit NetworkClient(QString threadName);
 
-		void startClient(char*, int);
+		void startClient();
 
 		void request(int);
 
@@ -41,6 +41,10 @@ namespace Input_module
 		void InputDataSig(unsigned int);
 
 	private:
-		QString name;   // Имя потока
+		QString name;
+		std::map<unsigned int, Statistics> stats;
+		// Default values:
+		char* ipAddress = "127.0.0.1";
+		int port = 2121;
 	};
 }
