@@ -6,6 +6,8 @@
 
 using namespace GUI_module;
 
+// This comment was added to fixed troubles with f*cking GIT, please delete it in next commit
+
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
