@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	Settings_module::XMLParser* xmlParser = new Settings_module::XMLParser("Settings.xml");
 	Logic_module::Logic* logic = new Logic_module::Logic();
 	Connect_module::Connector* connector = new Connect_module::Connector(gui, mouse, keyboard, networkClient, xmlParser, logic);
-	Audio_module::Audio* audio = new Audio_module::Audio("WOO.mp3");
+	Audio_module::Audio* audio = new Audio_module::Audio("Audio/knock_sound.wav");
 
 
 	networkClient->start();

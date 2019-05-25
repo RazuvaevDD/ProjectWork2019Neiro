@@ -6,10 +6,9 @@
 #include <iostream>
 using namespace Input_module;
 
-std::map<unsigned int, Statistics> stats;
-
 NetworkClient::NetworkClient(QString threadName) :
-	name(threadName) {}
+	name(threadName) 
+{}
 
 NetworkClient::~NetworkClient()
 {
@@ -30,35 +29,41 @@ void NetworkClient::request(int action_id)
 {
 	stats[action_id].n_tries++;
 	unsigned int answer = Request(action_id);
-	//if (answer == action_id)
-	//{
+	
 	stats[action_id].n_right++;
 	stats[action_id].n_got++;
 	emit InputDataSig(answer);
 	qDebug() << answer << "  \n";
-	//}
 }
 
 void NetworkClient::updateIP_PortSlt(char* ipAddress, int port)
 {
 	stopClient();
-	startClient(ipAddress, port);
-	qDebug() << ">>Connected reconnected " << ipAddress << " " << port;
+	this->ipAddress = ipAddress;
+	this->port = port;
+	startClient();
 };
 
 void NetworkClient::start_stopProgramSlt(bool isStart)
 {
-	qDebug() << ">>Start/Stop" << isStart;
+	if (isStart == 1)
+	{
+		startClient();
+		qDebug() << ">>Client started" << isStart;
+	}
+	else if (isStart == 0)
+	{
+		stopClient();
+		qDebug() << ">>Client stopped" << isStart;
+	}
 };
 
-void NetworkClient::startClient(char* ipAddress, int port)
+void NetworkClient::startClient()
 {
-	std::vector<unsigned int> action_id{ 42,5,5,42,5,42 };
-
 	Connect(ipAddress, port);
 	qDebug() << "Connected";
 	if (!(Start()))
 	{
-		qDebug() << "Error! Restarting...";
+		qDebug() << "Error!";
 	}
 }
