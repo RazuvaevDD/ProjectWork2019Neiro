@@ -39,6 +39,8 @@ void NetworkClient::request(int action_id)
 void NetworkClient::updateIP_PortSlt(char* ipAddress, int port)
 {
 	stopClient();
+	this->ipAddress = ipAddress;
+	this->port = port;
 	startClient();
 };
 
