@@ -27,8 +27,8 @@ void NetworkClient::stopClient()
 
 void NetworkClient::request(int action_id)
 {
-	stats[action_id].n_tries++;
-	unsigned int answer = Request(action_id);
+	stats[0].n_tries++;
+	unsigned int answer = Request(0);
 	
 	stats[action_id].n_right++;
 	stats[action_id].n_got++;
@@ -49,12 +49,12 @@ void NetworkClient::start_stopProgramSlt(bool isStart)
 	if (isStart == 1)
 	{
 		startClient();
-		qDebug() << ">>Client started" << isStart;
+		qDebug() << ">>Client started";
 	}
 	else if (isStart == 0)
 	{
 		stopClient();
-		qDebug() << ">>Client stopped" << isStart;
+		qDebug() << ">>Client stopped";
 	}
 };
 
