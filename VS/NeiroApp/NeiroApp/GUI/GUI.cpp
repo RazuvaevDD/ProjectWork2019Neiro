@@ -145,13 +145,13 @@ void MainWindow::on_changeButton_4_clicked()
 
 void MainWindow::on_startButton_clicked()
 {
-	ui.label->setText(QString::fromLocal8Bit("Ðàáîòàåò"));
+	ui.label->setText(QString::fromUtf8("Запущен"));
 	emit start_stopProgram(true);
 }
 
 void MainWindow::on_stopButton_clicked()
 {
-	ui.label->setText(QString::fromLocal8Bit("Îñòàíîâëåí"));
+	ui.label->setText(QString::fromUtf8("Остановлен"));
 	emit start_stopProgram(false);
 }
 
