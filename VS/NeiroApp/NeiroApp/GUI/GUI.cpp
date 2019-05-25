@@ -146,12 +146,16 @@ void MainWindow::on_changeButton_4_clicked()
 void MainWindow::on_startButton_clicked()
 {
 	ui.label->setText(QString::fromUtf8("Запущен"));
+	ui.startButton->setEnabled(false);
+	ui.stopButton->setEnabled(true);
 	emit start_stopProgram(true);
 }
 
 void MainWindow::on_stopButton_clicked()
 {
 	ui.label->setText(QString::fromUtf8("Остановлен"));
+	ui.startButton->setEnabled(true);
+	ui.stopButton->setEnabled(false);
 	emit start_stopProgram(false);
 }
 
