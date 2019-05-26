@@ -32,11 +32,8 @@ int main(int argc, char *argv[])
 	Settings_module::XMLParser* xmlParser = new Settings_module::XMLParser("Settings.xml");
 	Logic_module::Logic* logic = new Logic_module::Logic();
 	Audio_module::Audio* audio = new Audio_module::Audio("Audio/knock_sound.wav");
-	//audio->setMusicSlt("./Audio/knock_sound.wav");
-	audio->setMusicSlt("./Audio/WOO.mp3");
 	Connect_module::Connector* connector = new Connect_module::Connector(gui, mouse, keyboard, networkClient, xmlParser, logic, audio);
 
-	//networkClient->start();
 	xmlParser->loadXMLSlt();
 	
 	int returnInt = gui->WaitingStopGUI();
