@@ -1,9 +1,9 @@
 .git/
 .vs/
-VS/Test/.vs/
-VS/Test/Win32/
-VS/Test/Test/GeneratedFiles/
-VS/Test/Test/Debug/
-VS/Test/Test/Release/
-VS/Test/Test/Test.vcxproj.user
-VS/Test/Test/Settings.xml
+VS/NeuroApp/.vs/
+VS/NeuroApp/Win32/
+VS/NeuroApp/NeuroApp/GeneratedFiles/
+VS/NeuroApp/NeuroApp/Debug/
+VS/NeuroApp/NeuroApp/Release/
+VS/NeuroApp/NeuroApp/Test.vcxproj.user
+VS/NeuroApp/NeuroApp/Settings.xml
