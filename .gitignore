@@ -1,9 +1,8 @@
 .git/
 .vs/
-VS/NeiroApp/.vs/
-VS/NeiroApp/Win32/
-VS/NeiroApp/NeiroApp/GeneratedFiles/
-VS/NeiroApp/NeiroApp/Debug/
-VS/NeiroApp/NeiroApp/Release/
-VS/NeiroApp/NeiroApp/NeiroApp.vcxproj.user
-VS/NeiroApp/NeiroApp/Settings.xml
+VS/Test/.vs/
+VS/Test/Win32/
+VS/Test/Test/GeneratedFiles/
+VS/Test/Test/Debug/
+VS/Test/Test/Release/
+VS/Test/Test/NeiroApp.vcxproj.user
