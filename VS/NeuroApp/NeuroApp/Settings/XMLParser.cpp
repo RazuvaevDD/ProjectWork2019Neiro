@@ -39,6 +39,18 @@ void XMLParser::loadXMLSlt()
 	}
 	else
 	{
+		Settings_module::Setting s;
+		s.dx = 0;
+		s.dy = 0;
+		s.keys = "None";
+		s.mouseDelay = 0;
+		s.movement = "Undefined movement";
+		s.x = 0;
+		s.y = 0;
+		for (int i = 0; i < 4; i++)
+		{
+			addSettingSlt(s);
+		}
 		return;
 	}
 
@@ -187,3 +199,4 @@ void XMLParser::clearXMLFileSlt()
 		qCritical() << "Unable to clear XML file. Further work of the program may be incorrect. Abort recommended"; 
 	}
 }
+
