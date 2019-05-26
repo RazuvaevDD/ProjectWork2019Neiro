@@ -5,4 +5,5 @@ VS/Test/Win32/
 VS/Test/Test/GeneratedFiles/
 VS/Test/Test/Debug/
 VS/Test/Test/Release/
-VS/Test/Test/NeiroApp.vcxproj.user
+VS/Test/Test/Test.vcxproj.user
+VS/Test/Test/Settings.xml
