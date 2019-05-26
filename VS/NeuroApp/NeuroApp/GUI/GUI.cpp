@@ -16,6 +16,7 @@ EditWindow::EditWindow(QDialog *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	ui.setCords->setVisible(false); // Temporarily!!!
 	ui.checker->setVisible(false);
 	allPButtons = findChildren<QPushButton *>();
 	for (int i = 0; i < allPButtons.size(); i++)
