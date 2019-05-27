@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	ui.stopButton->setEnabled(false);
 }
 
 EditWindow::EditWindow(QDialog *parent)
