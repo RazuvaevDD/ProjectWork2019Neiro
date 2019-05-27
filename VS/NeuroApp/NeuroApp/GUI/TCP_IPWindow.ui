@@ -87,7 +87,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Подключиться</string>
+    <string>Изменить</string>
    </property>
   </widget>
   <widget class="QPushButton" name="cancelButton">
