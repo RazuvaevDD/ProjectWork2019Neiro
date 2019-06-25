@@ -19,6 +19,10 @@ namespace Logic_module
 	signals:
 		void pressKeySig(std::string key);
 		void releaseKeySig(std::string Key);
+		void pressLeftClickSig();
+		void releaseLeftClickSig();
+		void pressRightClickSig();
+		void releaseRightClickSig();
 		void setCoordsSig(double, double);
 		void setCoordsSig(double, double, int);
 

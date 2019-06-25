@@ -66,14 +66,48 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 			ss >> key;
 			keys.push_back(key);
 		}
-		for (unsigned int i = 0; i < keys.size(); i++) // Now pressing keys 
+		for (unsigned int i = 0; i < keys.size(); i++) // Pressing keys 
 		{
-			emit pressKeySig(keys[i]);
-			Sleep(5);
+			if (keys[i] == "L_CLICK" )
+			{
+				emit pressLeftClickSig();
+				Sleep(5);
+			}
+			else if (keys[i] == "R_CLICK")
+			{
+				emit pressRightClickSig();
+				Sleep(5);
+			}
+			else if (keys[i] == "L_DOUBLECLICK")
+			{
+				emit pressLeftClickSig();
+				Sleep(5);
+				emit releaseLeftClickSig();
+				emit pressLeftClickSig();
+				Sleep(5);
+				emit releaseLeftClickSig();
+
+			}
+			else
+			{
+				emit pressKeySig(keys[i]);
+				Sleep(5);
+			}
 		}
-		for (unsigned int i = 0; i < keys.size(); i++) // Now releasing
+		for (unsigned int i = 0; i < keys.size(); i++) // Releasing
 		{
-			emit releaseKeySig(keys[i]);
+			if (keys[i] == "L_CLICK")
+			{
+				emit releaseLeftClickSig();
+			}
+			else if (keys[i] == "R_CLICK")
+			{
+				emit releaseRightClickSig();
+			}
+			else if (keys[i] != "L_DOUBLECLICK")
+			{
+				emit releaseKeySig(keys[i]);
+			}
 		}
 	}
 

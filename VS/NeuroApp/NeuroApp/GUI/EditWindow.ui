@@ -911,9 +911,9 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="num1">
+  <widget class="QPushButton" name="n1">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -930,9 +930,9 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="num2">
+  <widget class="QPushButton" name="n2">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -949,9 +949,9 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="num3">
+  <widget class="QPushButton" name="n3">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -968,9 +968,9 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="num4">
+  <widget class="QPushButton" name="n4">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -987,9 +987,9 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="num5">
+  <widget class="QPushButton" name="n5">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -1006,9 +1006,9 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="num6">
+  <widget class="QPushButton" name="n6">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -1025,9 +1025,9 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="num7">
+  <widget class="QPushButton" name="n7">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -1044,9 +1044,9 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="num8">
+  <widget class="QPushButton" name="n8">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -1063,9 +1063,9 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="num9">
+  <widget class="QPushButton" name="n9">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -1082,9 +1082,9 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="num0">
+  <widget class="QPushButton" name="n0">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -1405,7 +1405,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="PgDn">
+  <widget class="QPushButton" name="PGDN">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -1424,7 +1424,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="NumLock">
+  <widget class="QPushButton" name="NUMLOCK">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -1891,6 +1891,101 @@
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="SUBTRACT2">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>120</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ADD2">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>120</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DELETE2">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>80</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="L_CLICK">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>360</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="R_CLICK">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>360</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>layoutWidget</zorder>
   <zorder>layoutWidget1</zorder>
   <zorder>layoutWidget2</zorder>
@@ -1934,16 +2029,16 @@
   <zorder>R_SHIFT</zorder>
   <zorder>ENTER</zorder>
   <zorder>RightEnter</zorder>
-  <zorder>num1</zorder>
-  <zorder>num2</zorder>
-  <zorder>num3</zorder>
-  <zorder>num4</zorder>
-  <zorder>num5</zorder>
-  <zorder>num6</zorder>
-  <zorder>num7</zorder>
-  <zorder>num8</zorder>
-  <zorder>num9</zorder>
-  <zorder>num0</zorder>
+  <zorder>n1</zorder>
+  <zorder>n2</zorder>
+  <zorder>n3</zorder>
+  <zorder>n4</zorder>
+  <zorder>n5</zorder>
+  <zorder>n6</zorder>
+  <zorder>n7</zorder>
+  <zorder>n8</zorder>
+  <zorder>n9</zorder>
+  <zorder>n0</zorder>
   <zorder>F1</zorder>
   <zorder>ESC</zorder>
   <zorder>F2</zorder>
@@ -1960,8 +2055,8 @@
   <zorder>TILDA</zorder>
   <zorder>SCROLL_LOCK</zorder>
   <zorder>PGUP</zorder>
-  <zorder>PgDn</zorder>
-  <zorder>NumLock</zorder>
+  <zorder>PGDN</zorder>
+  <zorder>NUMLOCK</zorder>
   <zorder>CAPS_LOCK</zorder>
   <zorder>Win</zorder>
   <zorder>checker</zorder>
@@ -1984,6 +2079,11 @@
   <zorder>MULTIPLY</zorder>
   <zorder>SUBTRACT</zorder>
   <zorder>ADD</zorder>
+  <zorder>SUBTRACT2</zorder>
+  <zorder>ADD2</zorder>
+  <zorder>DELETE2</zorder>
+  <zorder>L_CLICK</zorder>
+  <zorder>R_CLICK</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

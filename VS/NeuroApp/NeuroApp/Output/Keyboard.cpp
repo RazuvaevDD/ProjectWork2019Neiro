@@ -93,7 +93,7 @@ byte Keyboard::getKeyCode(std::string sKey)
 	{
 		return VK_RETURN;
 	}
-	if (sKey == "NUM")
+	if (sKey == "NUMLOCK")
 	{
 		return VK_NUMLOCK;
 	}
@@ -164,10 +164,6 @@ byte Keyboard::getKeyCode(std::string sKey)
 	if (sKey == "F11")
 	{
 		return VK_F11;
-	}
-	if (sKey == "F12")
-	{
-		return VK_F12;
 	}
 	if (sKey == "F12")
 	{
