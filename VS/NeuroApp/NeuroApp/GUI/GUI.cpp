@@ -45,6 +45,26 @@ void EditWindow::pushButtonKeys()
 	QString ss = ui.checker->text();
 	QString t;
 	QString s = sender()->objectName();
+	if (s.size() == 2 && s[0] == 'n')
+	{
+		s = s[1];
+	}
+	if (s == "TILDA")
+	{
+		s = '~';
+	}
+	else if (s == "SUBTRACT2")
+	{
+		s = "SUBTRACT";
+	}
+	else if (s == "ADD2")
+	{
+		s = "ADD";
+	}
+	else if (s == "DELETE2")
+	{
+		s = "DELETE";
+	}
 	t = ui.keyLabel->text();
 	if (s != ss && s != t)
 	{
@@ -83,7 +103,7 @@ void EditWindow::pushButtonKeys()
 	}
 }
 
-void EditWindow::on_reset_clicked()
+void EditWindow::on_reset_clicked() // Rename!!!
 {
 	ui.keyLabel->setText("None");
 	ui.xEdit->setText("0");
@@ -93,7 +113,7 @@ void EditWindow::on_reset_clicked()
 	ui.mouseDelayEdit->setText("0");
 }
 
-void EditWindow::on_ok_clicked()
+void EditWindow::on_ok_clicked() // And this too
 {
 	Settings_module::Setting setting;
 	setting.id = ID;
@@ -109,7 +129,7 @@ void EditWindow::on_ok_clicked()
 	close();
 }
 
-void EditWindow::on_setCords_clicked()
+void EditWindow::on_setCords_clicked() // ...
 {
 	ui.xEdit->setText("0");
 	ui.yEdit->setText("0");
@@ -117,35 +137,35 @@ void EditWindow::on_setCords_clicked()
 	ui.yEdit_2->setText("0");
 }
 
-void MainWindow::on_changeButton_clicked()
+void MainWindow::on_changeButton_clicked() // ...
 {
 	Settings_module::Setting nullSetting;
 	nullSetting.isNULL = true;
 	emit openEditWindow(1, nullSetting);
 }
 
-void MainWindow::on_changeButton_2_clicked()
+void MainWindow::on_changeButton_2_clicked() // ...
 {
 	Settings_module::Setting nullSetting;
 	nullSetting.isNULL = true;
 	emit openEditWindow(2, nullSetting);
 }
 
-void MainWindow::on_changeButton_3_clicked()
+void MainWindow::on_changeButton_3_clicked() // ...
 {
 	Settings_module::Setting nullSetting;
 	nullSetting.isNULL = true;
 	emit openEditWindow(3, nullSetting);
 }
 
-void MainWindow::on_changeButton_4_clicked()
+void MainWindow::on_changeButton_4_clicked() // ...
 {
 	Settings_module::Setting nullSetting;
 	nullSetting.isNULL = true;
 	emit openEditWindow(4, nullSetting);
 }
 
-void MainWindow::on_startButton_clicked()
+void MainWindow::on_startButton_clicked() // ...
 {
 	ui.label->setText(QString::fromUtf8(u8"Запущен"));
 	ui.startButton->setEnabled(false);
@@ -153,7 +173,7 @@ void MainWindow::on_startButton_clicked()
 	emit start_stopProgram(true);
 }
 
-void MainWindow::on_stopButton_clicked()
+void MainWindow::on_stopButton_clicked() // ...
 {
 	ui.label->setText(QString::fromUtf8(u8"Остановлен"));
 	ui.startButton->setEnabled(true);
@@ -161,29 +181,29 @@ void MainWindow::on_stopButton_clicked()
 	emit start_stopProgram(false);
 }
 
-void GUI::on_changeIP_Port_triggered(QAction* action)
+void GUI::on_changeIP_Port_triggered(QAction* action) // ...
 {
 	tcp_ipWindow->show();
 }
 
-void GUI::on_aboutProgram_triggered(QAction* action)
+void GUI::on_aboutProgram_triggered(QAction* action) // ...
 {
 	aWindow->show();
 }
 
-void GUI::start_stopProgramSlt(bool started)
+void GUI::start_stopProgramSlt(bool started) // ...
 {
 	emit start_stopProgramSig(started);
 }
 
-void TCP_IPWindow::on_okButton_clicked()
+void TCP_IPWindow::on_okButton_clicked() // ...
 {
 	char* ip = ui.ipLine->text().toUtf8().data();
 	int port = ui.portLine->text().toInt();
 	emit updateIP_PortSig(ip, port);
 }
 
-void GUI::updateIP_PortSlt(char* ip, int port)
+void GUI::updateIP_PortSlt(char* ip, int port) // ...
 {
 	emit updateIP_PortSig(ip, port);
 }

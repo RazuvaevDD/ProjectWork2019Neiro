@@ -31,6 +31,10 @@ void Connector::connectAll()
 	connect(gui, SIGNAL(updateIP_PortSig(char*, int)), networkClient, SLOT(updateIP_PortSlt(char*, int)));
 	connect(gui, SIGNAL(start_stopProgramSig(bool)), networkClient, SLOT(start_stopProgramSlt(bool)));
 	connect(networkClient, SIGNAL(AudioSig()), audio, SLOT(playSlt()));
+	connect(logic, SIGNAL(pressRightClickSig()), mouse, SLOT(pressRightClickSlt()));
+	connect(logic, SIGNAL(pressLeftClickSig()), mouse, SLOT(pressLeftClickSlt()));
+	connect(logic, SIGNAL(releaseRightClickSig()), mouse, SLOT(releaseRightClickSlt()));
+	connect(logic, SIGNAL(releaseLeftClickSig()), mouse, SLOT(releaseLeftClickSlt()));
 }
 
 Connector::~Connector()

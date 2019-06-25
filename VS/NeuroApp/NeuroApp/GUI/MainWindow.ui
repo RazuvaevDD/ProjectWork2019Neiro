@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>NeuroApp</string>
+   <string>NeuroInterface Adapter</string>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
