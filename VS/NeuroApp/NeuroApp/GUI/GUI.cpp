@@ -6,6 +6,8 @@
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
 
+#define slash '/'
+
 using namespace GUI_module;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -33,6 +35,8 @@ EditWindow::EditWindow(QDialog *parent)
 
 void EditWindow::keyPressEvent(QKeyEvent *event)
 {
+	QString ss = ui.checker->text();
+	QString t;
 	QString s;
 	switch ((int)event->key())
 	{
@@ -65,7 +69,7 @@ void EditWindow::keyPressEvent(QKeyEvent *event)
 		case 16777238: s = "PGUP"; break;
 		case 16777239: s = "PGDN"; break;
 		case 16777253: s = "NUMLOCK"; break;
-		case 92:       s = shash; break;
+		case 92:       s = slash; break;
 		case 16777219: s = "BACKSPACE"; break;
 		case 34:       s = '"'; break;
 		case 16777220: s = "ENTER"; break; // left
@@ -77,6 +81,43 @@ void EditWindow::keyPressEvent(QKeyEvent *event)
 	}
 	qDebug() << "*** pressed" << s;
 	//qDebug() << "*** pressed" << (int)event->key();
+
+	t = ui.keyLabel->text();
+	if (s != ss && s != t)
+	{
+		if (t == "None" || t == "")
+		{
+			ui.keyLabel->setText(s);
+		}
+		else
+		{
+			t += " + ";
+			t += s;
+			ui.keyLabel->setText(t);
+		}
+		ui.checker->setText(s);
+	}
+	else
+	{
+		if (t == s)
+		{
+			t = "";
+			ui.keyLabel->setText(t);
+			ui.checker->setText("");
+		}
+		else
+		{
+			int pos = t.lastIndexOf(QChar('+'));
+			t = t.left(pos - 1);
+			ui.keyLabel->setText(t);
+			pos = t.lastIndexOf(QChar('+'));
+			ui.checker->setText(t.right(t.size() - pos - 2));
+		}
+	}
+	if (ui.keyLabel->text() == "")
+	{
+		ui.keyLabel->setText("None");
+	}
 }
 
 TCP_IPWindow::TCP_IPWindow(QDialog *parent)
