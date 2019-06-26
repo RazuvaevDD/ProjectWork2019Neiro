@@ -29,6 +29,7 @@ namespace GUI_module
 		void on_reset_clicked();
 		void on_setCords_clicked();
 		void updatedSettingsSlt(std::vector<Settings_module::Setting>);
+		void keyPressEvent(QKeyEvent *event);
 	private:
 		Ui::EditWindow ui;
 		int ID = 0;
