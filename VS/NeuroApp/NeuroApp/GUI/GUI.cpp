@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <cstring>
+#include <QKeyEvent>
+#include <QDebug>
 #include "GUI/GUI.hpp"
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
@@ -10,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
+	ui.stopButton->setEnabled(false);
 }
 
 EditWindow::EditWindow(QDialog *parent)
@@ -26,6 +29,54 @@ EditWindow::EditWindow(QDialog *parent)
 			QObject::connect(allPButtons.at(i), SIGNAL(clicked()), this, SLOT(pushButtonKeys()));
 		}
 	}
+}
+
+void EditWindow::keyPressEvent(QKeyEvent *event)
+{
+	QString s;
+	switch ((int)event->key())
+	{
+		case 16777248: s = "R_SHIFT"; break;
+		case 16777249: s = "L_CTRL"; break;
+		case 16777216: s = "ESC"; break;
+		case 16777264: s = "F1"; break;
+		case 16777265: s = "F2"; break;
+		case 16777266: s = "F3"; break;
+		case 16777267: s = "F4"; break;
+		case 16777268: s = "F5"; break;
+		case 16777269: s = "F6"; break;
+		case 16777270: s = "F7"; break;
+		case 16777271: s = "F8"; break;
+		case 16777272: s = "F9"; break;
+		case 16777273: s = "F10"; break;
+		case 16777274: s = "F11"; break;
+		case 16777275: s = "F12"; break;
+		case 32:       s = "SPACE"; break;
+		case 16777217: s = "TAB"; break;
+		case 16777252: s = "CAPS_LOCK"; break;
+		case 16777251: s = "ALT"; break;
+		case 16777234: s = "LEFT"; break;
+		case 16777236: s = "RIGHT"; break;
+		case 16777235: s = "UP"; break;
+		case 16777237: s = "DOWN"; break;
+		case 16777224: s = "PAUSE"; break;
+		case 16777223: s = "DELETE"; break;
+		case 16777254: s = "SCROLL LOCK"; break;
+		case 16777238: s = "PGUP"; break;
+		case 16777239: s = "PGDN"; break;
+		case 16777253: s = "NUMLOCK"; break;
+		case 92:       s = shash; break;
+		case 16777219: s = "BACKSPACE"; break;
+		case 34:       s = '"'; break;
+		case 16777220: s = "ENTER"; break; // left
+		case 16777221: s = "ENTER"; break; // right
+		case 16777250: s = "L_WIN"; break; //it's R_WIN. ━╤デ╦︻(▀̿̿Ĺ̯̿▀)
+		case 43:       s = "ADD"; break;
+		case 45:       s = "SUBTRACT"; break;
+		default:       s = (QString)event->key();
+	}
+	qDebug() << "*** pressed" << s;
+	//qDebug() << "*** pressed" << (int)event->key();
 }
 
 TCP_IPWindow::TCP_IPWindow(QDialog *parent)
