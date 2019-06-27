@@ -82,7 +82,19 @@ void EditWindow::keyPressEvent(QKeyEvent *event)
 	
 	if(event->modifiers() & Qt::KeypadModifier)
 	{
-		s = "NUM"+s;
+		switch ((int)event->key()) 
+		{
+			case 48: s = "NUM0"; break;
+			case 49: s = "NUM1"; break;
+			case 50: s = "NUM2"; break;
+			case 51: s = "NUM3"; break;
+			case 52: s = "NUM4"; break;
+			case 53: s = "NUM5"; break;
+			case 54: s = "NUM6"; break;
+			case 55: s = "NUM7"; break;
+			case 56: s = "NUM8"; break;
+			case 57: s = "NUM9"; break;
+		}
 	}
 	
 	qDebug() << "*** pressed" << s;
