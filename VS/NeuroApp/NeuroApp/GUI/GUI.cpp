@@ -79,6 +79,12 @@ void EditWindow::keyPressEvent(QKeyEvent *event)
 		case 45:       s = "SUBTRACT"; break;
 		default:       s = (QString)event->key();
 	}
+	
+	if(event->modifiers() & Qt::KeypadModifier)
+	{
+		s = "NUM"+s;
+	}
+	
 	qDebug() << "*** pressed" << s;
 	//qDebug() << "*** pressed" << (int)event->key();
 
