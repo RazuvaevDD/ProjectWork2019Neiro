@@ -2,5 +2,7 @@
     <qresource prefix="/MainWindow">
         <file>Images/Circle.svg</file>
         <file>Images/2019-05-23_14-37-20.png</file>
+        <file>Images/fon.png</file>
+        <file>Images/lsa.png</file>
     </qresource>
 </RCC>
