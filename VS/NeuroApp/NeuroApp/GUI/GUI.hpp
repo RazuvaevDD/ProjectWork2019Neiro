@@ -34,6 +34,7 @@ namespace GUI_module
 		void relativeSelected();
 		void absoluteSelected();
 		void on_addMouseMove_clicked();
+		void on_langButton_clicked();
 	private:
 		Ui::EditWindow ui;
 		int ID = 0;
