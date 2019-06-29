@@ -6,6 +6,8 @@
 #include "ui_MainWindow.h"
 #include "ui_EditWindow.h"
 
+#define slash '/'
+
 using namespace GUI_module;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -19,6 +21,16 @@ EditWindow::EditWindow(QDialog *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	QPalette *palette = new QPalette();
+	palette->setColor(QPalette::Base, Qt::gray);
+	palette->setColor(QPalette::Text, Qt::black);
+	ui.xEdit->setPalette(*palette);
+	ui.yEdit->setPalette(*palette);
+	ui.xEdit_2->setPalette(*palette);
+	ui.yEdit_2->setPalette(*palette);
+	connect(ui.no, SIGNAL(clicked()), this, SLOT(noSelected()));
+	connect(ui.relative, SIGNAL(clicked()), this, SLOT(relativeSelected()));
+	connect(ui.absolute, SIGNAL(clicked()), this, SLOT(absoluteSelected()));
 	ui.setCords->setVisible(false); // Temporarily!!!
 	ui.checker->setVisible(false);
 	allPButtons = findChildren<QPushButton *>();
@@ -31,8 +43,58 @@ EditWindow::EditWindow(QDialog *parent)
 	}
 }
 
+void EditWindow::noSelected()
+{
+	QPalette *palette1 = new QPalette();
+	palette1->setColor(QPalette::Base, Qt::gray);
+	palette1->setColor(QPalette::Text, Qt::black);
+	ui.xEdit->setPalette(*palette1);
+	ui.yEdit->setPalette(*palette1);
+	ui.xEdit_2->setPalette(*palette1);
+	ui.yEdit_2->setPalette(*palette1);
+	ui.xEdit->setReadOnly(true);
+	ui.yEdit->setReadOnly(true);
+	ui.xEdit_2->setReadOnly(1);
+	ui.yEdit_2->setReadOnly(1);
+}
+
+void EditWindow::relativeSelected()
+{
+	ui.xEdit_2->setReadOnly(false);
+	ui.yEdit_2->setReadOnly(false);
+	ui.xEdit->setReadOnly(true);
+	ui.yEdit->setReadOnly(true);
+	QPalette *palette = new QPalette();
+	palette->setColor(QPalette::Base, Qt::white);
+	palette->setColor(QPalette::Text, Qt::black);
+	ui.xEdit_2->setPalette(*palette);
+	ui.yEdit_2->setPalette(*palette);
+	QPalette *palette1 = new QPalette();
+	palette1->setColor(QPalette::Base, Qt::gray);
+	palette1->setColor(QPalette::Text, Qt::black);
+	ui.xEdit->setPalette(*palette1);
+	ui.yEdit->setPalette(*palette1);
+}
+
+void EditWindow::absoluteSelected()
+{
+	ui.xEdit->setReadOnly(false);
+	ui.yEdit->setReadOnly(false);
+	ui.xEdit_2->setReadOnly(false);
+	ui.yEdit_2->setReadOnly(false);
+	QPalette *palette = new QPalette();
+	palette->setColor(QPalette::Base, Qt::white);
+	palette->setColor(QPalette::Text, Qt::black);
+	ui.xEdit_2->setPalette(*palette);
+	ui.yEdit_2->setPalette(*palette);
+	ui.xEdit->setPalette(*palette);
+	ui.yEdit->setPalette(*palette);
+}
+
 void EditWindow::keyPressEvent(QKeyEvent *event)
 {
+	QString ss = ui.checker->text();
+	QString t;
 	QString s;
 	switch ((int)event->key())
 	{
@@ -65,7 +127,7 @@ void EditWindow::keyPressEvent(QKeyEvent *event)
 		case 16777238: s = "PGUP"; break;
 		case 16777239: s = "PGDN"; break;
 		case 16777253: s = "NUMLOCK"; break;
-		case 92:       s = shash; break;
+		case 92:       s = slash; break;
 		case 16777219: s = "BACKSPACE"; break;
 		case 34:       s = '"'; break;
 		case 16777220: s = "ENTER"; break; // left
@@ -75,8 +137,63 @@ void EditWindow::keyPressEvent(QKeyEvent *event)
 		case 45:       s = "SUBTRACT"; break;
 		default:       s = (QString)event->key();
 	}
+	
+	if(event->modifiers() & Qt::KeypadModifier)
+	{
+		switch ((int)event->key()) 
+		{
+			case 48: s = "NUM0"; break;
+			case 49: s = "NUM1"; break;
+			case 50: s = "NUM2"; break;
+			case 51: s = "NUM3"; break;
+			case 52: s = "NUM4"; break;
+			case 53: s = "NUM5"; break;
+			case 54: s = "NUM6"; break;
+			case 55: s = "NUM7"; break;
+			case 56: s = "NUM8"; break;
+			case 57: s = "NUM9"; break;
+		}
+	}
+	
 	qDebug() << "*** pressed" << s;
 	//qDebug() << "*** pressed" << (int)event->key();
+
+	t = ui.keyLabel->text();
+	if (s != ss && s != t)
+	{
+		if (t == "None" || t == "")
+		{
+			ui.keyLabel->setText(s);
+		}
+		else
+		{
+			t += " + ";
+			t += s;
+			ui.keyLabel->setText(t);
+		}
+		ui.checker->setText(s);
+	}
+	else
+	{
+		if (t == s)
+		{
+			t = "";
+			ui.keyLabel->setText(t);
+			ui.checker->setText("");
+		}
+		else
+		{
+			int pos = t.lastIndexOf(QChar('+'));
+			t = t.left(pos - 1);
+			ui.keyLabel->setText(t);
+			pos = t.lastIndexOf(QChar('+'));
+			ui.checker->setText(t.right(t.size() - pos - 2));
+		}
+	}
+	if (ui.keyLabel->text() == "")
+	{
+		ui.keyLabel->setText("None");
+	}
 }
 
 TCP_IPWindow::TCP_IPWindow(QDialog *parent)
@@ -191,9 +308,30 @@ void MainWindow::on_changeButton_clicked() // ...
 {
 	Settings_module::Setting nullSetting;
 	nullSetting.isNULL = true;
-	emit openEditWindow(1, nullSetting);
+	switch (ui.movementBox->currentIndex())
+	{
+		case 0:
+		{
+			emit openEditWindow(1, nullSetting);
+			break;
+		}
+		case 1:
+		{
+			emit openEditWindow(2, nullSetting);
+			break;
+		}
+		case 2:
+		{
+			emit openEditWindow(3, nullSetting);
+			break;
+		}
+		case 3:
+		{
+			emit openEditWindow(4, nullSetting);
+			break;
+		}
+	}
 }
-
 void MainWindow::on_changeButton_2_clicked() // ...
 {
 	Settings_module::Setting nullSetting;
@@ -362,14 +500,18 @@ void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 	{
 		keyLineStr4 += " MOUSE_MOVE";
 	}
-	window->ui.keysLine->setText(keyLineStr1);
+	/*window->ui.keysLine->setText(keyLineStr1);
 	window->ui.keysLine_2->setText(keyLineStr2);
 	window->ui.keysLine_3->setText(keyLineStr3);
-	window->ui.keysLine_4->setText(keyLineStr4);
-	window->ui.movementLine->setText(QString::fromStdString(setting1.movement));
+	window->ui.keysLine_4->setText(keyLineStr4);*/
+	/*window->ui.movementLine->setText(QString::fromStdString(setting1.movement));
 	window->ui.movementLine_2->setText(QString::fromStdString(setting2.movement));
 	window->ui.movementLine_3->setText(QString::fromStdString(setting3.movement));
-	window->ui.movementLine_4->setText(QString::fromStdString(setting4.movement));
+	window->ui.movementLine_4->setText(QString::fromStdString(setting4.movement));*/
+	window->ui.movementBox->setItemText(0, QString::fromStdString(setting1.movement));
+	window->ui.movementBox->setItemText(1, QString::fromStdString(setting2.movement));
+	window->ui.movementBox->setItemText(2, QString::fromStdString(setting3.movement));
+	window->ui.movementBox->setItemText(3, QString::fromStdString(setting4.movement));
 }
 
 void GUI::editSettingSlt(Settings_module::Setting setting)
