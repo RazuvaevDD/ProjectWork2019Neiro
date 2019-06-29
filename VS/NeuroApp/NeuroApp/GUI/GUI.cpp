@@ -21,6 +21,16 @@ EditWindow::EditWindow(QDialog *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	QPalette *palette = new QPalette();
+	palette->setColor(QPalette::Base, Qt::gray);
+	palette->setColor(QPalette::Text, Qt::black);
+	ui.xEdit->setPalette(*palette);
+	ui.yEdit->setPalette(*palette);
+	ui.xEdit_2->setPalette(*palette);
+	ui.yEdit_2->setPalette(*palette);
+	connect(ui.no, SIGNAL(clicked()), this, SLOT(noSelected()));
+	connect(ui.relative, SIGNAL(clicked()), this, SLOT(relativeSelected()));
+	connect(ui.absolute, SIGNAL(clicked()), this, SLOT(absoluteSelected()));
 	ui.setCords->setVisible(false); // Temporarily!!!
 	ui.checker->setVisible(false);
 	allPButtons = findChildren<QPushButton *>();
@@ -31,6 +41,54 @@ EditWindow::EditWindow(QDialog *parent)
 			QObject::connect(allPButtons.at(i), SIGNAL(clicked()), this, SLOT(pushButtonKeys()));
 		}
 	}
+}
+
+void EditWindow::noSelected()
+{
+	QPalette *palette1 = new QPalette();
+	palette1->setColor(QPalette::Base, Qt::gray);
+	palette1->setColor(QPalette::Text, Qt::black);
+	ui.xEdit->setPalette(*palette1);
+	ui.yEdit->setPalette(*palette1);
+	ui.xEdit_2->setPalette(*palette1);
+	ui.yEdit_2->setPalette(*palette1);
+	ui.xEdit->setReadOnly(true);
+	ui.yEdit->setReadOnly(true);
+	ui.xEdit_2->setReadOnly(1);
+	ui.yEdit_2->setReadOnly(1);
+}
+
+void EditWindow::relativeSelected()
+{
+	ui.xEdit_2->setReadOnly(false);
+	ui.yEdit_2->setReadOnly(false);
+	ui.xEdit->setReadOnly(true);
+	ui.yEdit->setReadOnly(true);
+	QPalette *palette = new QPalette();
+	palette->setColor(QPalette::Base, Qt::white);
+	palette->setColor(QPalette::Text, Qt::black);
+	ui.xEdit_2->setPalette(*palette);
+	ui.yEdit_2->setPalette(*palette);
+	QPalette *palette1 = new QPalette();
+	palette1->setColor(QPalette::Base, Qt::gray);
+	palette1->setColor(QPalette::Text, Qt::black);
+	ui.xEdit->setPalette(*palette1);
+	ui.yEdit->setPalette(*palette1);
+}
+
+void EditWindow::absoluteSelected()
+{
+	ui.xEdit->setReadOnly(false);
+	ui.yEdit->setReadOnly(false);
+	ui.xEdit_2->setReadOnly(false);
+	ui.yEdit_2->setReadOnly(false);
+	QPalette *palette = new QPalette();
+	palette->setColor(QPalette::Base, Qt::white);
+	palette->setColor(QPalette::Text, Qt::black);
+	ui.xEdit_2->setPalette(*palette);
+	ui.yEdit_2->setPalette(*palette);
+	ui.xEdit->setPalette(*palette);
+	ui.yEdit->setPalette(*palette);
 }
 
 void EditWindow::keyPressEvent(QKeyEvent *event)
