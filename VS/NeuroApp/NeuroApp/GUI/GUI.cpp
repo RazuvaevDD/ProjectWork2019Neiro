@@ -36,7 +36,8 @@ EditWindow::EditWindow(QDialog *parent)
 	allPButtons = findChildren<QPushButton *>();
 	for (int i = 0; i < allPButtons.size(); i++)
 	{
-		if (allPButtons.at(i) != ui.cancel && allPButtons.at(i) != ui.setCords && allPButtons.at(i) != ui.reset && allPButtons.at(i) != ui.ok)
+		if (allPButtons.at(i) != ui.cancel && allPButtons.at(i) != ui.setCords && allPButtons.at(i) != ui.reset && allPButtons.at(i) != ui.ok &&
+			allPButtons.at(i) != ui.addMouseMove)
 		{
 			QObject::connect(allPButtons.at(i), SIGNAL(clicked()), this, SLOT(pushButtonKeys()));
 		}
@@ -56,6 +57,7 @@ void EditWindow::noSelected()
 	ui.yEdit->setReadOnly(true);
 	ui.xEdit_2->setReadOnly(1);
 	ui.yEdit_2->setReadOnly(1);
+	ui.addMouseMove->setEnabled(false);
 }
 
 void EditWindow::relativeSelected()
@@ -74,21 +76,26 @@ void EditWindow::relativeSelected()
 	palette1->setColor(QPalette::Text, Qt::black);
 	ui.xEdit->setPalette(*palette1);
 	ui.yEdit->setPalette(*palette1);
+	ui.addMouseMove->setEnabled(true);
 }
 
 void EditWindow::absoluteSelected()
 {
 	ui.xEdit->setReadOnly(false);
 	ui.yEdit->setReadOnly(false);
-	ui.xEdit_2->setReadOnly(false);
-	ui.yEdit_2->setReadOnly(false);
+	ui.xEdit_2->setReadOnly(true);
+	ui.yEdit_2->setReadOnly(true);
 	QPalette *palette = new QPalette();
 	palette->setColor(QPalette::Base, Qt::white);
 	palette->setColor(QPalette::Text, Qt::black);
-	ui.xEdit_2->setPalette(*palette);
-	ui.yEdit_2->setPalette(*palette);
 	ui.xEdit->setPalette(*palette);
 	ui.yEdit->setPalette(*palette);
+	QPalette *palette1 = new QPalette();
+	palette1->setColor(QPalette::Base, Qt::gray);
+	palette1->setColor(QPalette::Text, Qt::black);
+	ui.xEdit_2->setPalette(*palette1);
+	ui.yEdit_2->setPalette(*palette1);
+	ui.addMouseMove->setEnabled(true);
 }
 
 void EditWindow::keyPressEvent(QKeyEvent *event)
