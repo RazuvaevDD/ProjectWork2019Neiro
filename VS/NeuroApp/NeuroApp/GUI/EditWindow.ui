@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>760</width>
-    <height>500</height>
+    <height>511</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>760</width>
-    <height>500</height>
+    <height>511</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>760</width>
-    <height>500</height>
+    <height>511</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -126,12 +126,29 @@
      <x>180</x>
      <y>330</y>
      <width>412</width>
-     <height>154</height>
+     <height>158</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="xEdit_2"/>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="yEdit"/>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="xEdit"/>
+    </item>
+    <item row="3" column="2">
+     <widget class="QRadioButton" name="relativeMovement">
+      <property name="text">
+       <string>Относительное</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QRadioButton" name="absoluteMovement">
+      <property name="text">
+       <string>Абсолютное</string>
+      </property>
+     </widget>
     </item>
     <item row="0" column="0">
      <widget class="QLabel" name="xLabel">
@@ -140,19 +157,30 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="yEdit"/>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="xEdit"/>
-    </item>
     <item row="3" column="1">
      <widget class="QLineEdit" name="yEdit_2"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="xEdit_2"/>
+    </item>
+    <item row="2" column="2">
+     <widget class="QRadioButton" name="noMovement">
+      <property name="text">
+       <string>нет</string>
+      </property>
+     </widget>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="yLabel">
       <property name="text">
        <string>Y:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="xLabel_2">
+      <property name="text">
+       <string>X(конечное зн.):</string>
       </property>
      </widget>
     </item>
@@ -170,22 +198,22 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="xLabel_2">
-      <property name="text">
-       <string>X(конечное зн.):</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
+    <item row="1" column="2">
      <widget class="QLabel" name="mouseDelay">
       <property name="text">
        <string>Время перемещения мыши</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="2">
+    <item row="1" column="3">
      <widget class="QLineEdit" name="mouseDelayEdit"/>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="addMouseMove">
+      <property name="text">
+       <string>Добавить перемещение</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
