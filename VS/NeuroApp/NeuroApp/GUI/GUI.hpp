@@ -33,6 +33,7 @@ namespace GUI_module
 		void noSelected();
 		void relativeSelected();
 		void absoluteSelected();
+		void on_addMouseMove_clicked();
 	private:
 		Ui::EditWindow ui;
 		int ID = 0;
