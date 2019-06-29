@@ -37,6 +37,146 @@ byte Keyboard::getKeyCode(std::string sKey)
 	{
 		return byte(sKey[0]);
 	}
+	if (sKey == u8"É")
+	{
+		return getKeyCode("Q");
+	}
+	if (sKey == u8"Ö")
+	{
+		return getKeyCode("W");
+	}
+	if (sKey == u8"Ó")
+	{
+		return getKeyCode("E");
+	}
+	if (sKey == u8"Ê")
+	{
+		return getKeyCode("R");
+	}
+	if (sKey == u8"Å")
+	{
+		return getKeyCode("T");
+	}
+	if (sKey == u8"Í")
+	{
+		return getKeyCode("Y");
+	}
+	if (sKey == u8"Ã")
+	{
+		return getKeyCode("U");
+	}
+	if (sKey == u8"Ø")
+	{
+		return getKeyCode("I");
+	}
+	if (sKey == u8"Ù")
+	{
+		return getKeyCode("O");
+	}
+	if (sKey == u8"Ç")
+	{
+		return getKeyCode("P");
+	}
+	if (sKey == u8"Õ")
+	{
+		return getKeyCode("[");
+	}
+	if (sKey == u8"Ú")
+	{
+		return getKeyCode("]");
+	}
+	if (sKey == u8"Ô")
+	{
+		return getKeyCode("A");
+	}
+	if (sKey == u8"Û")
+	{
+		return getKeyCode("S");
+	}
+	if (sKey == u8"Â")
+	{
+		return getKeyCode("D");
+	}
+	if (sKey == u8"À")
+	{
+		return getKeyCode("F");
+	}
+	if (sKey == u8"Ï")
+	{
+		return getKeyCode("G");
+	}
+	if (sKey == u8"Ð")
+	{
+		return getKeyCode("H");
+	}
+	if (sKey == u8"Î")
+	{
+		return getKeyCode("J");
+	}
+	if (sKey == u8"Ë")
+	{
+		return getKeyCode("K");
+	}
+	if (sKey == u8"Ä")
+	{
+		return getKeyCode("L");
+	}
+	if (sKey == u8"Æ")
+	{
+		return getKeyCode(";");
+	}
+	if (sKey == u8"Ý")
+	{
+		return getKeyCode("''");
+	}
+	if (sKey == u8"ß")
+	{
+		return getKeyCode("Z");
+	}
+	if (sKey == u8"×")
+	{
+		return getKeyCode("X");
+	}
+	if (sKey == u8"Ñ")
+	{
+		return getKeyCode("C");
+	}
+	if (sKey == u8"Ì")
+	{
+		return getKeyCode("V");
+	}
+	if (sKey == u8"È")
+	{
+		return getKeyCode("B");
+	}
+	if (sKey == u8"Ò")
+	{
+		return getKeyCode("N");
+	}
+	if (sKey == u8"Ü")
+	{
+		return getKeyCode("M");
+	}
+	if (sKey == u8"Á")
+	{
+		return getKeyCode(",");
+	}
+	if (sKey == u8"Þ")
+	{
+		return getKeyCode(".");
+	}
+	if (sKey == "BACKSLASH")
+	{
+		return 220;
+	}
+	if (sKey == ";")
+	{
+		return 186;
+	}
+	if (sKey == "''") 
+	{
+		return 222;
+	}
 	if (sKey == "L_CTRL")
 	{
 		return VK_LCONTROL;

@@ -21,6 +21,14 @@ EditWindow::EditWindow(QDialog *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	//ui.keyboardLabel->setPixmap(QPixmap("Eng_keyboard.png"));
+	/*ui.keyboardLabel->setVisible(false);
+	ui.keyboardLabel_rus->setVisible(true);*/
+	QPoint p;
+	p.setX(ui.keyboardLabel->x());
+	p.setY(ui.keyboardLabel->y());
+	ui.keyboardLabel_rus->move(p);
+	this->setFocus();
 	ui.addMouseMove->setEnabled(false);
 	QPalette *palette = new QPalette();
 	palette->setColor(QPalette::Base, Qt::gray);
@@ -37,7 +45,7 @@ EditWindow::EditWindow(QDialog *parent)
 	allPButtons = findChildren<QPushButton *>();
 	for (int i = 0; i < allPButtons.size(); i++)
 	{
-		if (allPButtons.at(i) != ui.cancel && allPButtons.at(i) != ui.setCords && allPButtons.at(i) != ui.reset && allPButtons.at(i) != ui.ok &&
+		if (allPButtons.at(i) != ui.cancel && allPButtons.at(i) != ui.setCords && allPButtons.at(i) != ui.langButton && allPButtons.at(i) != ui.reset && allPButtons.at(i) != ui.ok &&
 			allPButtons.at(i) != ui.addMouseMove)
 		{
 			QObject::connect(allPButtons.at(i), SIGNAL(clicked()), this, SLOT(pushButtonKeys()));
@@ -167,7 +175,7 @@ void EditWindow::keyPressEvent(QKeyEvent *event)
 	//qDebug() << "*** pressed" << (int)event->key();
 
 	t = ui.keyLabel->text();
-	if (s != ss && s != t)
+ 	if (s != ss && s != t)
 	{
 		if (t == "None" || t == "")
 		{
@@ -239,6 +247,165 @@ void EditWindow::pushButtonKeys()
 	else if (s == "DELETE2")
 	{
 		s = "DELETE";
+	}
+	else if (s == "L_BRACKET")
+	{
+		s = "[";
+	}
+	else if (s == "R_BRACKET")
+	{
+		s = "]";
+	}
+	else if (s == "SEMICOLON")
+	{
+		s = ";";
+	}
+	else if (s == "QUOTATION_MARK")
+	{
+		s = "''";
+	}
+	else if (s == "COMMA")
+	{
+		s = ",";
+	}
+	else if (s == "POINT")
+	{
+		s = ".";
+	}
+	else if (s == "SLASH")
+	{
+		s = "/";
+	}
+	if (ui.langButton->text() == "RUS")
+	{
+		if (s == "Q")
+		{
+			s = u8"Й";
+		}
+		else if (s == "W")
+		{
+			s = u8"Ц";
+		}
+		else if (s == "E")
+		{
+			s = u8"У";
+		}
+		else if (s == "R")
+		{
+			s = u8"К";
+		}
+		else if (s == "T")
+		{
+			s = u8"Е";
+		}
+		else if (s == "Y")
+		{
+			s = u8"Н";
+		}
+		else if (s == "U")
+		{
+			s = u8"Г";
+		}
+		else if (s == "I")
+		{
+			s = u8"Ш";
+		}
+		else if (s == "O")
+		{
+			s = u8"Щ";
+		}
+		else if (s == "P")
+		{
+			s = u8"З";
+		}
+		else if (s == "[")
+		{
+			s = u8"Х";
+		}
+		else if (s == "]")
+		{
+			s = u8"Ъ";
+		}
+		else if (s == "A")
+		{
+			s = u8"Ф";
+		}
+		else if (s == "S")
+		{
+			s = u8"Ы";
+		}
+		else if (s == "D")
+		{
+			s = u8"В";
+		}
+		else if (s == "F")
+		{
+			s = u8"А";
+		}
+		else if (s == "G")
+		{
+			s = u8"П";
+		}
+		else if (s == "H")
+		{
+			s = u8"Р";
+		}
+		else if (s == "J")
+		{
+			s = u8"О";
+		}
+		else if (s == "K")
+		{
+			s = u8"Л";
+		}
+		else if (s == "L")
+		{
+			s = u8"Д";
+		}
+		else if (s == ";")
+		{
+			s = u8"Ж";
+		}
+		else if (s == "''")
+		{
+			s = u8"Э";
+		}
+		else if (s == "Z")
+		{
+			s = u8"Я";
+		}
+		else if (s == "X")
+		{
+			s = u8"Ч";
+		}
+		else if (s == "C")
+		{
+			s = u8"С";
+		}
+		else if (s == "V")
+		{
+			s = u8"М";
+		}
+		else if (s == "B")
+		{
+			s = u8"И";
+		}
+		else if (s == "N")
+		{
+			s = u8"Т";
+		}
+		else if (s == "M")
+		{
+			s = u8"Ь";
+		}
+		else if (s == ",")
+		{
+			s = u8"Б";
+		}
+		else if (s == ".")
+		{
+			s = u8"Ю";
+		}
 	}
 	t = ui.keyLabel->text();
 	if (s != ss && s != t)
@@ -451,6 +618,22 @@ void EditWindow::updatedSettingsSlt(std::vector<Settings_module::Setting> settin
 		{
 			openWindow(ID, settings[i]);
 		}
+	}
+}
+
+void EditWindow::on_langButton_clicked()
+{
+	if (ui.langButton->text() == "ENG")
+	{
+		ui.langButton->setText("RUS");
+		ui.keyboardLabel->setVisible(false);
+		ui.keyboardLabel_rus->setVisible(true);
+	}
+	else
+	{
+		ui.langButton->setText("ENG");
+		ui.keyboardLabel->setVisible(true);
+		ui.keyboardLabel_rus->setVisible(false);
 	}
 }
 

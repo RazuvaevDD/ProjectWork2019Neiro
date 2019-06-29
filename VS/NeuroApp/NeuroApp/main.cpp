@@ -33,8 +33,9 @@ int main(int argc, char *argv[])
 	Logic_module::Logic* logic = new Logic_module::Logic();
 	Audio_module::Audio* audio = new Audio_module::Audio("Audio/knock_sound.wav");
 	Connect_module::Connector* connector = new Connect_module::Connector(gui, mouse, keyboard, networkClient, xmlParser, logic, audio);
-
 	xmlParser->loadXMLSlt();
+	QString lang = QApplication::inputMethod()->locale().name();
+	qInfo() << lang;
 	
 	int returnInt = gui->WaitingStopGUI();
 	delete (connector);
