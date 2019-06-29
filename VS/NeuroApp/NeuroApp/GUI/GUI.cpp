@@ -250,9 +250,30 @@ void MainWindow::on_changeButton_clicked() // ...
 {
 	Settings_module::Setting nullSetting;
 	nullSetting.isNULL = true;
-	emit openEditWindow(1, nullSetting);
+	switch (ui.movementBox->currentIndex())
+	{
+		case 0:
+		{
+			emit openEditWindow(1, nullSetting);
+			break;
+		}
+		case 1:
+		{
+			emit openEditWindow(2, nullSetting);
+			break;
+		}
+		case 2:
+		{
+			emit openEditWindow(3, nullSetting);
+			break;
+		}
+		case 3:
+		{
+			emit openEditWindow(4, nullSetting);
+			break;
+		}
+	}
 }
-
 void MainWindow::on_changeButton_2_clicked() // ...
 {
 	Settings_module::Setting nullSetting;
@@ -421,14 +442,18 @@ void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 	{
 		keyLineStr4 += " MOUSE_MOVE";
 	}
-	window->ui.keysLine->setText(keyLineStr1);
+	/*window->ui.keysLine->setText(keyLineStr1);
 	window->ui.keysLine_2->setText(keyLineStr2);
 	window->ui.keysLine_3->setText(keyLineStr3);
-	window->ui.keysLine_4->setText(keyLineStr4);
-	window->ui.movementLine->setText(QString::fromStdString(setting1.movement));
+	window->ui.keysLine_4->setText(keyLineStr4);*/
+	/*window->ui.movementLine->setText(QString::fromStdString(setting1.movement));
 	window->ui.movementLine_2->setText(QString::fromStdString(setting2.movement));
 	window->ui.movementLine_3->setText(QString::fromStdString(setting3.movement));
-	window->ui.movementLine_4->setText(QString::fromStdString(setting4.movement));
+	window->ui.movementLine_4->setText(QString::fromStdString(setting4.movement));*/
+	window->ui.movementBox->setItemText(0, QString::fromStdString(setting1.movement));
+	window->ui.movementBox->setItemText(1, QString::fromStdString(setting2.movement));
+	window->ui.movementBox->setItemText(2, QString::fromStdString(setting3.movement));
+	window->ui.movementBox->setItemText(3, QString::fromStdString(setting4.movement));
 }
 
 void GUI::editSettingSlt(Settings_module::Setting setting)
