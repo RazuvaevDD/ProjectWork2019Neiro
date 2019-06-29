@@ -21,6 +21,7 @@ EditWindow::EditWindow(QDialog *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
+	ui.addMouseMove->setEnabled(false);
 	QPalette *palette = new QPalette();
 	palette->setColor(QPalette::Base, Qt::gray);
 	palette->setColor(QPalette::Text, Qt::black);
@@ -31,7 +32,7 @@ EditWindow::EditWindow(QDialog *parent)
 	connect(ui.no, SIGNAL(clicked()), this, SLOT(noSelected()));
 	connect(ui.relative, SIGNAL(clicked()), this, SLOT(relativeSelected()));
 	connect(ui.absolute, SIGNAL(clicked()), this, SLOT(absoluteSelected()));
-	ui.setCords->setVisible(false); // Temporarily!!!
+	ui.setCords->setVisible(true); 
 	ui.checker->setVisible(false);
 	allPButtons = findChildren<QPushButton *>();
 	for (int i = 0; i < allPButtons.size(); i++)
@@ -309,6 +310,24 @@ void EditWindow::on_setCords_clicked() // ...
 	ui.yEdit->setText("0");
 	ui.xEdit_2->setText("0");
 	ui.yEdit_2->setText("0");
+}
+
+void EditWindow::on_addMouseMove_clicked()
+{
+	QString t = ui.keyLabel->text();
+	if (ui.relative->isChecked())
+	{
+		t += " + ";
+		QString s = "RelMouseMoveTo(" + ui.xEdit_2->text() + "; " + ui.yEdit_2->text() + ")";
+		t += s;
+	}
+	else if (ui.absolute->isChecked())
+	{
+		t += " + ";
+		QString s = "AbsMouseMoveTo(" + ui.xEdit->text() + "; " + ui.yEdit->text() + ")";
+		t += s;
+	}
+	ui.keyLabel->setText(t);
 }
 
 void MainWindow::on_changeButton_clicked() // ...
