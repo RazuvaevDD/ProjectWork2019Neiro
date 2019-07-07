@@ -38,6 +38,8 @@ namespace GUI_module
 		void relativeSelected();
 		void absoluteSelected();
 		void on_addMouseMove_clicked();
+		void on_L_CLICK_clicked();
+		void on_R_CLICK_clicked();
 		void on_langButton_clicked();
 	private:
 		Ui::EditWindow ui;

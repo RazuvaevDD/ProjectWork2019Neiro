@@ -32,6 +32,8 @@ EditWindow::EditWindow(QDialog *parent)
 	/*ui.keyboardLabel->setVisible(false);
 	ui.keyboardLabel_rus->setVisible(true);*/
 	QPoint p;
+	ui.addMouseMove->setEnabled(false);
+	ui.setCords->setEnabled(false);
 	p.setX(ui.keyboardLabel->x());
 	p.setY(ui.keyboardLabel->y());
 	ui.keyboardLabel_rus->move(p);
@@ -84,7 +86,7 @@ EditWindow::EditWindow(QDialog *parent)
 	for (int i = 0; i < allPButtons.size(); i++)
 	{
 		if (allPButtons.at(i) != ui.cancel && allPButtons.at(i) != ui.setCords && allPButtons.at(i) != ui.langButton && allPButtons.at(i) != ui.reset && allPButtons.at(i) != ui.ok &&
-			allPButtons.at(i) != ui.addMouseMove)
+			allPButtons.at(i) != ui.addMouseMove && allPButtons.at(i) != ui.L_CLICK && allPButtons.at(i) != ui.R_CLICK)
 		{
 			QObject::connect(allPButtons.at(i), SIGNAL(clicked()), this, SLOT(pushButtonKeys()));
 		}
@@ -134,6 +136,7 @@ void EditWindow::noSelected()
 	ui.xEdit_2->setReadOnly(1);
 	ui.yEdit_2->setReadOnly(1);
 	ui.addMouseMove->setEnabled(false);
+	ui.setCords->setEnabled(false);
 }
 
 void EditWindow::relativeSelected()
@@ -610,6 +613,40 @@ void EditWindow::on_addMouseMove_clicked()
 	ui.keyLabel->setText(t);
 }
 
+void EditWindow::on_L_CLICK_clicked()
+{
+	QString t;
+	if (ui.keyLabel->text() != "None")
+	{
+		t = ui.keyLabel->text();
+	}
+	else
+	{
+		t = "";
+	}
+	if (t != "") t += " + ";
+	QString s = "L_CLICK";
+	t += s;
+	ui.keyLabel->setText(t);
+}
+
+void EditWindow::on_R_CLICK_clicked()
+{
+	QString t;
+	if (ui.keyLabel->text() != "None")
+	{
+		t = ui.keyLabel->text();
+	}
+	else
+	{
+		t = "";
+	}
+	if (t != "") t += " + ";
+	QString s = "R_CLICK";
+	t += s;
+	ui.keyLabel->setText(t);
+}
+
 void MainWindow::on_changeButton_clicked() // ...
 {
 	Settings_module::Setting nullSetting;
@@ -732,6 +769,9 @@ void EditWindow::openWindow(int ID, Settings_module::Setting setting)
 	ui.yEdit->setText(QString::number(0));
 	ui.yEdit_2->setText(QString::number(0));*/
 	ui.mouseDelayEdit->setText(QString::number(setting.mouseDelay));
+	ui.no->setChecked(true);
+	ui.addMouseMove->setEnabled(false);
+	ui.setCords->setEnabled(false);
 
 	setModal(true);
 	show();
