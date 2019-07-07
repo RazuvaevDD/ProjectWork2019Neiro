@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>NeuroInterface Adapter</string>
+   <string>NeuroInterface Adapter (alpha)</string>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -294,7 +294,7 @@ p, li { white-space: pre-wrap; }
   </action>
   <action name="aboutProgram">
    <property name="text">
-    <string>О NeuroApp</string>
+    <string>О NeuroInterface Adapter</string>
    </property>
   </action>
  </widget>

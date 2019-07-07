@@ -41,7 +41,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>:/Images/mouse-png-2.png</pixmap>
+    <pixmap resource="EditWindow.qrc">:/Images/mouse-png-2.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -72,7 +72,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>:/Images/KEYBOARD.png</pixmap>
+    <pixmap resource="EditWindow.qrc">:/Images/KEYBOARD.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -1917,7 +1917,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>нет</string>
+    <string>Нет</string>
    </property>
    <property name="checked">
     <bool>true</bool>
@@ -2027,7 +2027,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>X(конечное зн.):</string>
+    <string>Смещение по X:</string>
    </property>
   </widget>
   <widget class="QLabel" name="yLabel">
@@ -2053,7 +2053,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Y(конечное зн.):</string>
+    <string>Смещение по Y:</string>
    </property>
   </widget>
   <widget class="QLabel" name="mouseDelay">
@@ -2146,7 +2146,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>:/Images/KEYBOARD_RUS.png</pixmap>
+    <pixmap resource="EditWindow.qrc">:/Images/KEYBOARD_RUS.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
