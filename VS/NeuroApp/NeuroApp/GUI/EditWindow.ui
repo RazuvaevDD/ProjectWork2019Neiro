@@ -41,7 +41,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="EditWindow.qrc">:/Images/mouse-png-2.png</pixmap>
+    <pixmap>:/Images/mouse-png-2.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -72,7 +72,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="EditWindow.qrc">:/Images/KEYBOARD.png</pixmap>
+    <pixmap>:/Images/KEYBOARD.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -1989,6 +1989,9 @@
    </property>
   </widget>
   <widget class="QLineEdit" name="xEdit_2">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>410</x>
@@ -2143,7 +2146,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="EditWindow.qrc">:/Images/KEYBOARD_RUS.png</pixmap>
+    <pixmap>:/Images/KEYBOARD_RUS.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
