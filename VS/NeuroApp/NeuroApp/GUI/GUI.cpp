@@ -850,6 +850,8 @@ void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 	window->ui.movementBox->setItemText(1, QString::fromStdString(setting2.movement));
 	window->ui.movementBox->setItemText(2, QString::fromStdString(setting3.movement));
 	window->ui.movementBox->setItemText(3, QString::fromStdString(setting4.movement));
+	window->ui.movementBox->setCurrentIndex(0);
+	window->ui.keysLine->setText(window->ui.label_0->text());
 }
 
 void GUI::editSettingSlt(Settings_module::Setting setting)
