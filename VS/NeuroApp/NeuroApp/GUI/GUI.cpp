@@ -29,14 +29,45 @@ EditWindow::EditWindow(QDialog *parent)
 	p.setY(ui.keyboardLabel->y());
 	ui.keyboardLabel_rus->move(p);
 	this->setFocus();
-	ui.addMouseMove->setEnabled(false);
 	QPalette *palette = new QPalette();
 	palette->setColor(QPalette::Base, Qt::gray);
 	palette->setColor(QPalette::Text, Qt::black);
+	ui.mouseDelayEdit->setPalette(*palette);
 	ui.xEdit->setPalette(*palette);
 	ui.yEdit->setPalette(*palette);
 	ui.xEdit_2->setPalette(*palette);
 	ui.yEdit_2->setPalette(*palette);
+	/*if (ui.xEdit->text() != "0" || ui.yEdit->text() != "0")
+	{
+		ui.absolute->setChecked(true);
+		ui.setCords->setEnabled(true);
+		ui.addMouseMove->setEnabled(true);
+		ui.xEdit->setReadOnly(false);
+		ui.yEdit->setReadOnly(false);
+		QPalette *palette = new QPalette();
+		palette->setColor(QPalette::Base, Qt::white);
+		palette->setColor(QPalette::Text, Qt::black);
+		ui.xEdit->setPalette(*palette);
+		ui.yEdit->setPalette(*palette);
+	}
+	else if (ui.xEdit_2->text() != "0" || ui.yEdit_2->text() != "0")
+	{
+		ui.relative->setChecked(true);
+		ui.setCords->setEnabled(true);
+		ui.addMouseMove->setEnabled(true);
+		ui.xEdit_2->setReadOnly(false);
+		ui.yEdit_2->setReadOnly(false);
+		QPalette *palette = new QPalette();
+		palette->setColor(QPalette::Base, Qt::white);
+		palette->setColor(QPalette::Text, Qt::black);
+		ui.xEdit->setPalette(*palette);
+		ui.yEdit->setPalette(*palette);
+	}
+	else
+	{
+		ui.addMouseMove->setEnabled(false);
+		ui.setCords->setEnabled(false);
+	}*/
 	connect(ui.no, SIGNAL(clicked()), this, SLOT(noSelected()));
 	connect(ui.relative, SIGNAL(clicked()), this, SLOT(relativeSelected()));
 	connect(ui.absolute, SIGNAL(clicked()), this, SLOT(absoluteSelected()));
@@ -53,13 +84,30 @@ EditWindow::EditWindow(QDialog *parent)
 	}
 }
 
+EditWindow::~EditWindow()
+{
+	emit restoreCursorSig();
+}
+
+void EditWindow::mousePressEvent(QMouseEvent *event)
+{
+	this->setFocus();
+}
+
 void EditWindow::noSelected()
 {
+	ui.setCords->setEnabled(false);
+	ui.mouseDelayEdit->setReadOnly(true);
+	ui.xEdit->setText("0");
+	ui.yEdit->setText("0");
+	ui.xEdit_2->setText("0");
+	ui.yEdit_2->setText("0");
 	QPalette *palette1 = new QPalette();
 	palette1->setColor(QPalette::Base, Qt::gray);
 	palette1->setColor(QPalette::Text, Qt::black);
 	ui.xEdit->setPalette(*palette1);
 	ui.yEdit->setPalette(*palette1);
+	ui.mouseDelayEdit->setPalette(*palette1);
 	ui.xEdit_2->setPalette(*palette1);
 	ui.yEdit_2->setPalette(*palette1);
 	ui.xEdit->setReadOnly(true);
@@ -71,6 +119,12 @@ void EditWindow::noSelected()
 
 void EditWindow::relativeSelected()
 {
+	ui.mouseDelayEdit->setReadOnly(false);
+	ui.xEdit->setText("0");
+	ui.yEdit->setText("0");
+	ui.xEdit_2->setText("0");
+	ui.yEdit_2->setText("0");
+	ui.setCords->setEnabled(true);
 	ui.xEdit_2->setReadOnly(false);
 	ui.yEdit_2->setReadOnly(false);
 	ui.xEdit->setReadOnly(true);
@@ -80,6 +134,7 @@ void EditWindow::relativeSelected()
 	palette->setColor(QPalette::Text, Qt::black);
 	ui.xEdit_2->setPalette(*palette);
 	ui.yEdit_2->setPalette(*palette);
+	ui.mouseDelayEdit->setPalette(*palette);
 	QPalette *palette1 = new QPalette();
 	palette1->setColor(QPalette::Base, Qt::gray);
 	palette1->setColor(QPalette::Text, Qt::black);
@@ -90,6 +145,12 @@ void EditWindow::relativeSelected()
 
 void EditWindow::absoluteSelected()
 {
+	ui.mouseDelayEdit->setReadOnly(false);
+	ui.xEdit->setText("0");
+	ui.yEdit->setText("0");
+	ui.xEdit_2->setText("0");
+	ui.yEdit_2->setText("0");
+	ui.setCords->setEnabled(true);
 	ui.xEdit->setReadOnly(false);
 	ui.yEdit->setReadOnly(false);
 	ui.xEdit_2->setReadOnly(true);
@@ -99,6 +160,7 @@ void EditWindow::absoluteSelected()
 	palette->setColor(QPalette::Text, Qt::black);
 	ui.xEdit->setPalette(*palette);
 	ui.yEdit->setPalette(*palette);
+	ui.mouseDelayEdit->setPalette(*palette);
 	QPalette *palette1 = new QPalette();
 	palette1->setColor(QPalette::Base, Qt::gray);
 	palette1->setColor(QPalette::Text, Qt::black);
@@ -477,6 +539,30 @@ void EditWindow::on_setCords_clicked() // ...
 	ui.yEdit->setText("0");
 	ui.xEdit_2->setText("0");
 	ui.yEdit_2->setText("0");
+	qInfo() << QString::number(QCursor::pos().x());
+	emit changeCursorSig();
+	if (ui.relative->isChecked())
+	{
+		QCursor::setPos(geometry().center());
+	}
+	while (true)
+	{
+		if (GetAsyncKeyState(VK_RBUTTON))
+		{
+			if (ui.absolute->isChecked())
+			{
+				ui.xEdit->setText(QString::number(QCursor::pos().x()));
+				ui.yEdit->setText(QString::number(QCursor::pos().y()));
+			}
+			else if (ui.relative->isChecked())
+			{
+				ui.xEdit_2->setText(QString::number(QCursor::pos().x() - geometry().center().x()));
+				ui.yEdit_2->setText(QString::number(QCursor::pos().y() - geometry().center().y()));
+			}
+			break;
+		}
+	}
+	emit restoreCursorSig();
 }
 
 void EditWindow::on_addMouseMove_clicked()
@@ -577,6 +663,16 @@ void GUI::start_stopProgramSlt(bool started) // ...
 	emit start_stopProgramSig(started);
 }
 
+void GUI::changeCursorSlt()
+{
+	emit changeCursorSig();
+}
+
+void GUI::restoreCursorSlt()
+{
+	emit restoreCursorSig();
+}
+
 void TCP_IPWindow::on_okButton_clicked() // ...
 {
 	char* ip = ui.ipLine->text().toUtf8().data();
@@ -604,6 +700,10 @@ void EditWindow::openWindow(int ID, Settings_module::Setting setting)
 	ui.xEdit_2->setText(QString::number(setting.dx));
 	ui.yEdit->setText(QString::number(setting.y));
 	ui.yEdit_2->setText(QString::number(setting.dy));
+	/*ui.xEdit->setText(QString::number(0));
+	ui.xEdit_2->setText(QString::number(0));
+	ui.yEdit->setText(QString::number(0));
+	ui.yEdit_2->setText(QString::number(0));*/
 	ui.mouseDelayEdit->setText(QString::number(setting.mouseDelay));
 
 	setModal(true);
@@ -637,6 +737,7 @@ void EditWindow::on_langButton_clicked()
 	}
 }
 
+
 GUI::GUI(int & argc, char ** argv) :
 	app(argc, argv)
 {
@@ -655,7 +756,8 @@ GUI::GUI(int & argc, char ** argv) :
 	connect(this, SIGNAL(updatedSettingsSig(std::vector<Settings_module::Setting>)), eWindow, SLOT(updatedSettingsSlt(std::vector<Settings_module::Setting>)));
 	connect(eWindow, SIGNAL(editSettingSig(Settings_module::Setting)), this, SLOT(editSettingSlt(Settings_module::Setting)));
 	connect(window, SIGNAL(start_stopProgram(bool)), this, SLOT(start_stopProgramSlt(bool)));
-
+	connect(eWindow, SIGNAL(changeCursorSig()), this, SLOT(changeCursorSlt()));
+	connect(eWindow, SIGNAL(restoreCursorSig()), this, SLOT(restoreCursorSlt()));
 }
 
 void GUI::getUpdatedSettingsSlt()

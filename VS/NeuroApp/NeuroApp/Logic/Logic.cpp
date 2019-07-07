@@ -110,15 +110,41 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 			}
 		}
 	}
-
-	if (setting.dx != 0 || setting.dy != 0)
+	/*if (setting.dx != 0 || setting.dy != 0)
 	{
 		if (setting.x >= 0 && setting.y >= 0)
 		{
 			emit setCoordsSig(setting.x, setting.y);
 		}
 		emit setCoordsSig(setting.dx, setting.dy, (int)(setting.mouseDelay * 1000)); // it's long time running!!! create thread! //it's ok boy stfu
+	}*/
+	if (setting.x > 0 || setting.y > 0)
+	{
+		if (setting.mouseDelay == 0)
+		{
+			emit setCoordsSig(setting.x, setting.y);
+		}
+		else
+		{
+			emit setCoordsSig(setting.x, setting.y, (int)(setting.mouseDelay * 1000));
+		}
 	}
+	else if (setting.dx != 0 || setting.dy != 0)
+	{
+		qInfo() << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+		if (setting.mouseDelay == 0)
+		{
+			emit shiftCoordsSig(setting.dx, setting.dy);
+		}
+		else
+		{
+			emit shiftCoordsSig(setting.dx, setting.dy, (int)(setting.mouseDelay * 1000));
+		}
+	}
+	/*else if (setting.dx > 0 || setting.dy > 0)
+	{
+		emit setCoordsSig(setting.dx, setting.dy, (int)(setting.mouseDelay * 1000));
+	}*/
 }
 
 void Logic::updateSettings(std::vector<Settings_module::Setting> settings)

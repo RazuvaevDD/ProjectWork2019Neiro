@@ -143,6 +143,10 @@ void Mouse::changeCursorSlt()
 
 void Mouse::restoreCursorSlt()
 {
+	if (!isCursorChanged)
+	{
+		return;
+	}
 	isCursorChanged = false;
 	SetSystemCursor((HCURSOR)hArrow, OCR_NORMAL);
 }

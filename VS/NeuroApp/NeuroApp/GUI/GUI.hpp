@@ -18,10 +18,14 @@ namespace GUI_module
 
 	public:
 		EditWindow(QDialog *parent = Q_NULLPTR);
+		~EditWindow();
+		void mousePressEvent(QMouseEvent *event);
 		QList<QPushButton *> allPButtons;
 	signals:
 		void getUpdatedSettingsSig();
 		void editSettingSig(Settings_module::Setting);
+		void changeCursorSig();
+		void restoreCursorSig();
 	private slots:
 		void openWindow(int, Settings_module::Setting);
 		void on_ok_clicked();
@@ -102,7 +106,8 @@ namespace GUI_module
 		void editSettingSig(Settings_module::Setting);
 		void updateIP_PortSig(char*, int);
 		void start_stopProgramSig(bool);
-
+		void changeCursorSig();
+		void restoreCursorSig();
 	private:
 		QApplication app;
 	private slots:
@@ -113,5 +118,7 @@ namespace GUI_module
 		void on_aboutProgram_triggered(QAction* action);
 		void updateIP_PortSlt(char*,int);
 		void start_stopProgramSlt(bool);
+		void changeCursorSlt();
+		void restoreCursorSlt();
 	};
 }

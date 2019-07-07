@@ -25,7 +25,8 @@ namespace Logic_module
 		void releaseRightClickSig();
 		void setCoordsSig(double, double);
 		void setCoordsSig(double, double, int);
-
+		void shiftCoordsSig(double, double);
+		void shiftCoordsSig(double, double, int);
 	private:
 		std::vector<Settings_module::Setting> settings;
 	};
