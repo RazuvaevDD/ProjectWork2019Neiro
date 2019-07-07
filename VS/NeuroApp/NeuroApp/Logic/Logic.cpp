@@ -68,6 +68,7 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 		}
 		for (unsigned int i = 0; i < keys.size(); i++) // Pressing keys 
 		{
+			qInfo() << "KEY " << i << " " << QString::fromUtf8(keys[i].c_str());
 			if (keys[i] == "L_CLICK" )
 			{
 				emit pressLeftClickSig();
@@ -87,6 +88,31 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 				Sleep(5);
 				emit releaseLeftClickSig();
 
+			}
+			else if (keys[i] == "MOUSE_MOVE")
+			{
+				if (setting.x > 0 || setting.y > 0)
+				{
+					if (setting.mouseDelay == 0)
+					{
+						emit setCoordsSig(setting.x, setting.y);
+					}
+					else
+					{
+						emit setCoordsSig(setting.x, setting.y, (int)(setting.mouseDelay * 1000));
+					}
+				}
+				else if (setting.dx != 0 || setting.dy != 0)
+				{
+					if (setting.mouseDelay == 0)
+					{
+						emit shiftCoordsSig(setting.dx, setting.dy);
+					}
+					else
+					{
+						emit shiftCoordsSig(setting.dx, setting.dy, (int)(setting.mouseDelay * 1000));
+					}
+				}
 			}
 			else
 			{
@@ -118,7 +144,9 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 		}
 		emit setCoordsSig(setting.dx, setting.dy, (int)(setting.mouseDelay * 1000)); // it's long time running!!! create thread! //it's ok boy stfu
 	}*/
-	if (setting.x > 0 || setting.y > 0)
+
+
+	/*if (setting.x > 0 || setting.y > 0)
 	{
 		if (setting.mouseDelay == 0)
 		{
@@ -140,7 +168,9 @@ void Logic::newInputDataSlt(unsigned int IDSignal)
 		{
 			emit shiftCoordsSig(setting.dx, setting.dy, (int)(setting.mouseDelay * 1000));
 		}
-	}
+	}*/
+
+
 	/*else if (setting.dx > 0 || setting.dy > 0)
 	{
 		emit setCoordsSig(setting.dx, setting.dy, (int)(setting.mouseDelay * 1000));

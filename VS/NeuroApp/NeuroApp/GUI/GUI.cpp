@@ -601,15 +601,22 @@ void EditWindow::on_addMouseMove_clicked()
 	if (ui.relative->isChecked())
 	{
 		if (t != "") t += " + ";
-		QString s = "RelMouseMoveTo(" + ui.xEdit_2->text() + "; " + ui.yEdit_2->text() + ")";
+		//QString s = "RelMouseMoveTo(" + ui.xEdit_2->text() + "; " + ui.yEdit_2->text() + ")";
+		t.remove("+ MOUSE_MOVE ");
+		t.remove("MOUSE_MOVE + ");
+		QString s = "MOUSE_MOVE";
 		t += s;
 	}
 	else if (ui.absolute->isChecked())
 	{
 		if (t != "") t += " + ";
-		QString s = "AbsMouseMoveTo(" + ui.xEdit->text() + "; " + ui.yEdit->text() + ")";
+		//QString s = "AbsMouseMoveTo(" + ui.xEdit->text() + "; " + ui.yEdit->text() + ")";
+		t.remove("+ MOUSE_MOVE ");
+		t.remove("MOUSE_MOVE + ");
+		QString s = "MOUSE_MOVE";
 		t += s;
 	}
+	//t.remove("MOUSE_MOVE");
 	ui.keyLabel->setText(t);
 }
 
@@ -862,7 +869,7 @@ void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 	QString keyLineStr2 = QString::fromStdString(setting2.keys);
 	QString keyLineStr3 = QString::fromStdString(setting3.keys);
 	QString keyLineStr4 = QString::fromStdString(setting4.keys);
-	if (setting1.dx != 0 || setting1.dy != 0)
+	/*if (setting1.dx != 0 || setting1.dy != 0)
 	{
 		keyLineStr1 += " + MOUSE_MOVE";
 	}
@@ -877,7 +884,7 @@ void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 	if (setting4.dx != 0 || setting4.dy != 0)
 	{
 		keyLineStr4 += " MOUSE_MOVE";
-	}
+	}*/
 	window->ui.label_0->setText(keyLineStr1);
 	window->ui.label_1->setText(keyLineStr2);
 	window->ui.label_2->setText(keyLineStr3);
