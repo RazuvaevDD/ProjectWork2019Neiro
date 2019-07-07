@@ -82,11 +82,12 @@ namespace GUI_module
 		void start_stopProgram(bool started);
 	private slots:
 		void on_changeButton_clicked();   
-		void on_changeButton_2_clicked();   
+		/*void on_changeButton_2_clicked();   
 		void on_changeButton_3_clicked(); 
-		void on_changeButton_4_clicked(); 
+		void on_changeButton_4_clicked(); */
 		void on_startButton_clicked();
 		void on_stopButton_clicked();
+		void on_movementBox_activated(int index);
 	};
 
 	class GUI : public QObject

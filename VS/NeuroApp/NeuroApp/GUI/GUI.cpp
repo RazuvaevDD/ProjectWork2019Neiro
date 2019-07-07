@@ -15,6 +15,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
 	ui.setupUi(this);
 	ui.stopButton->setEnabled(false);
+	ui.addButton->setVisible(false);
+	ui.deleteButton->setVisible(false);
+	ui.label_0->setVisible(false);
+	ui.label_1->setVisible(false);
+	ui.label_2->setVisible(false);
+	ui.label_3->setVisible(false);
+	ui.movementBox->setCurrentIndex(-1);
 }
 
 EditWindow::EditWindow(QDialog *parent)
@@ -81,6 +88,18 @@ EditWindow::EditWindow(QDialog *parent)
 		{
 			QObject::connect(allPButtons.at(i), SIGNAL(clicked()), this, SLOT(pushButtonKeys()));
 		}
+	}
+}
+
+void MainWindow::on_movementBox_activated(int index)
+{
+	switch (index)
+	{
+	case 0: ui.keysLine->setText(ui.label_0->text()); break;
+	case 1: ui.keysLine->setText(ui.label_1->text()); break;
+	case 2: ui.keysLine->setText(ui.label_2->text()); break;
+	case 3: ui.keysLine->setText(ui.label_3->text()); break;
+	default: ui.keysLine->setText("");
 	}
 }
 
@@ -567,16 +586,24 @@ void EditWindow::on_setCords_clicked() // ...
 
 void EditWindow::on_addMouseMove_clicked()
 {
-	QString t = ui.keyLabel->text();
+	QString t;
+	if (ui.keyLabel->text() != "None") 
+	{
+		t = ui.keyLabel->text();
+	}
+	else
+	{
+		t = "";
+	}
 	if (ui.relative->isChecked())
 	{
-		t += " + ";
+		if (t != "") t += " + ";
 		QString s = "RelMouseMoveTo(" + ui.xEdit_2->text() + "; " + ui.yEdit_2->text() + ")";
 		t += s;
 	}
 	else if (ui.absolute->isChecked())
 	{
-		t += " + ";
+		if (t != "") t += " + ";
 		QString s = "AbsMouseMoveTo(" + ui.xEdit->text() + "; " + ui.yEdit->text() + ")";
 		t += s;
 	}
@@ -611,7 +638,7 @@ void MainWindow::on_changeButton_clicked() // ...
 		}
 	}
 }
-void MainWindow::on_changeButton_2_clicked() // ...
+/*void MainWindow::on_changeButton_2_clicked() // ...
 {
 	Settings_module::Setting nullSetting;
 	nullSetting.isNULL = true;
@@ -630,7 +657,7 @@ void MainWindow::on_changeButton_4_clicked() // ...
 	Settings_module::Setting nullSetting;
 	nullSetting.isNULL = true;
 	emit openEditWindow(4, nullSetting);
-}
+}*/
 
 void MainWindow::on_startButton_clicked() // ...
 {
@@ -811,10 +838,10 @@ void GUI::updatedSettingsSlt(std::vector<Settings_module::Setting> settings)
 	{
 		keyLineStr4 += " MOUSE_MOVE";
 	}
-	/*window->ui.keysLine->setText(keyLineStr1);
-	window->ui.keysLine_2->setText(keyLineStr2);
-	window->ui.keysLine_3->setText(keyLineStr3);
-	window->ui.keysLine_4->setText(keyLineStr4);*/
+	window->ui.label_0->setText(keyLineStr1);
+	window->ui.label_1->setText(keyLineStr2);
+	window->ui.label_2->setText(keyLineStr3);
+	window->ui.label_3->setText(keyLineStr4);
 	/*window->ui.movementLine->setText(QString::fromStdString(setting1.movement));
 	window->ui.movementLine_2->setText(QString::fromStdString(setting2.movement));
 	window->ui.movementLine_3->setText(QString::fromStdString(setting3.movement));
