@@ -35,6 +35,10 @@ void Connector::connectAll()
 	connect(logic, SIGNAL(pressLeftClickSig()), mouse, SLOT(pressLeftClickSlt()));
 	connect(logic, SIGNAL(releaseRightClickSig()), mouse, SLOT(releaseRightClickSlt()));
 	connect(logic, SIGNAL(releaseLeftClickSig()), mouse, SLOT(releaseLeftClickSlt()));
+	connect(gui, SIGNAL(changeCursorSig()), mouse, SLOT(changeCursorSlt()));
+	connect(gui, SIGNAL(restoreCursorSig()), mouse, SLOT(restoreCursorSlt()));
+	connect(logic, SIGNAL(shiftCoordsSig(double, double)), mouse, SLOT(shiftCoordsSlt(double, double)));
+	connect(logic, SIGNAL(shiftCoordsSig(double, double, int)), mouse, SLOT(shiftCoordsSlt(double, double, int)));
 }
 
 Connector::~Connector()
