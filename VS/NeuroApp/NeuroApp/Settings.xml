@@ -1,9 +1,9 @@
-﻿<root>
+<root>
     <setting id="1">
         <movement>Сжать левую руку</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>A + D</keys>
+        <keys>A + D + M</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>5.000000</mouseDelay>
