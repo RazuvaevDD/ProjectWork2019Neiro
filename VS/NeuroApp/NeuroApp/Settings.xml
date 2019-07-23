@@ -1,18 +1,18 @@
 <root>
     <setting id="1">
         <movement>Сжать левую руку</movement>
-        <x>1734.000000</x>
-        <y>44.000000</y>
-        <keys>MOUSE_MOVE</keys>
+        <x>0.000000</x>
+        <y>0.000000</y>
+        <keys>S + T + O + L + ENTER</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
-        <mouseDelay>2.000000</mouseDelay>
+        <mouseDelay>0.000000</mouseDelay>
     </setting>
     <setting id="2">
         <movement>Большой палец правой руки</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>; + E + Q + B</keys>
+        <keys>T + E + T + R + A + D + ENTER</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
@@ -21,7 +21,7 @@
         <movement>Средний палец правой руки</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>H + I + 8 + P + Q + U + Q + R_CLICK + L_CLICK</keys>
+        <keys>T + R + E + U + G + O + L + N + I + K + ENTER</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>
@@ -30,7 +30,7 @@
         <movement>Мизинец правой руки</movement>
         <x>0.000000</x>
         <y>0.000000</y>
-        <keys>G + Y + W + C + П + Й</keys>
+        <keys>M + U + L + T + I + F + O + R + A + ENTER</keys>
         <dx>0.000000</dx>
         <dy>0.000000</dy>
         <mouseDelay>0.000000</mouseDelay>

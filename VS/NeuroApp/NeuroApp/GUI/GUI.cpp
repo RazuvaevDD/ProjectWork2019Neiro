@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
 	ui.label_2->setVisible(false);
 	ui.label_3->setVisible(false);
 	ui.movementBox->setCurrentIndex(-1);
+	ui.keysLine->setReadOnly(true);
 }
 
 EditWindow::EditWindow(QDialog *parent)
